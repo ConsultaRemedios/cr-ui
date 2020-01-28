@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseModal Component When rendered matches to snapshot 1`] = `
+<div
+  class="overlay"
+  data-modal-overlay=""
+  enter-class="enterTransition"
+  leave-active-class="leaveActiveTransition"
+>
+  <div
+    class="container"
+    data-modal-container=""
+  >
+    <div
+      class="content"
+      data-modal-content=""
+    >
+      <button
+        class="closeButton"
+        data-modal-close=""
+      >
+        <span
+          class="closeButtonLabel"
+        >
+          Fechar
+        </span>
+      </button>
+       
+      <div>
+        Modal content here
+      </div>
+    </div>
+  </div>
+</div>
+`;

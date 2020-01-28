@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput component matches the snapshot when "showClearButton" is false 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <form
+    class="form"
+  >
+    <input
+      class="input"
+      placeholder="Buscar..."
+      type="search"
+    />
+     
+    <button
+      class="buttonSearch"
+    >
+      <svg
+        class="icon searchIcon"
+        viewBox="0 0 24 24"
+      >
+        <use
+          xlink:href="#search.icon.svg"
+        />
+      </svg>
+    </button>
+  </form>
+</div>
+`;
+
+exports[`SearchInput component matches the snapshot when "showClearButton" is true 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="iconWrapper"
+  >
+    <svg
+      class="icon cancelIcon"
+      viewBox="0 0 24 24"
+    >
+      <use
+        xlink:href="#cancel.icon.svg"
+      />
+    </svg>
+  </div>
+   
+  <form
+    class="form"
+  >
+    <input
+      class="input"
+      placeholder="Buscar..."
+      type="search"
+    />
+     
+    <button
+      class="buttonSearch"
+    >
+      <svg
+        class="icon searchIcon"
+        viewBox="0 0 24 24"
+      >
+        <use
+          xlink:href="#search.icon.svg"
+        />
+      </svg>
+    </button>
+  </form>
+</div>
+`;

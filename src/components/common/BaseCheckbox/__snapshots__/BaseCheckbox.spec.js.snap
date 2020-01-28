@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseCheckbox Component Render When it is checked matches the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      class="input"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseCheckbox Component Render When it is disabled matches the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper isDisabled"
+  >
+    <input
+      class="input"
+      disabled="disabled"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseCheckbox Component Render When it is not checked matches the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper isSelected"
+  >
+    <input
+      class="input"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseCheckbox Component Render When there is id renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      class="input"
+      id="checkbox-term"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseCheckbox Component Render When there is label renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      class="input"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <span
+      class="label"
+    >
+      
+      Newsletter
+    
+    </span>
+  </label>
+</div>
+`;
+
+exports[`BaseCheckbox Component Render When there is no id renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      class="input"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseCheckbox Component Render When there is no label renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      class="input"
+      name="newsletter"
+      type="checkbox"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;

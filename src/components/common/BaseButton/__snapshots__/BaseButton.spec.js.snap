@@ -1,0 +1,348 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseButton component #buttonType prop matches the snapshoot when buttonType is equal to button 1`] = `
+<button
+  class="button medium success buttonShadow"
+  type="button"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #buttonType prop matches the snapshoot when buttonType is equal to submit 1`] = `
+<button
+  class="button medium success buttonShadow"
+  type="submit"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #buttonType prop matches the snapshoot when there is not buttonType prop 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #fill prop When fill is false matches the snapshot 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Unfilled button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #fill prop When fill is true matches the snapshot 1`] = `
+<button
+  class="button medium success fill buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Filled button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #icon prop when set an icon it matches the snapshot 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <svg
+    class="icon iconButton"
+    viewBox="0 0 24 24"
+  >
+    <use
+      xlink:href="#undefined"
+    />
+  </svg>
+   
+  <span
+    class=""
+  >
+    Button success
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #inverted prop When inverted is false matches the snapshot 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #inverted prop When inverted is true matches the snapshot 1`] = `
+<button
+  class="button medium success inverted buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Inverted button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #isLoading prop When isLoading is false matches the snapshot 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Not Loading button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #isLoading prop When isLoading is true matches the snapshot 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Loading button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #rel prop When has rel prop matches the snapshot 1`] = `
+<a
+  class="button medium success buttonShadow"
+  href="/foo"
+  rel="nofollow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Link button with rel
+  </span>
+</a>
+`;
+
+exports[`BaseButton component #size prop matches the snapshoot when the size is "small" 1`] = `
+<button
+  class="button small success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Small button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #size prop matches the snapshot when the size is "large" 1`] = `
+<button
+  class="button large success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Large button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #size prop matches the snapshot when the size is "medium" 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Medium button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #type prop matches the snapshoot when the type is "danger" 1`] = `
+<button
+  class="button medium danger buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Danger button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #type prop matches the snapshoot when the type is "info" 1`] = `
+<button
+  class="button medium info buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Info button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #type prop matches the snapshoot when the type is "naked" 1`] = `
+<button
+  class="button medium naked"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Naked button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #type prop matches the snapshoot when the type is "neutral" 1`] = `
+<button
+  class="button medium neutral buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Neutral button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #type prop matches the snapshoot when the type is "success" 1`] = `
+<button
+  class="button medium success buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Success button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component #type prop matches the snapshoot when the type is "warning" 1`] = `
+<button
+  class="button medium warning buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Warning button
+  </span>
+</button>
+`;
+
+exports[`BaseButton component With combined props matches the snapshot 1`] = `
+<button
+  class="button large warning fill buttonShadow"
+>
+  <!---->
+   
+  <!---->
+   
+  <span
+    class=""
+  >
+    Combined button
+  </span>
+</button>
+`;

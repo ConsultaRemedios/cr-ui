@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseInput component matches the snapshot with Render When there is id renders the snapshot 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input"
+    id="input-term"
+    name="name"
+    placeholder="placeholder"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with Render When there is no id renders the snapshot 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="small input"
+    name="name"
+    placeholder="placeholder"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with autofocus true 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    autofocus="autofocus"
+    class="medium input"
+    name="name"
+    placeholder="placeholder"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with disabled true 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input"
+    disabled="disabled"
+    name="name"
+    placeholder="placeholder"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with empty props 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input"
+    name=""
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with isLoading true 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input isLoading"
+    name="name"
+    placeholder="placeholder"
+  />
+   
+  <!---->
+   
+  <img
+    class="loader"
+    src="./../../../assets/loader-input.svg"
+  />
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with isNumeric true 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input"
+    name="name"
+    placeholder="placeholder"
+    type="tel"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with matches snapshot when there is a prefix icon 1`] = `
+<div
+  class="container"
+>
+  <svg
+    class="icon inputIcon prefixIcon"
+    style="color: rgb(102, 102, 102);"
+    viewBox="0 0 24 24"
+  >
+    <use
+      xlink:href="#undefined"
+    />
+  </svg>
+   
+  <input
+    class="small input inputPadLef"
+    id="id"
+    name="name"
+    placeholder="placeholder"
+    type="text"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with matches snapshot when there is a suffix icon 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="small input inputPadRig"
+    id="id"
+    name="name"
+    placeholder="placeholder"
+    type="text"
+  />
+   
+  <svg
+    class="icon inputIcon suffixIcon"
+    style="color: rgb(102, 102, 102);"
+    viewBox="0 0 24 24"
+  >
+    <use
+      xlink:href="#undefined"
+    />
+  </svg>
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with props string 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input"
+    name="name"
+    placeholder="placeholder"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`BaseInput component matches the snapshot with readOnly true 1`] = `
+<div
+  class="container"
+>
+  <!---->
+   
+  <input
+    class="medium input"
+    name="name"
+    placeholder="placeholder"
+    readonly="readonly"
+  />
+   
+  <!---->
+   
+  <!---->
+</div>
+`;

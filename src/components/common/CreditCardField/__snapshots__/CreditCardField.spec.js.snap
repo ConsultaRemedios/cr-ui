@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardField when a card number is typed matches the snapshot 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,10 +6,13 @@
+      customstyle="[object Object]"
+      model=""
+      name="card"
+      size="medium"
+      type="tel"
+-     value=""
++     value="5479 9886 2820 8503"
+    />
+     
+-   <!---->
++   <img
++     class="brandIcon"
++     src="american-express.png"
++   />
+  </div>
+`;
+
+exports[`CreditCardField when it is empty matches the snapshot 1`] = `
+<div
+  class="wrapper"
+>
+  <baseinput-stub
+    classes=""
+    customstyle="[object Object]"
+    model=""
+    name=""
+    size="medium"
+    type="tel"
+    value=""
+  />
+   
+  <!---->
+</div>
+`;

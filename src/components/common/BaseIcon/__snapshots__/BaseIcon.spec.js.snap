@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseIcon component matches the snapshot 1`] = `
+<svg
+  class="icon"
+  viewBox="0 0 24 24"
+>
+  <use
+    xlink:href="#favorite.icon"
+  />
+</svg>
+`;

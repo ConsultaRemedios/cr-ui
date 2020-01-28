@@ -1,0 +1,5 @@
+**/*.spec.js
+config/
+server.js
+node_modules/
+public/

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroup matches the snapshot 1`] = `
+<div
+  class="wrapper"
+>
+  <button
+    class="button medium success buttonShadow customButton"
+  >
+    <!---->
+     
+    <!---->
+     
+    <span
+      class=""
+    />
+  </button>
+  <div
+    class="container customInput"
+  >
+    <!---->
+     
+    <input
+      class="medium input"
+      name=""
+    />
+     
+    <!---->
+     
+    <!---->
+  </div>
+</div>
+`;

@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseRadioButton Defaults assigns label prop as no empty string 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <span
+      class="label"
+    >
+      Male
+    </span>
+  </label>
+</div>
+`;
+
+exports[`BaseRadioButton Render When there is id renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      id="radio-male"
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseRadioButton Render When there is label renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <span
+      class="label"
+    >
+      Male
+    </span>
+  </label>
+</div>
+`;
+
+exports[`BaseRadioButton Render When there is no id renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseRadioButton Render When there is no label renders the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseRadioButton Render when it is checked matches the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper wrapperSelected"
+  >
+    <input
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;
+
+exports[`BaseRadioButton Render when it is not checked matches the snapshot 1`] = `
+<div>
+  <label
+    class="wrapper"
+  >
+    <input
+      name="gender"
+      type="radio"
+      value="male"
+    />
+     
+    <span
+      class="checkmark"
+    />
+     
+    <!---->
+  </label>
+</div>
+`;

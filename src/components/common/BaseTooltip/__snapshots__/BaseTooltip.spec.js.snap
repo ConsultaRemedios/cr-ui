@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseTooltip Snapshots matches Snapshot when position is bottom 1`] = `
+<div
+  class="wrapper light"
+  enter-active-class="enterActive"
+  enter-class="enter"
+  enter-to-class="enterTo"
+  leave-active-class="leaveActive"
+  leave-class="leave"
+  leave-to-class="leaveTo"
+  style="width: auto; height: auto;"
+>
+  Example tooltip text 
+  <div
+    class="arrow"
+    x-arrow=""
+  />
+</div>
+`;
+
+exports[`BaseTooltip Snapshots matches Snapshot when position is left 1`] = `
+<div
+  class="wrapper light"
+  enter-active-class="enterActive"
+  enter-class="enter"
+  enter-to-class="enterTo"
+  leave-active-class="leaveActive"
+  leave-class="leave"
+  leave-to-class="leaveTo"
+  style="width: auto; height: auto;"
+>
+  Example tooltip text 
+  <div
+    class="arrow"
+    x-arrow=""
+  />
+</div>
+`;
+
+exports[`BaseTooltip Snapshots matches Snapshot when position is right 1`] = `
+<div
+  class="wrapper light"
+  enter-active-class="enterActive"
+  enter-class="enter"
+  enter-to-class="enterTo"
+  leave-active-class="leaveActive"
+  leave-class="leave"
+  leave-to-class="leaveTo"
+  style="width: auto; height: auto;"
+>
+  Example tooltip text 
+  <div
+    class="arrow"
+    x-arrow=""
+  />
+</div>
+`;
+
+exports[`BaseTooltip Snapshots matches Snapshot when position is top 1`] = `
+<div
+  class="wrapper light"
+  enter-active-class="enterActive"
+  enter-class="enter"
+  enter-to-class="enterTo"
+  leave-active-class="leaveActive"
+  leave-class="leave"
+  leave-to-class="leaveTo"
+  style="width: auto; height: auto;"
+>
+  Example tooltip text 
+  <div
+    class="arrow"
+    x-arrow=""
+  />
+</div>
+`;
+
+exports[`BaseTooltip Snapshots matches Snapshot when show is false 1`] = `
+<div
+  class="wrapper light"
+  enter-active-class="enterActive"
+  enter-class="enter"
+  enter-to-class="enterTo"
+  leave-active-class="leaveActive"
+  leave-class="leave"
+  leave-to-class="leaveTo"
+  style="width: auto; height: auto; display: none;"
+>
+  Example tooltip text 
+  <div
+    class="arrow"
+    x-arrow=""
+  />
+</div>
+`;
+
+exports[`BaseTooltip Snapshots matches Snapshot when theme is dark 1`] = `
+<div
+  class="wrapper dark"
+  enter-active-class="enterActive"
+  enter-class="enter"
+  enter-to-class="enterTo"
+  leave-active-class="leaveActive"
+  leave-class="leave"
+  leave-to-class="leaveTo"
+  style="width: auto; height: auto;"
+>
+  Example tooltip text 
+  <div
+    class="arrow"
+    x-arrow=""
+  />
+</div>
+`;

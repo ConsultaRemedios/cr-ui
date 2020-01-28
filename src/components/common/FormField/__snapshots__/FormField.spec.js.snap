@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Field component When there is error matches snapshot 1`] = `
+<div
+  data-form-field-with-error="true"
+>
+  <div>
+    <baselabel-stub
+      haserror="true"
+      required="true"
+    >
+      
+      Name
+
+      
+      <template>
+        <div
+          class="innerSlot"
+        />
+      </template>
+    </baselabel-stub>
+  </div>
+   
+  <!---->
+   
+  <div
+    class="errorMessage"
+  >
+    <span>
+      
+      A name error
+    
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Form Field component When there is label matches snapshot 1`] = `
+<div>
+  <div>
+    <baselabel-stub
+      required="true"
+    >
+      
+      Name
+
+      
+      <template>
+        <div
+          class="innerSlot"
+        />
+      </template>
+    </baselabel-stub>
+  </div>
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`Form Field component matches snapshot 1`] = `
+<div>
+  <!---->
+    
+  <!---->
+</div>
+`;

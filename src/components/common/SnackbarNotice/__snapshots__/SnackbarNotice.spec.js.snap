@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SnackbarNotice Render Matches the snapshot 1`] = `
+<basenotice-stub
+  autoclose="true"
+  icon="[object Object]"
+  message="An error details here if you want to"
+  scrolltoself="true"
+  snackbar="true"
+  timeout="5000"
+  title="The important title here"
+  type="success"
+/>
+`;

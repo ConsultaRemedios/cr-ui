@@ -1,0 +1,12 @@
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>IconPriceLabel</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="IconPriceLabel">
+            <path d="M12.1590268,4.07116298 L12.330605,4 L20,4 L20,11.6552728 L19.9288991,11.8267891 L12.3497649,19.3973957 C11.9607426,19.7858402 11.4428101,20.0000001 10.89206,20 C10.3420697,19.9996225 9.82393722,19.7845897 9.43528918,19.3954212 L4.60128015,14.5546466 C3.79959763,13.7516834 3.79957636,12.4459178 4.60119788,11.6429812 L12.1590268,4.07116298 Z M18.7167185,11.324335 L18.7878199,11.1528182 L18.7878199,5.21212122 L12.8334299,5.21212122 L12.6618522,5.28328367 L5.45911002,12.499314 C5.12890289,12.8300486 5.12888976,13.3674837 5.45910084,13.6982224 L10.2930801,18.5389369 C10.4529857,18.6990425 10.6668083,18.7877096 10.8933789,18.7878788 C11.1195208,18.7878788 11.3331637,18.699456 11.493111,18.5397745 L18.7167185,11.324335 Z" id="Combined-Shape" fill="currentColor" fill-rule="nonzero" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) "></path>
+            <circle id="Oval" fill="currentColor" fill-rule="nonzero" cx="8.5" cy="8.5" r="1.5"></circle>
+        </g>
+    </g>
+</svg>

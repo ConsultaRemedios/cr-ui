@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleLoader component When has some slot matches the snapshot 1`] = `
+<div>
+  <img
+    class="image"
+    src="./../../../assets/loader.svg"
+  />
+   
+  <span
+    class="text"
+  >
+    Some text
+  </span>
+</div>
+`;
+
+exports[`SimpleLoader component When its empty matches the snapshot 1`] = `
+<div>
+  <img
+    class="image"
+    src="./../../../assets/loader.svg"
+  />
+   
+  <!---->
+</div>
+`;

@@ -1,0 +1,28 @@
+@import 'normalize.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333333;
+}
+
+body,
+button,
+input {
+  font-family: 'Helvetica', sans-serif;
+  line-height: 1.4;
+  font-size: 14px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input:focus {
+  outline: none;
+}

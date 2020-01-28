@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleSelect component matches the snapshot 1`] = `
+<div
+  class="wrapper"
+>
+  <div
+    class="select"
+  >
+    <span
+      class="selectText"
+    >
+      <span>
+        Feminino
+      </span>
+    </span>
+     
+    <span>
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+      >
+        <use
+          xlink:href="#drop.icon.svg"
+        />
+      </svg>
+    </span>
+  </div>
+   
+  <select
+    class="nativeSelect"
+    name="gender"
+  >
+    <option
+      disabled="disabled"
+    >
+      
+      Selecione
+    
+    </option>
+     
+    <option
+      value="F"
+    >
+      
+      Feminino
+    
+    </option>
+    <option
+      value="M"
+    >
+      
+      Masculino
+    
+    </option>
+  </select>
+</div>
+`;

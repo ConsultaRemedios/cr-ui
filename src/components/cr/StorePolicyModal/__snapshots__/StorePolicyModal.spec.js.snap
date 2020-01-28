@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StorePolicyModal component Snapshot matches when is loading 1`] = `
+<storebasemodal-stub
+  isloading="true"
+  logopath=""
+  name=""
+  title="Política de Entrega"
+>
+  <div>
+    <p>
+      Some content
+    </p>
+  </div>
+</storebasemodal-stub>
+`;
+
+exports[`StorePolicyModal component Snapshot matches when is not loading 1`] = `
+<storebasemodal-stub
+  logopath=""
+  name=""
+  title="Política de Entrega"
+>
+  <div>
+    <p>
+      Some content
+    </p>
+  </div>
+</storebasemodal-stub>
+`;
+
+exports[`StorePolicyModal component Snapshot matches when is on desktop 1`] = `
+<storebasemodal-stub
+  logopath=""
+  name=""
+  title="Política de Entrega"
+>
+  <div>
+    <p>
+      Some content
+    </p>
+  </div>
+</storebasemodal-stub>
+`;
+
+exports[`StorePolicyModal component Snapshot matches when is on mobile 1`] = `
+<storebasemodal-stub
+  logopath=""
+  name=""
+  title="Política de Entrega"
+>
+  <div>
+    <p>
+      Some content
+    </p>
+  </div>
+</storebasemodal-stub>
+`;
