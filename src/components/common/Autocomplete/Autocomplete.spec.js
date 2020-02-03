@@ -34,7 +34,7 @@ describe('Autocomplete component', () => {
     it('when user inputs term', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+      localWrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
@@ -77,7 +77,7 @@ describe('Autocomplete component', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.findAll(BaseInput).at(0).vm.$emit('focus');
+      wrapper.find(BaseInput).vm.$emit('focus');
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('focus');
@@ -87,13 +87,13 @@ describe('Autocomplete component', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+      wrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      wrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'Escape' },
       });
 
@@ -109,7 +109,7 @@ describe('Autocomplete component', () => {
       wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+      wrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
@@ -119,13 +119,13 @@ describe('Autocomplete component', () => {
     it('when press ArrowDown', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+      localWrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      localWrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowDown' },
       });
 
@@ -135,13 +135,13 @@ describe('Autocomplete component', () => {
     it('when press ArrowUp and there is no other element selected ', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+      localWrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      localWrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowUp' },
       });
 
@@ -149,11 +149,11 @@ describe('Autocomplete component', () => {
     });
 
     it('when have an option selected and user press enter', () => {
-      wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      wrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowUp' },
       });
 
-      wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      wrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'Enter' },
       });
 
@@ -164,7 +164,7 @@ describe('Autocomplete component', () => {
     });
 
     it('when dont have option selected and user press enter', () => {
-      wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      wrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'Enter' },
       });
 
@@ -173,11 +173,11 @@ describe('Autocomplete component', () => {
     });
 
     it('when have an option selected and user press tab', () => {
-      wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      wrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowUp' },
       });
 
-      wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      wrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'Tab' },
       });
 
@@ -190,13 +190,13 @@ describe('Autocomplete component', () => {
     it('when user inputs a term and press esc', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+      localWrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      localWrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+      localWrapper.find(BaseInput).vm.$emit('keydown', {
         event: { code: 'Escape' },
       });
 
@@ -277,7 +277,7 @@ describe('Autocomplete component', () => {
           scopedSlots,
         });
 
-        wrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+        wrapper.find(BaseInput).vm.$emit('change', {
           value: 'ibu',
         });
         jest.spyOn(wrapper.vm, '$emit');
@@ -293,13 +293,13 @@ describe('Autocomplete component', () => {
         it('when press ArrowDown', async () => {
           const localWrapper = shallowAutocomplete();
 
-          localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+          localWrapper.find(BaseInput).vm.$emit('change', {
             value: 'ibu',
           });
 
           await flushPromises();
 
-          localWrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          localWrapper.find(BaseInput).vm.$emit('keydown', {
             event: { code: 'ArrowDown' },
           });
 
@@ -309,7 +309,7 @@ describe('Autocomplete component', () => {
         it('when press ArrowUp and there is no other element selected ', async () => {
           const localWrapper = shallowAutocomplete();
 
-          localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+          localWrapper.find(BaseInput).vm.$emit('change', {
             value: 'ibu',
           });
 
