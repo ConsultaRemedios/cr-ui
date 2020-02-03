@@ -241,7 +241,7 @@
           },
           Enter: () => this.onChange(event),
           Tab: () => {
-            if (this.selectedSuggestionIndex) {
+            if (this.selectedSuggestionIndex !== -1) {
               this.onChange();
             }
           },
