@@ -95,9 +95,9 @@
     },
 
     props: {
-      refreshSuggestions: {
-        type: Boolean,
-        default: false,
+      cacheKey: {
+        type: String,
+        default: 'default',
       },
 
       getSuggestions: {
@@ -166,8 +166,7 @@
     },
 
     watch: {
-      refreshSuggestions() {
-        this.suggestionCache = {};
+      cacheKey() {
         this.onInputChange({ value: this.value });
       },
     },
@@ -180,8 +179,12 @@
       onInputChange(ev) {
         this.value = ev.value;
 
-        if (this.suggestionCache[this.value] && this.suggestionCache[this.value].length > 0) {
-          this.suggestions = this.suggestionCache[this.value];
+        if (
+          this.suggestionCache[this.cacheKey] &&
+          this.suggestionCache[this.cacheKey][this.value] &&
+          this.suggestionCache[this.cacheKey][this.value].length > 0
+        ) {
+          this.suggestions = this.suggestionCache[this.cacheKey][this.value];
           this.showSuggestions = true;
           return;
         }
@@ -195,7 +198,11 @@
               highlight: this.highlighter({ term: this.value, word: suggestion.name }),
               selected: false,
             }));
-            this.suggestionCache[this.value] = this.suggestions;
+            if (this.suggestionCache[this.cacheKey]) {
+              this.suggestionCache[this.cacheKey][this.value] = this.suggestions;
+            } else {
+              this.suggestionCache[this.cacheKey] = { [this.value]: this.suggestions };
+            }
           });
         } else {
           this.showSuggestions = false;

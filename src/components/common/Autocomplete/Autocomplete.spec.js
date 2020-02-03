@@ -6,7 +6,7 @@ import Autocomplete from './Autocomplete.vue';
 
 
 const defaultProps = {
-  refreshSuggestions: false,
+  cacheKey: 'consulta',
   getSuggestions: () => [
     { name: 'Ibuprofeno 25mg', permalink: '/p/ibuprofeno-25' },
     { name: 'Ibuprofeno 50mg', permalink: '/p/ibruprofeno-50' },
