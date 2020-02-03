@@ -24,6 +24,7 @@
     "body-scroll-lock": "https://github.com/liamcmitchell-sc/body-scroll-lock.git#50100ac",
     "credit-card-type": "^8.2.0",
     "express": "^4.16.3",
+    "flush-promises": "^1.0.2",
     "normalize.css": "^8.0.0",
     "popper.js": "^1.14.3",
     "svg-baker-runtime": "^1.4.0",
