@@ -10,11 +10,11 @@
       :on-key-down="onKeyDown"
       :on-focus="onFocus"
       :on-close="onClose"
-      :term="term"
+      :term="value"
       name="input"
     >
       <BaseInput
-        :value="term"
+        :value="value"
         :class="[$style.baseInput, inputClass]"
         :name="nameInput"
         :placeholder="placeholderInput"
@@ -130,7 +130,7 @@
         default: '',
       },
 
-      inputTerm: {
+      term: {
         type: String,
         default: '',
       },
@@ -143,7 +143,7 @@
 
     data() {
       return {
-        term: '',
+        value: '',
         inputedTerm: '',
         suggestions: [],
         showSuggestions: false,
@@ -168,34 +168,34 @@
     watch: {
       refreshSuggestions() {
         this.suggestionCache = {};
-        this.onInputChange({ value: this.term });
+        this.onInputChange({ value: this.value });
       },
     },
 
     mounted() {
-      this.term = this.inputTerm;
+      this.value = this.inputTerm;
     },
 
     methods: {
       onInputChange(ev) {
-        this.term = ev.value;
+        this.value = ev.value;
 
-        if (this.suggestionCache[this.term] && this.suggestionCache[this.term].length > 0) {
-          this.suggestions = this.suggestionCache[this.term];
+        if (this.suggestionCache[this.value] && this.suggestionCache[this.value].length > 0) {
+          this.suggestions = this.suggestionCache[this.value];
           this.showSuggestions = true;
           return;
         }
 
-        if (this.term && this.term.length >= 3) {
+        if (this.value && this.value.length >= 3) {
           this.inputedTerm = ev.value;
           Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
             this.showSuggestions = true;
             this.suggestions = suggestions.map(suggestion => ({
               ...suggestion,
-              highlight: this.highlighter({ term: this.term, word: suggestion.name }),
+              highlight: this.highlighter({ term: this.value, word: suggestion.name }),
               selected: false,
             }));
-            this.suggestionCache[this.term] = this.suggestions;
+            this.suggestionCache[this.value] = this.suggestions;
           });
         } else {
           this.showSuggestions = false;
@@ -207,7 +207,7 @@
       },
 
       populateTerm() {
-        this.term = this.suggestions[this.selectedSuggestionIndex]
+        this.value = this.suggestions[this.selectedSuggestionIndex]
           ? this.suggestions[this.selectedSuggestionIndex].name
           : this.inputedTerm;
       },
@@ -312,7 +312,7 @@
             * When user press enter and dont have option selected
             * @event submit
           */
-          this.$emit('submit', this.term);
+          this.$emit('submit', this.value);
         }
       },
 

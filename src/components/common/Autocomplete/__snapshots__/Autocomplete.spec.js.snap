@@ -12,7 +12,6 @@ exports[`Autocomplete component matches the snapshot when component is mounted 1
     placeholder=""
     size="medium"
     type="search"
-    value=""
   />
    
   <button
@@ -28,44 +27,20 @@ exports[`Autocomplete component matches the snapshot when component is mounted 1
 </div>
 `;
 
-exports[`Autocomplete component matches the snapshot when prop inputTerm is passed 1`] = `
-Snapshot Diff:
-- First value
-+ Second value
-
-@@ -7,11 +7,11 @@
-      model=""
-      name="searchInput"
-      placeholder=""
-      size="medium"
-      type="search"
--     value=""
-+     value="consulta"
-    />
-     
-    <button
-      class="buttonSearch"
-      type="submit"
-`;
-
 exports[`Autocomplete component matches the snapshot when prop nameInput is passed 1`] = `
 Snapshot Diff:
 - First value
 + Second value
 
-@@ -7,11 +7,11 @@
+@@ -1,7 +1,8 @@
+  <div
+    class="wrapper"
++   inputterm="cr"
+  >
+    <baseinput-stub
+      class="baseInput"
+      classes=""
       model=""
-      name="searchInput"
-      placeholder=""
-      size="medium"
-      type="search"
--     value=""
-+     value="cr"
-    />
-     
-    <button
-      class="buttonSearch"
-      type="submit"
 `;
 
 exports[`Autocomplete component matches the snapshot when prop placeholderInput is passed 1`] = `
@@ -83,9 +58,25 @@ Snapshot Diff:
 +     placeholder="this is a placeholder"
       size="medium"
       type="search"
-      value=""
     />
      
+    <button
+`;
+
+exports[`Autocomplete component matches the snapshot when prop term is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,7 +1,8 @@
+  <div
+    class="wrapper"
++   value="consulta"
+  >
+    <baseinput-stub
+      class="baseInput"
+      classes=""
+      model=""
 `;
 
 exports[`Autocomplete component matches the snapshot when style props are passed 1`] = `
@@ -105,7 +96,7 @@ Snapshot Diff:
       name="searchInput"
       placeholder=""
       size="medium"
-@@ -18,8 +18,45 @@
+@@ -17,8 +17,45 @@
     >
       <baseicon-stub
         id="search.icon.svg"
@@ -159,20 +150,19 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -7,11 +7,11 @@
+@@ -7,10 +7,11 @@
       model=""
       name="searchInput"
       placeholder=""
       size="medium"
       type="search"
--     value=""
 +     value="ibu"
     />
      
     <button
       class="buttonSearch"
       type="submit"
-@@ -19,7 +19,59 @@
+@@ -18,7 +19,59 @@
       <baseicon-stub
         id="search.icon.svg"
       />

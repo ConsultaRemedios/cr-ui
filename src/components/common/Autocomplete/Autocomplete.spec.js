@@ -56,8 +56,8 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when prop inputTerm is passed', () => {
-      const localWrapper = shallowAutocomplete({ inputTerm: 'consulta' });
+    it('when prop term is passed', () => {
+      const localWrapper = shallowAutocomplete({ value: 'consulta' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
