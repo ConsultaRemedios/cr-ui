@@ -76,28 +76,28 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    describe('when style props are passed', () => {
+    describe('#styles', () => {
       let wrapper;
       beforeEach(() => {
         wrapper = shallowAutocomplete();
         wrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
       });
 
-      it('listItemClass is passed', () => {
+      it('when listItemClass is passed', () => {
         const localWrapper = shallowAutocomplete({ listItemClass: '$style.customListItemSyle' });
         localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
       });
 
-      it('inputClass is passed', () => {
+      it('when inputClass is passed', () => {
         const localWrapper = shallowAutocomplete({ inputClass: '$style.customInputClass' });
         localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
       });
 
-      it('listClass is passed', () => {
+      it('when listClass is passed', () => {
         const localWrapper = shallowAutocomplete({ listClass: '$style.customListClass' });
         localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
 
@@ -106,7 +106,7 @@ describe('Autocomplete component', () => {
     })
   });
 
-  describe('emits events', () => {
+  describe('#events', () => {
     it('emits event "focus" when user clicks in input', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');

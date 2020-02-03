@@ -1,5 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Autocomplete component matches the snapshot #styles when inputClass is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,10 @@
+  <div
+    class="wrapper"
+  >
+    <baseinput-stub
+-     class="baseInput"
++     class="baseInput $style.customInputClass"
+      classes=""
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+`;
+
+exports[`Autocomplete component matches the snapshot #styles when listClass is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -19,11 +19,11 @@
+        id="search.icon.svg"
+      />
+    </button>
+     
+    <ul
+-     class="suggestions"
++     class="suggestions $style.customListClass"
+      data-suggestions=""
+    >
+      <li
+        class="suggestion"
+        data-suggestion-value="0"
+`;
+
+exports[`Autocomplete component matches the snapshot #styles when listItemClass is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -23,33 +23,33 @@
+    <ul
+      class="suggestions"
+      data-suggestions=""
+    >
+      <li
+-       class="suggestion"
++       class="suggestion $style.customListItemSyle"
+        data-suggestion-value="0"
+      >
+        <span />
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+-       class="suggestion"
++       class="suggestion $style.customListItemSyle"
+        data-suggestion-value="1"
+      >
+        <span />
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+-       class="suggestion"
++       class="suggestion $style.customListItemSyle"
+        data-suggestion-value="2"
+      >
+        <span />
+         
+        <baseicon-stub
+`;
+
 exports[`Autocomplete component matches the snapshot when component is mounted 1`] = `
 <div
   class="wrapper"
@@ -149,89 +232,6 @@ Snapshot Diff:
       class="baseInput"
       classes=""
       model=""
-`;
-
-exports[`Autocomplete component matches the snapshot when style props are passed inputClass is passed 1`] = `
-Snapshot Diff:
-- First value
-+ Second value
-
-@@ -1,10 +1,10 @@
-  <div
-    class="wrapper"
-  >
-    <baseinput-stub
--     class="baseInput"
-+     class="baseInput $style.customInputClass"
-      classes=""
-      model=""
-      name="searchInput"
-      placeholder=""
-      size="medium"
-`;
-
-exports[`Autocomplete component matches the snapshot when style props are passed listClass is passed 1`] = `
-Snapshot Diff:
-- First value
-+ Second value
-
-@@ -19,11 +19,11 @@
-        id="search.icon.svg"
-      />
-    </button>
-     
-    <ul
--     class="suggestions"
-+     class="suggestions $style.customListClass"
-      data-suggestions=""
-    >
-      <li
-        class="suggestion"
-        data-suggestion-value="0"
-`;
-
-exports[`Autocomplete component matches the snapshot when style props are passed listItemClass is passed 1`] = `
-Snapshot Diff:
-- First value
-+ Second value
-
-@@ -23,33 +23,33 @@
-    <ul
-      class="suggestions"
-      data-suggestions=""
-    >
-      <li
--       class="suggestion"
-+       class="suggestion $style.customListItemSyle"
-        data-suggestion-value="0"
-      >
-        <span />
-         
-        <baseicon-stub
-          class="suggestionIcon"
-          id="next.icon.svg"
-        />
-      </li>
-      <li
--       class="suggestion"
-+       class="suggestion $style.customListItemSyle"
-        data-suggestion-value="1"
-      >
-        <span />
-         
-        <baseicon-stub
-          class="suggestionIcon"
-          id="next.icon.svg"
-        />
-      </li>
-      <li
--       class="suggestion"
-+       class="suggestion $style.customListItemSyle"
-        data-suggestion-value="2"
-      >
-        <span />
-         
-        <baseicon-stub
 `;
 
 exports[`Autocomplete component matches the snapshot when user inputs term 1`] = `
