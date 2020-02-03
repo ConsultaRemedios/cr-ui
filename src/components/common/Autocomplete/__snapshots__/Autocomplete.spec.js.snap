@@ -27,6 +27,74 @@ exports[`Autocomplete component matches the snapshot when component is mounted 1
 </div>
 `;
 
+exports[`Autocomplete component matches the snapshot when prop expanded is changed to false 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -19,59 +19,7 @@
+      <baseicon-stub
+        id="search.icon.svg"
+      />
+    </button>
+     
+-   <ul
+-     class="suggestions"
+-     data-suggestions=""
+-   >
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="0"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 25mg
+-       </span>
+-        
+-       <baseicon-stub
+-         class="suggestionIcon"
+-         id="next.icon.svg"
+-       />
+-     </li>
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="1"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 50mg
+-       </span>
+-        
+-       <baseicon-stub
+-         class="suggestionIcon"
+-         id="next.icon.svg"
+-       />
+-     </li>
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="2"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 150mg
+-       </span>
+-        
+-       <baseicon-stub
+-         class="suggestionIcon"
+-         id="next.icon.svg"
+-       />
+-     </li>
+-   </ul>
++   <!---->
+  </div>
+`;
+
 exports[`Autocomplete component matches the snapshot when prop inputName is passed 1`] = `
 Snapshot Diff:
 - First value

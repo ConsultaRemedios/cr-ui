@@ -43,6 +43,24 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
+    it('when prop expanded is changed to false', async () => {
+      wrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+      await flushPromises();
+
+      const localWrapper = shallowAutocomplete();
+
+      localWrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+      await flushPromises();
+
+      localWrapper.setData({ expanded: false });
+
+      expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+    });
+
     it('when prop term is passed', () => {
       const localWrapper = shallowAutocomplete({ value: 'consulta' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();

@@ -9,7 +9,6 @@
       :on-change="onInputChange"
       :on-key-down="onKeyDown"
       :on-focus="onFocus"
-      :on-close="onClose"
       :term="value"
       name="input"
     >
@@ -34,7 +33,7 @@
     </slot>
 
     <ul
-      v-if="showSuggestions"
+      v-if="showSuggestions && expanded"
       :class="[$style.suggestions, listClass]"
       data-suggestions
     >
@@ -95,6 +94,11 @@
     },
 
     props: {
+      expanded: {
+        type: Boolean,
+        default: true,
+      },
+
       cacheKey: {
         type: String,
         default: 'default',
