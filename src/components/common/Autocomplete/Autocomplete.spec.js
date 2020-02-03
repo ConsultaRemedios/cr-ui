@@ -31,7 +31,7 @@ describe('Autocomplete component', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('when user digits term', async () => {
+    it('when user inputs term', async () => {
       const localWrapper = shallowAutocomplete();
 
       localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
@@ -43,7 +43,7 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when props of classes is passed', () => {
+    it('when style props are passed', () => {
       const props = {
         listItemClass: '$style.customListItemStyle',
         inputClass: '$style.customInputClass',
@@ -102,7 +102,7 @@ describe('Autocomplete component', () => {
     });
   });
 
-  describe('when user digits term and nagivate in the suggestions with the keyboard', () => {
+  describe('when user inputs term and nagivate in the suggestions with the keyboard', () => {
     let wrapper;
 
     beforeEach(async () => {
@@ -172,7 +172,7 @@ describe('Autocomplete component', () => {
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('submit', 'ibu');
     });
 
-    it('when have an option selected and use press tab', () => {
+    it('when have an option selected and user press tab', () => {
       wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
         event: { code: 'ArrowUp' },
       });
@@ -187,7 +187,7 @@ describe('Autocomplete component', () => {
       });
     });
 
-    it('when digits a term and press esc', async () => {
+    it('when user inputs a term and press esc', async () => {
       const localWrapper = shallowAutocomplete();
 
       localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
@@ -205,7 +205,7 @@ describe('Autocomplete component', () => {
   });
 
   describe('when templates are passed through slots', () => {
-    describe('when slot "input" is through', () => {
+    describe('when "input" slot is passed', () => {
       let wrapper;
       beforeEach(() => {
         const scopedSlots = {
@@ -261,7 +261,7 @@ describe('Autocomplete component', () => {
       });
     });
 
-    describe('when slot "listItem" is through', () => {
+    describe('when "listItem" slot is passed', () => {
       let wrapper;
       beforeEach(async () => {
         const scopedSlots = {
@@ -289,7 +289,7 @@ describe('Autocomplete component', () => {
         expect(wrapper.element).toMatchSnapshot();
       });
 
-      describe('when user digits term and nagivate in the suggestions with the keyboard', () => {
+      describe('when user inputs term and nagivate in the suggestions with the keyboard', () => {
         it('when press ArrowDown', async () => {
           const localWrapper = shallowAutocomplete();
 
@@ -361,7 +361,7 @@ describe('Autocomplete component', () => {
           });
         });
 
-        it('when digits a term and press esc', async () => {
+        it('when user inputs term and press esc', async () => {
           const localWrapper = shallowAutocomplete();
 
           localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
@@ -381,10 +381,12 @@ describe('Autocomplete component', () => {
   });
 
   describe('Methods', () => {
-    it('#highlighter', () => {
-      const wrapper = shallowAutocomplete();
+    describe('#highlighter', () => {
+      it('wraps the term inside the word passed with a <strong>', () => {
+        const wrapper = shallowAutocomplete();
 
-      expect(wrapper.vm.highlighter({ term: 'con', word: 'consulta remédios' })).toEqual('<strong>con</strong>sulta remédios');
+        expect(wrapper.vm.highlighter({ term: 'con', word: 'consulta remédios' })).toEqual('<strong>con</strong>sulta remédios');
+      });
     });
   });
 });
