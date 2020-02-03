@@ -1,0 +1,765 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete component matches the snapshot when component is mounted 1`] = `
+<div
+  class="wrapper"
+>
+  <baseinput-stub
+    class="baseInput"
+    classes=""
+    model=""
+    name="searchInput"
+    placeholder=""
+    size="medium"
+    type="search"
+    value=""
+  />
+   
+  <button
+    class="buttonSearch"
+    type="submit"
+  >
+    <baseicon-stub
+      id="search.icon.svg"
+    />
+  </button>
+   
+  <!---->
+</div>
+`;
+
+exports[`Autocomplete component matches the snapshot when prop inputTerm is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value=""
++     value="consulta"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+`;
+
+exports[`Autocomplete component matches the snapshot when prop nameInput is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value=""
++     value="cr"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+`;
+
+exports[`Autocomplete component matches the snapshot when prop placeholderInput is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -4,11 +4,11 @@
+    <baseinput-stub
+      class="baseInput"
+      classes=""
+      model=""
+      name="searchInput"
+-     placeholder=""
++     placeholder="this is a placeholder"
+      size="medium"
+      type="search"
+      value=""
+    />
+     
+`;
+
+exports[`Autocomplete component matches the snapshot when props of classes is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,10 @@
+  <div
+    class="wrapper"
+  >
+    <baseinput-stub
+-     class="baseInput"
++     class="baseInput $style.customInputClass"
+      classes=""
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+@@ -18,8 +18,45 @@
+    >
+      <baseicon-stub
+        id="search.icon.svg"
+      />
+    </button>
++    
++   <ul
++     class="suggestions $style.customListClass"
++     data-suggestions=""
++   >
++     <li
++       class="suggestion $style.customListItemStyle"
++       data-suggestion-value="0"
++     >
++       <span />
+         
+-   <!---->
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
++     </li>
++     <li
++       class="suggestion $style.customListItemStyle"
++       data-suggestion-value="1"
++     >
++       <span />
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
++     </li>
++     <li
++       class="suggestion $style.customListItemStyle"
++       data-suggestion-value="2"
++     >
++       <span />
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
++     </li>
++   </ul>
+  </div>
+`;
+
+exports[`Autocomplete component matches the snapshot when user digits term 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value=""
++     value="ibu"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+@@ -19,7 +19,59 @@
+      <baseicon-stub
+        id="search.icon.svg"
+      />
+    </button>
+     
+-   <!---->
++   <ul
++     class="suggestions"
++     data-suggestions=""
++   >
++     <li
++       class="suggestion"
++       data-suggestion-value="0"
++     >
++       <span>
++         <strong>
++           Ibu
++         </strong>
++         profeno 25mg
++       </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
++     </li>
++     <li
++       class="suggestion"
++       data-suggestion-value="1"
++     >
++       <span>
++         <strong>
++           Ibu
++         </strong>
++         profeno 50mg
++       </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
++     </li>
++     <li
++       class="suggestion"
++       data-suggestion-value="2"
++     >
++       <span>
++         <strong>
++           Ibu
++         </strong>
++         profeno 150mg
++       </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
++     </li>
++   </ul>
+  </div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "input" is through when input in slot is changed 1`] = `
+<div
+  class="wrapper"
+>
+  <input
+    autocomplete="off"
+    name="termo"
+    placeholder="Busque por medicamento, substância ou produto..."
+    type="search"
+  />
+   
+  <ul
+    class="suggestions"
+    data-suggestions=""
+  >
+    <li
+      class="suggestion"
+      data-suggestion-value="0"
+    >
+      <span>
+        Ibuprofeno 25mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="1"
+    >
+      <span>
+        Ibuprofeno 50mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="2"
+    >
+      <span>
+        Ibuprofeno 150mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "input" is through when input in slot is focused 1`] = `
+<div
+  class="wrapper"
+>
+  <input
+    autocomplete="off"
+    name="termo"
+    placeholder="Busque por medicamento, substância ou produto..."
+    type="search"
+  />
+   
+  <ul
+    class="suggestions"
+    data-suggestions=""
+  />
+</div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "input" is through when input in slot is keydown 1`] = `
+<div
+  class="wrapper"
+>
+  <input
+    autocomplete="off"
+    name="termo"
+    placeholder="Busque por medicamento, substância ou produto..."
+    type="search"
+  />
+   
+  <ul
+    class="suggestions"
+    data-suggestions=""
+  >
+    <li
+      class="suggestion hovered"
+      data-suggestion-value="0"
+    >
+      <span>
+        Ibuprofeno 25mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="1"
+    >
+      <span>
+        Ibuprofeno 50mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="2"
+    >
+      <span>
+        Ibuprofeno 150mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "listItem" is through when listItem is rendered 1`] = `
+<div
+  class="wrapper"
+>
+  <baseinput-stub
+    class="baseInput"
+    classes=""
+    model=""
+    name="searchInput"
+    placeholder=""
+    size="medium"
+    type="search"
+    value="ibu"
+  />
+   
+  <button
+    class="buttonSearch"
+    type="submit"
+  >
+    <baseicon-stub
+      id="search.icon.svg"
+    />
+  </button>
+   
+  <ul
+    class="suggestions"
+    data-suggestions=""
+  >
+    <li
+      class="suggestion"
+      data-suggestion-value="0"
+    >
+      <span>
+        <strong>
+          Ibu
+        </strong>
+        profeno 25mg
+      </span>
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="1"
+    >
+      <span>
+        <strong>
+          Ibu
+        </strong>
+        profeno 50mg
+      </span>
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="2"
+    >
+      <span>
+        <strong>
+          Ibu
+        </strong>
+        profeno 150mg
+      </span>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "listItem" is through when user digits term and nagivate in the suggestions with the keyboard when digits a term and press esc 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -19,44 +19,7 @@
+      <baseicon-stub
+        id="search.icon.svg"
+      />
+    </button>
+     
+-   <ul
+-     class="suggestions"
+-     data-suggestions=""
+-   >
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="0"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 25mg
+-       </span>
+-     </li>
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="1"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 50mg
+-       </span>
+-     </li>
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="2"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 150mg
+-       </span>
+-     </li>
+-   </ul>
++   <!---->
+  </div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "listItem" is through when user digits term and nagivate in the suggestions with the keyboard when press ArrowDown 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value="ibu"
++     value="Ibuprofeno 25mg"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+@@ -24,19 +24,24 @@
+    <ul
+      class="suggestions"
+      data-suggestions=""
+    >
+      <li
+-       class="suggestion"
++       class="suggestion hovered"
+        data-suggestion-value="0"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 25mg
+        </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="1"
+      >
+@@ -44,10 +49,15 @@
+          <strong>
+            Ibu
+          </strong>
+          profeno 50mg
+        </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="2"
+      >
+@@ -55,8 +65,13 @@
+          <strong>
+            Ibu
+          </strong>
+          profeno 150mg
+        </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
+      </li>
+    </ul>
+  </div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when slot "listItem" is through when user digits term and nagivate in the suggestions with the keyboard when press ArrowUp and there is no other element selected  1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value="ibu"
++     value="Ibuprofeno 150mg"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+@@ -33,10 +33,15 @@
+          <strong>
+            Ibu
+          </strong>
+          profeno 25mg
+        </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="1"
+      >
+@@ -44,19 +49,29 @@
+          <strong>
+            Ibu
+          </strong>
+          profeno 50mg
+        </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
+      </li>
+      <li
+-       class="suggestion"
++       class="suggestion hovered"
+        data-suggestion-value="2"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 150mg
+        </span>
++        
++       <baseicon-stub
++         class="suggestionIcon"
++         id="next.icon.svg"
++       />
+      </li>
+    </ul>
+  </div>
+`;
+
+exports[`Autocomplete component when user digits term and nagivate in the suggestions with the keyboard when digits a term and press esc 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -19,59 +19,7 @@
+      <baseicon-stub
+        id="search.icon.svg"
+      />
+    </button>
+     
+-   <ul
+-     class="suggestions"
+-     data-suggestions=""
+-   >
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="0"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 25mg
+-       </span>
+-        
+-       <baseicon-stub
+-         class="suggestionIcon"
+-         id="next.icon.svg"
+-       />
+-     </li>
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="1"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 50mg
+-       </span>
+-        
+-       <baseicon-stub
+-         class="suggestionIcon"
+-         id="next.icon.svg"
+-       />
+-     </li>
+-     <li
+-       class="suggestion"
+-       data-suggestion-value="2"
+-     >
+-       <span>
+-         <strong>
+-           Ibu
+-         </strong>
+-         profeno 150mg
+-       </span>
+-        
+-       <baseicon-stub
+-         class="suggestionIcon"
+-         id="next.icon.svg"
+-       />
+-     </li>
+-   </ul>
++   <!---->
+  </div>
+`;
+
+exports[`Autocomplete component when user digits term and nagivate in the suggestions with the keyboard when press ArrowDown 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value="ibu"
++     value="Ibuprofeno 25mg"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+@@ -24,11 +24,11 @@
+    <ul
+      class="suggestions"
+      data-suggestions=""
+    >
+      <li
+-       class="suggestion"
++       class="suggestion hovered"
+        data-suggestion-value="0"
+      >
+        <span>
+          <strong>
+            Ibu
+`;
+
+exports[`Autocomplete component when user digits term and nagivate in the suggestions with the keyboard when press ArrowUp and there is no other element selected  1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value="ibu"
++     value="Ibuprofeno 150mg"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+@@ -56,11 +56,11 @@
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+-       class="suggestion"
++       class="suggestion hovered"
+        data-suggestion-value="2"
+      >
+        <span>
+          <strong>
+            Ibu
+`;
