@@ -17,7 +17,7 @@
         :value="value"
         :class="[$style.baseInput, inputClass]"
         :name="nameInput"
-        :placeholder="placeholderInput"
+        :placeholder="placeholder"
         type="search"
         @change="onInputChange"
         @focus="onFocus"
@@ -135,7 +135,7 @@
         default: '',
       },
 
-      placeholderInput: {
+      placeholder: {
         type: String,
         default: '',
       },

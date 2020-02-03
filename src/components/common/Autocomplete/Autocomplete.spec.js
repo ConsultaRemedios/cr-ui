@@ -66,8 +66,8 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when prop placeholderInput is passed', () => {
-      const localWrapper = shallowAutocomplete({ placeholderInput: 'this is a placeholder' });
+    it('when prop placeholder is passed', () => {
+      const localWrapper = shallowAutocomplete({ placeholder: 'this is a placeholder' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
   });

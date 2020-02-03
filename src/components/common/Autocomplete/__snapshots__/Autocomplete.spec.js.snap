@@ -47,7 +47,7 @@ Snapshot Diff:
      
 `;
 
-exports[`Autocomplete component matches the snapshot when prop placeholderInput is passed 1`] = `
+exports[`Autocomplete component matches the snapshot when prop placeholder is passed 1`] = `
 Snapshot Diff:
 - First value
 + Second value
