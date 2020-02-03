@@ -32,15 +32,19 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -1,7 +1,8 @@
-  <div
-    class="wrapper"
-+   inputterm="cr"
+@@ -3,11 +3,11 @@
   >
     <baseinput-stub
       class="baseInput"
       classes=""
       model=""
+-     name="searchInput"
++     name="cr"
+      placeholder=""
+      size="medium"
+      type="search"
+    />
+     
 `;
 
 exports[`Autocomplete component matches the snapshot when prop placeholderInput is passed 1`] = `

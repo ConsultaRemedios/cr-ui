@@ -62,7 +62,7 @@ describe('Autocomplete component', () => {
     });
 
     it('when prop nameInput is passed', () => {
-      const localWrapper = shallowAutocomplete({ inputTerm: 'cr' });
+      const localWrapper = shallowAutocomplete({ nameInput: 'cr' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
