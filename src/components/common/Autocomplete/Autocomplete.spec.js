@@ -13,7 +13,7 @@ const defaultProps = {
     { name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150' },
   ],
   suggestionKey: 'permalink',
-  nameInput: 'searchInput',
+  inputName: 'searchInput',
 };
 
 const shallowAutocomplete = customProps => shallowMount(Autocomplete, {
@@ -61,8 +61,8 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when prop nameInput is passed', () => {
-      const localWrapper = shallowAutocomplete({ nameInput: 'cr' });
+    it('when prop inputName is passed', () => {
+      const localWrapper = shallowAutocomplete({ inputName: 'cr' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 

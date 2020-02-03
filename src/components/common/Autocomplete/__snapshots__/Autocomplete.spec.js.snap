@@ -27,7 +27,7 @@ exports[`Autocomplete component matches the snapshot when component is mounted 1
 </div>
 `;
 
-exports[`Autocomplete component matches the snapshot when prop nameInput is passed 1`] = `
+exports[`Autocomplete component matches the snapshot when prop inputName is passed 1`] = `
 Snapshot Diff:
 - First value
 + Second value
