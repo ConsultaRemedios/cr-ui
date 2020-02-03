@@ -43,19 +43,6 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when style props are passed', () => {
-      const props = {
-        listItemClass: '$style.customListItemStyle',
-        inputClass: '$style.customInputClass',
-        listClass: '$style.customListClass',
-      };
-
-      const localWrapper = shallowAutocomplete(props);
-      localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
-
-      expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-    });
-
     it('when prop term is passed', () => {
       const localWrapper = shallowAutocomplete({ value: 'consulta' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
@@ -70,6 +57,35 @@ describe('Autocomplete component', () => {
       const localWrapper = shallowAutocomplete({ placeholder: 'this is a placeholder' });
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
+
+    describe('when style props are passed', () => {
+      let wrapper;
+      beforeEach(() => {
+        wrapper = shallowAutocomplete();
+        wrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+      });
+
+      it('listItemClass is passed', () => {
+        const localWrapper = shallowAutocomplete({ listItemClass: '$style.customListItemSyle' });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
+
+      it('inputClass is passed', () => {
+        const localWrapper = shallowAutocomplete({ inputClass: '$style.customInputClass' });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
+
+      it('listClass is passed', () => {
+        const localWrapper = shallowAutocomplete({ listClass: '$style.customListClass' });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
+    })
   });
 
   describe('emits events', () => {
