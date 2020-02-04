@@ -328,6 +328,7 @@
       },
 
       onFocus() {
+        this.onInputChange({ value: this.value });
         this.showSuggestions = true;
         /**
           * When user press in input
