@@ -209,6 +209,7 @@
             }
           });
         } else {
+          this.suggestions = [];
           this.showSuggestions = false;
         }
       },
