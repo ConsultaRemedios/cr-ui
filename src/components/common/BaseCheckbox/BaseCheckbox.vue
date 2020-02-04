@@ -77,18 +77,18 @@
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 2px solid #BDBDBD;
+    border: 1px solid #BDBDBD;
     border-radius: 3px;
     margin-right: 10px;
   }
 
   .wrapper:hover::before {
-    border: 2px solid #00AAE5;
+    border: 1px solid #138484;
   }
 
   .wrapper.isSelected::before {
-    border-color: #00AAE5;
-    background-color: #00AAE5;
+    border-color: #138484;
+    background-color: #138484;
   }
 
   .wrapper.isDisabled::before {
