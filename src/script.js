@@ -24,6 +24,7 @@ import SearchInput from './components/common/SearchInput';
 import StorePolicyModal from './components/cr/StorePolicyModal';
 import CreditCardField from './components/common/CreditCardField';
 import InputGroup from './components/common/InputGroup';
+import Autocomplete from './components/common/Autocomplete';
 
 export {
   BaseIcon,
@@ -52,4 +53,5 @@ export {
   StorePolicyModal,
   CreditCardField,
   InputGroup,
+  Autocomplete,
 };

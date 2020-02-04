@@ -3,7 +3,7 @@
     "node": ">= 8.12.0 < 9.0.0 || >= 10.10"
   },
   "name": "cr-ui",
-  "version": "2.2.2",
+  "version": "2.3.2",
   "description": "",
   "main": "src/script.js",
   "style": "src/style.css",
@@ -48,6 +48,7 @@
     "eslint-plugin-html": "^4.0.3",
     "eslint-plugin-import": "^2.11.0",
     "file-loader": "^1.1.11",
+    "flush-promises": "^1.0.2",
     "jest": "^24.9.0",
     "jest-file": "^1.0.0",
     "jest-svg-sprite-loader": "^1.0.1",
