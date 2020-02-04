@@ -24,7 +24,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,11 +19,11 @@
+@@ -20,11 +20,11 @@
         id="search.icon.svg"
       />
     </button>
@@ -44,7 +44,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -23,33 +23,33 @@
+@@ -24,33 +24,33 @@
     <ul
       class="suggestions"
       data-suggestions=""
@@ -95,6 +95,7 @@ exports[`Autocomplete component matches the snapshot when component is mounted 1
     placeholder=""
     size="medium"
     type="search"
+    value=""
   />
    
   <button
@@ -194,8 +195,8 @@ Snapshot Diff:
       placeholder=""
       size="medium"
       type="search"
+      value=""
     />
-     
 `;
 
 exports[`Autocomplete component matches the snapshot when prop placeholder is passed 1`] = `
@@ -213,9 +214,9 @@ Snapshot Diff:
 +     placeholder="this is a placeholder"
       size="medium"
       type="search"
+      value=""
     />
      
-    <button
 `;
 
 exports[`Autocomplete component matches the snapshot when prop term is passed 1`] = `
@@ -239,19 +240,20 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -7,10 +7,11 @@
+@@ -7,11 +7,11 @@
       model=""
       name="searchInput"
       placeholder=""
       size="medium"
       type="search"
+-     value=""
 +     value="ibu"
     />
      
     <button
       class="buttonSearch"
       type="submit"
-@@ -18,7 +19,59 @@
+@@ -19,7 +19,59 @@
       <baseicon-stub
         id="search.icon.svg"
       />

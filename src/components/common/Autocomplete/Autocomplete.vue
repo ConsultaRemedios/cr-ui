@@ -176,7 +176,7 @@
     },
 
     mounted() {
-      this.value = this.inputTerm;
+      this.value = this.term;
     },
 
     methods: {
