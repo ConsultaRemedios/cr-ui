@@ -115,18 +115,18 @@
       },
 
       inputClass: {
-        type: String,
-        default: '',
+        type: Array,
+        default: () => [],
       },
 
       listClass: {
-        type: String,
-        default: '',
+        type: Array,
+        default: () => [],
       },
 
       listItemClass: {
-        type: String,
-        default: '',
+        type: Array,
+        default: () => [],
       },
 
       inputName: {
