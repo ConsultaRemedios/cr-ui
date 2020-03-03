@@ -157,7 +157,7 @@ describe('Autocomplete component', () => {
         components: { Autocomplete },
         template: `
           <div>
-            <div data-outside>Outside Here</div>
+            <div id="outside">Outside Here</div>
             <Autocomplete :getSuggestions="${defaultProps.getSuggestions}"/>
           </div>
         `,
@@ -167,7 +167,7 @@ describe('Autocomplete component', () => {
       const autocomplemete = parentMount.find(Autocomplete);
 
       jest.spyOn(autocomplemete.vm, '$emit');
-      parentMount.find('[data-outside]').trigger('click');
+      parentMount.find('#outside').trigger('click');
 
       expect(autocomplemete.vm.$emit).not.toHaveBeenCalled();
     });
