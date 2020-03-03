@@ -308,8 +308,11 @@
           * When user clicks outside
           * @event close
         */
-        this.$emit('close');
-        this.showSuggestions = false;
+
+        if (this.showSuggestions && this.expanded) {
+          this.$emit('close');
+          this.showSuggestions = false;
+        }
       },
 
       onChange() {

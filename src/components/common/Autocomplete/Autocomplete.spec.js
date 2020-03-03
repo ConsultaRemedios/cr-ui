@@ -1,9 +1,9 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
 import { BaseInput } from 'cr-ui';
 import flushPromises from 'flush-promises';
 import snapshotDiff from 'snapshot-diff';
+import Vue from 'vue';
 import Autocomplete from './Autocomplete.vue';
-
 
 const defaultProps = {
   cacheKey: 'consulta',
@@ -133,6 +133,43 @@ describe('Autocomplete component', () => {
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('escape');
+    });
+
+
+    it('emits event "close" when suggestions is opened', async () => {
+      const wrapper = shallowAutocomplete();
+      jest.spyOn(wrapper.vm, '$emit');
+
+      wrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+
+      await flushPromises();
+
+      wrapper.find(Autocomplete).vm.$emit('close');
+
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledWith('close');
+    });
+
+    it('does not emit the event when the suggestions are closed ', () => {
+      const ParentComponent = Vue.component('ParentComponent', {
+        components: { Autocomplete },
+        template: `
+          <div>
+            <div data-outside>Outside Here</div>
+            <Autocomplete :getSuggestions="${defaultProps.getSuggestions}"/>
+          </div>
+        `,
+      });
+
+      const parentMount = mount(ParentComponent, { attachToDocument: true });
+      const autocomplemete = parentMount.find(Autocomplete);
+
+      jest.spyOn(autocomplemete.vm, '$emit');
+      parentMount.find('[data-outside]').trigger('click');
+
+      expect(autocomplemete.vm.$emit).not.toHaveBeenCalled();
     });
   });
 
