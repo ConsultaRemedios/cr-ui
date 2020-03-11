@@ -205,6 +205,74 @@ Snapshot Diff:
   </div>
 `;
 
+exports[`Autocomplete component matches the snapshot when prop highlighterKey is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -7,11 +7,11 @@
+      model=""
+      name="searchInput"
+      placeholder=""
+      size="medium"
+      type="search"
+-     value="ibu"
++     value="Con"
+    />
+     
+    <button
+      class="buttonSearch"
+      type="submit"
+@@ -32,13 +32,13 @@
+          class="suggestion"
+          data-suggestion-value="0"
+        >
+          <span>
+            <strong>
+-             Ibu
++             Con
+            </strong>
+-           profeno 25mg
++           sulta
+          </span>
+           
+          <baseicon-stub
+            class="suggestionIcon"
+            id="next.icon.svg"
+@@ -47,14 +47,11 @@
+        <li
+          class="suggestion"
+          data-suggestion-value="1"
+        >
+          <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 50mg
++           Minuto
+          </span>
+           
+          <baseicon-stub
+            class="suggestionIcon"
+            id="next.icon.svg"
+@@ -63,14 +60,11 @@
+        <li
+          class="suggestion"
+          data-suggestion-value="2"
+        >
+          <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 150mg
++           Bleeza
+          </span>
+           
+          <baseicon-stub
+            class="suggestionIcon"
+            id="next.icon.svg"
+`;
+
 exports[`Autocomplete component matches the snapshot when prop inputName is passed 1`] = `
 Snapshot Diff:
 - First value

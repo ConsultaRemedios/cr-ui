@@ -77,6 +77,33 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
+    it('when prop highlighterKey is passed', async () => {
+      const suggestions = () => [
+        { title: 'Consulta', permalink: '/p/ibuprofeno-25' },
+        { title: 'Minuto', permalink: '/p/ibruprofeno-50' },
+        { title: 'Bleeza', permalink: '/p/ibruprofeno-150' },
+      ]
+
+      const localWrapper = shallowAutocomplete({ highlighterKey: 'title', getSuggestions: suggestions });
+
+      wrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+
+      await flushPromises();
+
+      localWrapper.find(BaseInput).vm.$emit('change', {
+        value: 'Con',
+      });
+
+      localWrapper.setData({ suggestions: suggestions });
+
+      await flushPromises();
+
+      expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+    });
+
+
     describe('#styles', () => {
       let wrapper;
       beforeEach(() => {
