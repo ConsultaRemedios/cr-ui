@@ -541,6 +541,12 @@ describe('Autocomplete component', () => {
 
         expect(wrapper.vm.highlighter({ term: 'con', word: 'consulta remédios' })).toEqual('<strong>con</strong>sulta remédios');
       });
+
+      it('escapes the typed term', () => {
+        const wrapper = shallowAutocomplete();
+
+        expect(wrapper.vm.highlighter({ term: 'Viagra (', word: 'Viagra (20mg)' })).toEqual('<strong>Viagra (</strong>20mg)');
+      });
     });
   });
 });

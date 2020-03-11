@@ -255,7 +255,7 @@
       },
 
       highlighter({ term, word }) {
-        return word.replace(new RegExp(term, 'gi'), match => `<strong>${match}</strong>`);
+        return word.replace(new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), match => `<strong>${match}</strong>`);
       },
 
       populateTerm() {
