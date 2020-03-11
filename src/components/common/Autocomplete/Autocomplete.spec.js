@@ -14,7 +14,7 @@ const defaultProps = {
   ],
   suggestionKey: 'permalink',
   inputName: 'searchInput',
-  keyHighlighter: 'name',
+  highlighterKey: 'name',
 };
 
 const shallowAutocomplete = customProps => shallowMount(Autocomplete, {
@@ -100,6 +100,13 @@ describe('Autocomplete component', () => {
 
       it('when listClass is passed', () => {
         const localWrapper = shallowAutocomplete({ listClass: '$style.customListClass' });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
+
+      it('when expandedClass is passed', () => {
+        const localWrapper = shallowAutocomplete({ expandedClass: '$style.customExpandedClass' });
         localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();

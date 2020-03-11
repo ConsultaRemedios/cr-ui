@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Autocomplete component matches the snapshot #styles when expandedClass is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -20,11 +20,11 @@
+        id="search.icon.svg"
+      />
+    </button>
+     
+    <div
+-     class="expandedContainer"
++     class="expandedContainer $style.customExpandedClass"
+    >
+      <ul
+        class="suggestions"
+        data-suggestions=""
+      >
+`;
+
 exports[`Autocomplete component matches the snapshot #styles when inputClass is passed 1`] = `
 Snapshot Diff:
 - First value
@@ -24,19 +44,19 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -20,11 +20,11 @@
-        id="search.icon.svg"
-      />
-    </button>
+@@ -23,11 +23,11 @@
      
-    <ul
--     class="suggestions"
-+     class="suggestions $style.customListClass"
-      data-suggestions=""
+    <div
+      class="expandedContainer"
     >
-      <li
-        class="suggestion"
-        data-suggestion-value="0"
+      <ul
+-       class="suggestions"
++       class="suggestions $style.customListClass"
+        data-suggestions=""
+      >
+        <li
+          class="suggestion"
+          data-suggestion-value="0"
 `;
 
 exports[`Autocomplete component matches the snapshot #styles when listItemClass is passed 1`] = `
@@ -44,43 +64,43 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -24,33 +24,33 @@
-    <ul
-      class="suggestions"
-      data-suggestions=""
-    >
-      <li
--       class="suggestion"
-+       class="suggestion $style.customListItemSyle"
-        data-suggestion-value="0"
+@@ -27,33 +27,33 @@
+      <ul
+        class="suggestions"
+        data-suggestions=""
       >
-        <span />
-         
-        <baseicon-stub
-          class="suggestionIcon"
-          id="next.icon.svg"
-        />
-      </li>
-      <li
--       class="suggestion"
-+       class="suggestion $style.customListItemSyle"
-        data-suggestion-value="1"
-      >
-        <span />
-         
-        <baseicon-stub
-          class="suggestionIcon"
-          id="next.icon.svg"
-        />
-      </li>
-      <li
--       class="suggestion"
-+       class="suggestion $style.customListItemSyle"
-        data-suggestion-value="2"
-      >
-        <span />
-         
-        <baseicon-stub
+        <li
+-         class="suggestion"
++         class="suggestion $style.customListItemSyle"
+          data-suggestion-value="0"
+        >
+          <span />
+           
+          <baseicon-stub
+            class="suggestionIcon"
+            id="next.icon.svg"
+          />
+        </li>
+        <li
+-         class="suggestion"
++         class="suggestion $style.customListItemSyle"
+          data-suggestion-value="1"
+        >
+          <span />
+           
+          <baseicon-stub
+            class="suggestionIcon"
+            id="next.icon.svg"
+          />
+        </li>
+        <li
+-         class="suggestion"
++         class="suggestion $style.customListItemSyle"
+          data-suggestion-value="2"
+        >
+          <span />
+           
+          <baseicon-stub
 `;
 
 exports[`Autocomplete component matches the snapshot when component is mounted 1`] = `
@@ -116,68 +136,72 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,62 +19,7 @@
+@@ -19,66 +19,7 @@
       <baseicon-stub
         id="search.icon.svg"
       />
     </button>
      
--   <ul
--     class="suggestions"
--     data-suggestions=""
+-   <div
+-     class="expandedContainer"
 -   >
--     <li
--       class="suggestion"
--       data-suggestion-value="0"
+-     <ul
+-       class="suggestions"
+-       data-suggestions=""
 -     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 25mg
--       </span>
--        
--       <baseicon-stub
--         class="suggestionIcon"
--         id="next.icon.svg"
--       />
--     </li>
--     <li
--       class="suggestion"
--       data-suggestion-value="1"
--     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 50mg
--       </span>
--        
--       <baseicon-stub
--         class="suggestionIcon"
--         id="next.icon.svg"
--       />
--     </li>
--     <li
--       class="suggestion"
--       data-suggestion-value="2"
--     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 150mg
--       </span>
--        
--       <baseicon-stub
--         class="suggestionIcon"
--         id="next.icon.svg"
--       />
--     </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="0"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 25mg
+-         </span>
+-          
+-         <baseicon-stub
+-           class="suggestionIcon"
+-           id="next.icon.svg"
+-         />
+-       </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="1"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 50mg
+-         </span>
+-          
+-         <baseicon-stub
+-           class="suggestionIcon"
+-           id="next.icon.svg"
+-         />
+-       </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="2"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 150mg
+-         </span>
+-          
+-         <baseicon-stub
+-           class="suggestionIcon"
+-           id="next.icon.svg"
+-         />
+-       </li>
+-     </ul>
 -      
     <!---->
 -      
--   </ul>
+-   </div>
   </div>
 `;
 
@@ -242,7 +266,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -7,19 +7,74 @@
+@@ -7,19 +7,78 @@
       model=""
       name="searchInput"
       placeholder=""
@@ -261,62 +285,66 @@ Snapshot Diff:
       />
     </button>
 +    
-+   <ul
-+     class="suggestions"
-+     data-suggestions=""
++   <div
++     class="expandedContainer"
 +   >
-+     <li
-+       class="suggestion"
-+       data-suggestion-value="0"
++     <ul
++       class="suggestions"
++       data-suggestions=""
 +     >
-+       <span>
-+         <strong>
-+           Ibu
-+         </strong>
-+         profeno 25mg
-+       </span>
-         
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-+     </li>
-+     <li
-+       class="suggestion"
-+       data-suggestion-value="1"
-+     >
-+       <span>
-+         <strong>
-+           Ibu
-+         </strong>
-+         profeno 50mg
-+       </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-+     </li>
-+     <li
-+       class="suggestion"
-+       data-suggestion-value="2"
-+     >
-+       <span>
-+         <strong>
-+           Ibu
-+         </strong>
-+         profeno 150mg
-+       </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-+     </li>
++       <li
++         class="suggestion"
++         data-suggestion-value="0"
++       >
++         <span>
++           <strong>
++             Ibu
++           </strong>
++           profeno 25mg
++         </span>
+           
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
++       </li>
++       <li
++         class="suggestion"
++         data-suggestion-value="1"
++       >
++         <span>
++           <strong>
++             Ibu
++           </strong>
++           profeno 50mg
++         </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
++       </li>
++       <li
++         class="suggestion"
++         data-suggestion-value="2"
++       >
++         <span>
++           <strong>
++             Ibu
++           </strong>
++           profeno 150mg
++         </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
++       </li>
++     </ul>
 +      
       <!---->
 +      
-+   </ul>
++   </div>
   </div>
 `;
 
@@ -344,65 +372,69 @@ exports[`Autocomplete component when templates are passed through slots when "fo
     />
   </button>
    
-  <ul
-    class="suggestions"
-    data-suggestions=""
+  <div
+    class="expandedContainer"
   >
-    <li
-      class="suggestion"
-      data-suggestion-value="0"
+    <ul
+      class="suggestions"
+      data-suggestions=""
     >
-      <span>
-        <strong>
-          Ibu
-        </strong>
-        profeno 25mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="1"
-    >
-      <span>
-        <strong>
-          Ibu
-        </strong>
-        profeno 50mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="2"
-    >
-      <span>
-        <strong>
-          Ibu
-        </strong>
-        profeno 150mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="0"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 25mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="1"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 50mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="2"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 150mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+    </ul>
      
     <!---->
      
     <span>
       Footer da lista
     </span>
-  </ul>
+  </div>
 </div>
 `;
 
@@ -417,53 +449,57 @@ exports[`Autocomplete component when templates are passed through slots when "in
     type="search"
   />
    
-  <ul
-    class="suggestions"
-    data-suggestions=""
+  <div
+    class="expandedContainer"
   >
-    <li
-      class="suggestion"
-      data-suggestion-value="0"
+    <ul
+      class="suggestions"
+      data-suggestions=""
     >
-      <span>
-        Ibuprofeno 25mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="1"
-    >
-      <span>
-        Ibuprofeno 50mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="2"
-    >
-      <span>
-        Ibuprofeno 150mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="0"
+      >
+        <span>
+          Ibuprofeno 25mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="1"
+      >
+        <span>
+          Ibuprofeno 50mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="2"
+      >
+        <span>
+          Ibuprofeno 150mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+    </ul>
      
     <!---->
      
-  </ul>
+  </div>
 </div>
 `;
 
@@ -478,12 +514,15 @@ exports[`Autocomplete component when templates are passed through slots when "in
     type="search"
   />
    
-  <ul
-    class="suggestions"
-    data-suggestions=""
+  <div
+    class="expandedContainer"
   >
+    <ul
+      class="suggestions"
+      data-suggestions=""
+    />
       
-  </ul>
+  </div>
 </div>
 `;
 
@@ -498,53 +537,57 @@ exports[`Autocomplete component when templates are passed through slots when "in
     type="search"
   />
    
-  <ul
-    class="suggestions"
-    data-suggestions=""
+  <div
+    class="expandedContainer"
   >
-    <li
-      class="suggestion hovered "
-      data-suggestion-value="0"
+    <ul
+      class="suggestions"
+      data-suggestions=""
     >
-      <span>
-        Ibuprofeno 25mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="1"
-    >
-      <span>
-        Ibuprofeno 50mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="2"
-    >
-      <span>
-        Ibuprofeno 150mg
-      </span>
-       
-      <baseicon-stub
-        class="suggestionIcon"
-        id="next.icon.svg"
-      />
-    </li>
+      <li
+        class="suggestion hovered "
+        data-suggestion-value="0"
+      >
+        <span>
+          Ibuprofeno 25mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="1"
+      >
+        <span>
+          Ibuprofeno 50mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="2"
+      >
+        <span>
+          Ibuprofeno 150mg
+        </span>
+         
+        <baseicon-stub
+          class="suggestionIcon"
+          id="next.icon.svg"
+        />
+      </li>
+    </ul>
      
     <!---->
      
-  </ul>
+  </div>
 </div>
 `;
 
@@ -572,47 +615,51 @@ exports[`Autocomplete component when templates are passed through slots when "li
     />
   </button>
    
-  <ul
-    class="suggestions"
-    data-suggestions=""
+  <div
+    class="expandedContainer"
   >
-    <li
-      class="suggestion"
-      data-suggestion-value="0"
+    <ul
+      class="suggestions"
+      data-suggestions=""
     >
-      <span>
-        <strong>
-          Ibu
-        </strong>
-        profeno 25mg
-      </span>
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="1"
-    >
-      <span>
-        <strong>
-          Ibu
-        </strong>
-        profeno 50mg
-      </span>
-    </li>
-    <li
-      class="suggestion"
-      data-suggestion-value="2"
-    >
-      <span>
-        <strong>
-          Ibu
-        </strong>
-        profeno 150mg
-      </span>
-    </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="0"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 25mg
+        </span>
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="1"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 50mg
+        </span>
+      </li>
+      <li
+        class="suggestion"
+        data-suggestion-value="2"
+      >
+        <span>
+          <strong>
+            Ibu
+          </strong>
+          profeno 150mg
+        </span>
+      </li>
+    </ul>
      
     <!---->
      
-  </ul>
+  </div>
 </div>
 `;
 
@@ -634,64 +681,64 @@ Snapshot Diff:
     <button
       class="buttonSearch"
       type="submit"
-@@ -24,19 +24,24 @@
-    <ul
-      class="suggestions"
-      data-suggestions=""
-    >
-      <li
--       class="suggestion"
-+       class="suggestion hovered "
-        data-suggestion-value="0"
+@@ -27,19 +27,24 @@
+      <ul
+        class="suggestions"
+        data-suggestions=""
       >
-        <span>
-          <strong>
-            Ibu
-          </strong>
-          profeno 25mg
-        </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-      </li>
-      <li
-        class="suggestion"
-        data-suggestion-value="1"
-      >
-@@ -44,10 +49,15 @@
-          <strong>
-            Ibu
-          </strong>
-          profeno 50mg
-        </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-      </li>
-      <li
-        class="suggestion"
-        data-suggestion-value="2"
-      >
-@@ -55,10 +65,15 @@
-          <strong>
-            Ibu
-          </strong>
-          profeno 150mg
-        </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-      </li>
+        <li
+-         class="suggestion"
++         class="suggestion hovered "
+          data-suggestion-value="0"
+        >
+          <span>
+            <strong>
+              Ibu
+            </strong>
+            profeno 25mg
+          </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
+        </li>
+        <li
+          class="suggestion"
+          data-suggestion-value="1"
+        >
+@@ -47,10 +52,15 @@
+            <strong>
+              Ibu
+            </strong>
+            profeno 50mg
+          </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
+        </li>
+        <li
+          class="suggestion"
+          data-suggestion-value="2"
+        >
+@@ -58,10 +68,15 @@
+            <strong>
+              Ibu
+            </strong>
+            profeno 150mg
+          </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
+        </li>
+      </ul>
        
       <!---->
        
-    </ul>
 `;
 
 exports[`Autocomplete component when templates are passed through slots when "listItem" slot is passed when user inputs term and nagivate in the suggestions with the keyboard when press ArrowUp and there is no other element selected  1`] = `
@@ -712,55 +759,55 @@ Snapshot Diff:
     <button
       class="buttonSearch"
       type="submit"
-@@ -33,10 +33,15 @@
-          <strong>
-            Ibu
-          </strong>
-          profeno 25mg
-        </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-      </li>
-      <li
-        class="suggestion"
-        data-suggestion-value="1"
-      >
-@@ -44,21 +49,31 @@
-          <strong>
-            Ibu
-          </strong>
-          profeno 50mg
-        </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-      </li>
-      <li
--       class="suggestion"
-+       class="suggestion hovered "
-        data-suggestion-value="2"
-      >
-        <span>
-          <strong>
-            Ibu
-          </strong>
-          profeno 150mg
-        </span>
-+        
-+       <baseicon-stub
-+         class="suggestionIcon"
-+         id="next.icon.svg"
-+       />
-      </li>
+@@ -36,10 +36,15 @@
+            <strong>
+              Ibu
+            </strong>
+            profeno 25mg
+          </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
+        </li>
+        <li
+          class="suggestion"
+          data-suggestion-value="1"
+        >
+@@ -47,21 +52,31 @@
+            <strong>
+              Ibu
+            </strong>
+            profeno 50mg
+          </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
+        </li>
+        <li
+-         class="suggestion"
++         class="suggestion hovered "
+          data-suggestion-value="2"
+        >
+          <span>
+            <strong>
+              Ibu
+            </strong>
+            profeno 150mg
+          </span>
++          
++         <baseicon-stub
++           class="suggestionIcon"
++           id="next.icon.svg"
++         />
+        </li>
+      </ul>
        
       <!---->
        
-    </ul>
 `;
 
 exports[`Autocomplete component when templates are passed through slots when "listItem" slot is passed when user inputs term and nagivate in the suggestions with the keyboard when user inputs term and press esc 1`] = `
@@ -768,53 +815,57 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,47 +19,7 @@
+@@ -19,51 +19,7 @@
       <baseicon-stub
         id="search.icon.svg"
       />
     </button>
      
--   <ul
--     class="suggestions"
--     data-suggestions=""
+-   <div
+-     class="expandedContainer"
 -   >
--     <li
--       class="suggestion"
--       data-suggestion-value="0"
+-     <ul
+-       class="suggestions"
+-       data-suggestions=""
 -     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 25mg
--       </span>
--     </li>
--     <li
--       class="suggestion"
--       data-suggestion-value="1"
--     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 50mg
--       </span>
--     </li>
--     <li
--       class="suggestion"
--       data-suggestion-value="2"
--     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 150mg
--       </span>
--     </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="0"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 25mg
+-         </span>
+-       </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="1"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 50mg
+-         </span>
+-       </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="2"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 150mg
+-         </span>
+-       </li>
+-     </ul>
 -      
     <!---->
 -      
--   </ul>
+-   </div>
   </div>
 `;
 
@@ -842,16 +893,19 @@ exports[`Autocomplete component when templates are passed through slots when "pl
     />
   </button>
    
-  <ul
-    class="suggestions"
-    data-suggestions=""
+  <div
+    class="expandedContainer"
   >
+    <ul
+      class="suggestions"
+      data-suggestions=""
+    />
      
     <span>
       Buscando
     </span>
      
-  </ul>
+  </div>
 </div>
 `;
 
@@ -873,19 +927,19 @@ Snapshot Diff:
     <button
       class="buttonSearch"
       type="submit"
-@@ -24,11 +24,11 @@
-    <ul
-      class="suggestions"
-      data-suggestions=""
-    >
-      <li
--       class="suggestion"
-+       class="suggestion hovered "
-        data-suggestion-value="0"
+@@ -27,11 +27,11 @@
+      <ul
+        class="suggestions"
+        data-suggestions=""
       >
-        <span>
-          <strong>
-            Ibu
+        <li
+-         class="suggestion"
++         class="suggestion hovered "
+          data-suggestion-value="0"
+        >
+          <span>
+            <strong>
+              Ibu
 `;
 
 exports[`Autocomplete component when user inputs term and nagivate in the suggestions with the keyboard when press ArrowUp and there is no other element selected  1`] = `
@@ -906,19 +960,19 @@ Snapshot Diff:
     <button
       class="buttonSearch"
       type="submit"
-@@ -56,11 +56,11 @@
-          class="suggestionIcon"
-          id="next.icon.svg"
-        />
-      </li>
-      <li
--       class="suggestion"
-+       class="suggestion hovered "
-        data-suggestion-value="2"
-      >
-        <span>
-          <strong>
-            Ibu
+@@ -59,11 +59,11 @@
+            class="suggestionIcon"
+            id="next.icon.svg"
+          />
+        </li>
+        <li
+-         class="suggestion"
++         class="suggestion hovered "
+          data-suggestion-value="2"
+        >
+          <span>
+            <strong>
+              Ibu
 `;
 
 exports[`Autocomplete component when user inputs term and nagivate in the suggestions with the keyboard when user inputs a term and press esc 1`] = `
@@ -926,67 +980,71 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,62 +19,7 @@
+@@ -19,66 +19,7 @@
       <baseicon-stub
         id="search.icon.svg"
       />
     </button>
      
--   <ul
--     class="suggestions"
--     data-suggestions=""
+-   <div
+-     class="expandedContainer"
 -   >
--     <li
--       class="suggestion"
--       data-suggestion-value="0"
+-     <ul
+-       class="suggestions"
+-       data-suggestions=""
 -     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 25mg
--       </span>
--        
--       <baseicon-stub
--         class="suggestionIcon"
--         id="next.icon.svg"
--       />
--     </li>
--     <li
--       class="suggestion"
--       data-suggestion-value="1"
--     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 50mg
--       </span>
--        
--       <baseicon-stub
--         class="suggestionIcon"
--         id="next.icon.svg"
--       />
--     </li>
--     <li
--       class="suggestion"
--       data-suggestion-value="2"
--     >
--       <span>
--         <strong>
--           Ibu
--         </strong>
--         profeno 150mg
--       </span>
--        
--       <baseicon-stub
--         class="suggestionIcon"
--         id="next.icon.svg"
--       />
--     </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="0"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 25mg
+-         </span>
+-          
+-         <baseicon-stub
+-           class="suggestionIcon"
+-           id="next.icon.svg"
+-         />
+-       </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="1"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 50mg
+-         </span>
+-          
+-         <baseicon-stub
+-           class="suggestionIcon"
+-           id="next.icon.svg"
+-         />
+-       </li>
+-       <li
+-         class="suggestion"
+-         data-suggestion-value="2"
+-       >
+-         <span>
+-           <strong>
+-             Ibu
+-           </strong>
+-           profeno 150mg
+-         </span>
+-          
+-         <baseicon-stub
+-           class="suggestionIcon"
+-           id="next.icon.svg"
+-         />
+-       </li>
+-     </ul>
 -      
     <!---->
 -      
--   </ul>
+-   </div>
   </div>
 `;

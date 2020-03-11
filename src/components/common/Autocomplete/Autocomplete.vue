@@ -31,33 +31,36 @@
         />
       </button>
     </slot>
-
-    <ul
+    <div
       v-if="showSuggestions && expanded"
-      :class="[$style.suggestions, listClass]"
-      data-suggestions
+      :class="[$style.expandedContainer, expandedClass]"
     >
-      <li
-        v-for="(suggestion, index) in suggestions"
-        :key="suggestion[suggestionKey]"
-        :class="[
-          $style.suggestion, { [$style.hovered]: suggestion.selected, [hoveredClass]: suggestion.selected },
-          listItemClass
-        ]"
-        :data-suggestion-value="index"
+      <ul
+        :class="[$style.suggestions, listClass]"
+        data-suggestions
       >
-        <!-- @slot use this to custom the items in list of suggestions  -->
-        <slot
-          :suggestion="suggestion"
-          name="listItem"
+        <li
+          v-for="(suggestion, index) in suggestions"
+          :key="suggestion[suggestionKey]"
+          :class="[
+            $style.suggestion, { [$style.hovered]: suggestion.selected, [hoveredClass]: suggestion.selected },
+            listItemClass
+          ]"
+          :data-suggestion-value="index"
         >
-          <span v-html="suggestion.highlight"></span>
-          <BaseIcon
-            :id="icons.nextIcon.id"
-            :class="$style.suggestionIcon"
-          />
-        </slot>
-      </li>
+          <!-- @slot use this to custom the items in list of suggestions  -->
+          <slot
+            :suggestion="suggestion"
+            name="listItem"
+          >
+            <span v-html="suggestion.highlight"></span>
+            <BaseIcon
+              :id="icons.nextIcon.id"
+              :class="$style.suggestionIcon"
+            />
+          </slot>
+        </li>
+      </ul>
       <slot
         v-if="suggestions.length === 0"
         name="placeholderSuggestion"
@@ -67,7 +70,7 @@
         name="footerListSuggestions"
       >
       </slot>
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -128,6 +131,11 @@
         default: () => [],
       },
 
+      expandedClass: {
+        type: Array,
+        default: () => [],
+      },
+
       listClass: {
         type: Array,
         default: () => [],
@@ -153,14 +161,14 @@
         default: '',
       },
 
-      keyHighlighter: {
+      highlighterKey: {
         type: String,
-        required: true,
+        default: 'name',
       },
 
       clearSuggestions: {
         type: Boolean,
-        required: false,
+        default: false,
       },
 
       hoveredClass: {
@@ -218,7 +226,7 @@
         }
 
         if (this.value && this.value.length >= 3) {
-          if (this.clearSuggestions) this.suggestions = [];
+          if (this.$slots.placeholderSuggestion) this.suggestions = [];
 
           this.showSuggestions = true;
           this.inputedTerm = ev.value;
@@ -228,7 +236,7 @@
               ...suggestion,
               highlight: this.highlighter({
                 term: this.value,
-                word: suggestion[this.keyHighlighter],
+                word: suggestion[this.highlighterKey],
               }),
               selected: false,
             }));
@@ -238,7 +246,7 @@
               this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
             }
           }).catch(() => {
-            if (this.clearSuggestions) this.suggestions = [];
+            if (this.$slots.placeholderSuggestion) this.suggestions = [];
           });
         } else {
           this.suggestions = [];
@@ -404,9 +412,7 @@
     padding: 0 10px;
   }
 
-  .suggestions {
-    margin: 0;
-    padding: 0;
+  .expandedContainer {
     position: absolute;
     top: 100%;
     left: 0;
@@ -416,6 +422,11 @@
     border-top: 0;
     background: #FFF;
     box-shadow: inset 0px 2px 4px -2px rgba(0, 0, 0, 0.29);
+  }
+
+  .suggestions {
+    margin: 0;
+    padding: 0;
   }
 
   .suggestion {
