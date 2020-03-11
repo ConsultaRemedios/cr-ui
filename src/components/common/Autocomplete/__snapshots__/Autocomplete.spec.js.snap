@@ -116,7 +116,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,59 +19,7 @@
+@@ -19,62 +19,7 @@
       <baseicon-stub
         id="search.icon.svg"
       />
@@ -174,8 +174,10 @@ Snapshot Diff:
 -         id="next.icon.svg"
 -       />
 -     </li>
+-      
+    <!---->
+-      
 -   </ul>
-+   <!---->
   </div>
 `;
 
@@ -240,7 +242,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -7,11 +7,11 @@
+@@ -7,19 +7,74 @@
       model=""
       name="searchInput"
       placeholder=""
@@ -253,13 +255,12 @@ Snapshot Diff:
     <button
       class="buttonSearch"
       type="submit"
-@@ -19,7 +19,59 @@
+    >
       <baseicon-stub
         id="search.icon.svg"
       />
     </button>
-     
--   <!---->
++    
 +   <ul
 +     class="suggestions"
 +     data-suggestions=""
@@ -274,7 +275,7 @@ Snapshot Diff:
 +         </strong>
 +         profeno 25mg
 +       </span>
-+        
+         
 +       <baseicon-stub
 +         class="suggestionIcon"
 +         id="next.icon.svg"
@@ -312,8 +313,97 @@ Snapshot Diff:
 +         id="next.icon.svg"
 +       />
 +     </li>
++      
+      <!---->
++      
 +   </ul>
   </div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when "footerListSuggestions" slot is passed render "footerListSuggestions" while searching for the term 1`] = `
+<div
+  class="wrapper"
+>
+  <baseinput-stub
+    class="baseInput"
+    classes=""
+    model=""
+    name="searchInput"
+    placeholder=""
+    size="medium"
+    type="search"
+    value="ibu"
+  />
+   
+  <button
+    class="buttonSearch"
+    type="submit"
+  >
+    <baseicon-stub
+      id="search.icon.svg"
+    />
+  </button>
+   
+  <ul
+    class="suggestions"
+    data-suggestions=""
+  >
+    <li
+      class="suggestion"
+      data-suggestion-value="0"
+    >
+      <span>
+        <strong>
+          Ibu
+        </strong>
+        profeno 25mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="1"
+    >
+      <span>
+        <strong>
+          Ibu
+        </strong>
+        profeno 50mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+    <li
+      class="suggestion"
+      data-suggestion-value="2"
+    >
+      <span>
+        <strong>
+          Ibu
+        </strong>
+        profeno 150mg
+      </span>
+       
+      <baseicon-stub
+        class="suggestionIcon"
+        id="next.icon.svg"
+      />
+    </li>
+     
+    <!---->
+     
+    <span>
+      Footer da lista
+    </span>
+  </ul>
+</div>
 `;
 
 exports[`Autocomplete component when templates are passed through slots when "input" slot is passed when input in slot is changed 1`] = `
@@ -370,6 +460,9 @@ exports[`Autocomplete component when templates are passed through slots when "in
         id="next.icon.svg"
       />
     </li>
+     
+    <!---->
+     
   </ul>
 </div>
 `;
@@ -388,7 +481,9 @@ exports[`Autocomplete component when templates are passed through slots when "in
   <ul
     class="suggestions"
     data-suggestions=""
-  />
+  >
+      
+  </ul>
 </div>
 `;
 
@@ -408,7 +503,7 @@ exports[`Autocomplete component when templates are passed through slots when "in
     data-suggestions=""
   >
     <li
-      class="suggestion hovered"
+      class="suggestion hovered "
       data-suggestion-value="0"
     >
       <span>
@@ -446,6 +541,9 @@ exports[`Autocomplete component when templates are passed through slots when "in
         id="next.icon.svg"
       />
     </li>
+     
+    <!---->
+     
   </ul>
 </div>
 `;
@@ -511,6 +609,9 @@ exports[`Autocomplete component when templates are passed through slots when "li
         profeno 150mg
       </span>
     </li>
+     
+    <!---->
+     
   </ul>
 </div>
 `;
@@ -540,7 +641,7 @@ Snapshot Diff:
     >
       <li
 -       class="suggestion"
-+       class="suggestion hovered"
++       class="suggestion hovered "
         data-suggestion-value="0"
       >
         <span>
@@ -575,7 +676,7 @@ Snapshot Diff:
         class="suggestion"
         data-suggestion-value="2"
       >
-@@ -55,8 +65,13 @@
+@@ -55,10 +65,15 @@
           <strong>
             Ibu
           </strong>
@@ -587,8 +688,10 @@ Snapshot Diff:
 +         id="next.icon.svg"
 +       />
       </li>
+       
+      <!---->
+       
     </ul>
-  </div>
 `;
 
 exports[`Autocomplete component when templates are passed through slots when "listItem" slot is passed when user inputs term and nagivate in the suggestions with the keyboard when press ArrowUp and there is no other element selected  1`] = `
@@ -625,7 +728,7 @@ Snapshot Diff:
         class="suggestion"
         data-suggestion-value="1"
       >
-@@ -44,19 +49,29 @@
+@@ -44,21 +49,31 @@
           <strong>
             Ibu
           </strong>
@@ -639,7 +742,7 @@ Snapshot Diff:
       </li>
       <li
 -       class="suggestion"
-+       class="suggestion hovered"
++       class="suggestion hovered "
         data-suggestion-value="2"
       >
         <span>
@@ -654,8 +757,10 @@ Snapshot Diff:
 +         id="next.icon.svg"
 +       />
       </li>
+       
+      <!---->
+       
     </ul>
-  </div>
 `;
 
 exports[`Autocomplete component when templates are passed through slots when "listItem" slot is passed when user inputs term and nagivate in the suggestions with the keyboard when user inputs term and press esc 1`] = `
@@ -663,7 +768,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,44 +19,7 @@
+@@ -19,47 +19,7 @@
       <baseicon-stub
         id="search.icon.svg"
       />
@@ -706,9 +811,48 @@ Snapshot Diff:
 -         profeno 150mg
 -       </span>
 -     </li>
+-      
+    <!---->
+-      
 -   </ul>
-+   <!---->
   </div>
+`;
+
+exports[`Autocomplete component when templates are passed through slots when "placeholderSuggestion" slot is passed render "placeholderSuggestion" while searching for the term 1`] = `
+<div
+  class="wrapper"
+>
+  <baseinput-stub
+    class="baseInput"
+    classes=""
+    model=""
+    name="searchInput"
+    placeholder=""
+    size="medium"
+    type="search"
+    value="ibu"
+  />
+   
+  <button
+    class="buttonSearch"
+    type="submit"
+  >
+    <baseicon-stub
+      id="search.icon.svg"
+    />
+  </button>
+   
+  <ul
+    class="suggestions"
+    data-suggestions=""
+  >
+     
+    <span>
+      Buscando
+    </span>
+     
+  </ul>
+</div>
 `;
 
 exports[`Autocomplete component when user inputs term and nagivate in the suggestions with the keyboard when press ArrowDown 1`] = `
@@ -736,7 +880,7 @@ Snapshot Diff:
     >
       <li
 -       class="suggestion"
-+       class="suggestion hovered"
++       class="suggestion hovered "
         data-suggestion-value="0"
       >
         <span>
@@ -769,7 +913,7 @@ Snapshot Diff:
       </li>
       <li
 -       class="suggestion"
-+       class="suggestion hovered"
++       class="suggestion hovered "
         data-suggestion-value="2"
       >
         <span>
@@ -782,7 +926,7 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -19,59 +19,7 @@
+@@ -19,62 +19,7 @@
       <baseicon-stub
         id="search.icon.svg"
       />
@@ -840,7 +984,9 @@ Snapshot Diff:
 -         id="next.icon.svg"
 -       />
 -     </li>
+-      
+    <!---->
+-      
 -   </ul>
-+   <!---->
   </div>
 `;

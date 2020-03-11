@@ -41,7 +41,7 @@
         v-for="(suggestion, index) in suggestions"
         :key="suggestion[suggestionKey]"
         :class="[
-          $style.suggestion, { [$style.hovered]: suggestion.selected },
+          $style.suggestion, { [$style.hovered]: suggestion.selected, [hoveredClass]: suggestion.selected },
           listItemClass
         ]"
         :data-suggestion-value="index"
@@ -58,6 +58,15 @@
           />
         </slot>
       </li>
+      <slot
+        v-if="suggestions.length === 0"
+        name="placeholderSuggestion"
+      >
+      </slot>
+      <slot
+        name="footerListSuggestions"
+      >
+      </slot>
     </ul>
   </div>
 </template>
@@ -143,6 +152,21 @@
         type: String,
         default: '',
       },
+
+      keyHighlighter: {
+        type: String,
+        required: true,
+      },
+
+      clearSuggestions: {
+        type: Boolean,
+        required: false,
+      },
+
+      hoveredClass: {
+        type: Array,
+        default: () => [],
+      },
     },
 
     data() {
@@ -194,12 +218,18 @@
         }
 
         if (this.value && this.value.length >= 3) {
+          if (this.clearSuggestions) this.suggestions = [];
+
+          this.showSuggestions = true;
           this.inputedTerm = ev.value;
           Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
             this.showSuggestions = true;
             this.suggestions = suggestions.map(suggestion => ({
               ...suggestion,
-              highlight: this.highlighter({ term: this.value, word: suggestion.name }),
+              highlight: this.highlighter({
+                term: this.value,
+                word: suggestion[this.keyHighlighter],
+              }),
               selected: false,
             }));
             if (this.suggestionsCache[this.cacheKey]) {
@@ -207,6 +237,8 @@
             } else {
               this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
             }
+          }).catch(() => {
+            if (this.clearSuggestions) this.suggestions = [];
           });
         } else {
           this.suggestions = [];
@@ -309,7 +341,9 @@
           * @event close
         */
 
-        if (this.showSuggestions && this.expanded) {
+        if ((this.showSuggestions || this.expanded)) {
+          if (this.clearSuggestions) this.suggestions = [];
+
           this.$emit('close');
           this.showSuggestions = false;
         }
@@ -332,8 +366,10 @@
       },
 
       onFocus() {
-        this.onInputChange({ value: this.value });
-        this.showSuggestions = true;
+        if (!this.clearSuggestions) {
+          this.onInputChange({ value: this.value });
+          this.showSuggestions = true;
+        }
         /**
           * When user press in input
           * @event focus
