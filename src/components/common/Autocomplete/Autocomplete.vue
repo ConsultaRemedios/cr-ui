@@ -31,34 +31,46 @@
         />
       </button>
     </slot>
-
-    <ul
+    <div
       v-if="showSuggestions && expanded"
-      :class="[$style.suggestions, listClass]"
-      data-suggestions
+      :class="[$style.expandedContainer, expandedClass]"
     >
-      <li
-        v-for="(suggestion, index) in suggestions"
-        :key="suggestion[suggestionKey]"
-        :class="[
-          $style.suggestion, { [$style.hovered]: suggestion.selected },
-          listItemClass
-        ]"
-        :data-suggestion-value="index"
+      <ul
+        :class="[$style.suggestions, listClass]"
+        data-suggestions
       >
-        <!-- @slot use this to custom the items in list of suggestions  -->
-        <slot
-          :suggestion="suggestion"
-          name="listItem"
+        <li
+          v-for="(suggestion, index) in suggestions"
+          :key="suggestion[suggestionKey]"
+          :class="[
+            $style.suggestion, { [$style.hovered]: suggestion.selected, [hoveredClass]: suggestion.selected },
+            listItemClass
+          ]"
+          :data-suggestion-value="index"
         >
-          <span v-html="suggestion.highlight"></span>
-          <BaseIcon
-            :id="icons.nextIcon.id"
-            :class="$style.suggestionIcon"
-          />
-        </slot>
-      </li>
-    </ul>
+          <!-- @slot use this to custom the items in list of suggestions  -->
+          <slot
+            :suggestion="suggestion"
+            name="listItem"
+          >
+            <span v-html="suggestion.highlight"></span>
+            <BaseIcon
+              :id="icons.nextIcon.id"
+              :class="$style.suggestionIcon"
+            />
+          </slot>
+        </li>
+      </ul>
+      <slot
+        v-if="suggestions.length === 0"
+        name="placeholderSuggestion"
+      >
+      </slot>
+      <slot
+        name="footerListSuggestions"
+      >
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -119,6 +131,11 @@
         default: () => [],
       },
 
+      expandedClass: {
+        type: Array,
+        default: () => [],
+      },
+
       listClass: {
         type: Array,
         default: () => [],
@@ -142,6 +159,21 @@
       placeholder: {
         type: String,
         default: '',
+      },
+
+      highlighterKey: {
+        type: String,
+        default: 'name',
+      },
+
+      clearSuggestions: {
+        type: Boolean,
+        default: false,
+      },
+
+      hoveredClass: {
+        type: Array,
+        default: () => [],
       },
     },
 
@@ -194,12 +226,18 @@
         }
 
         if (this.value && this.value.length >= 3) {
+          if (this.$slots.placeholderSuggestion) this.suggestions = [];
+
+          this.showSuggestions = true;
           this.inputedTerm = ev.value;
           Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
             this.showSuggestions = true;
             this.suggestions = suggestions.map(suggestion => ({
               ...suggestion,
-              highlight: this.highlighter({ term: this.value, word: suggestion.name }),
+              highlight: this.highlighter({
+                term: this.value,
+                word: suggestion[this.highlighterKey],
+              }),
               selected: false,
             }));
             if (this.suggestionsCache[this.cacheKey]) {
@@ -207,6 +245,8 @@
             } else {
               this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
             }
+          }).catch(() => {
+            if (this.$slots.placeholderSuggestion) this.suggestions = [];
           });
         } else {
           this.suggestions = [];
@@ -309,7 +349,9 @@
           * @event close
         */
 
-        if (this.showSuggestions && this.expanded) {
+        if ((this.showSuggestions || this.expanded)) {
+          if (this.clearSuggestions) this.suggestions = [];
+
           this.$emit('close');
           this.showSuggestions = false;
         }
@@ -332,8 +374,10 @@
       },
 
       onFocus() {
-        this.onInputChange({ value: this.value });
-        this.showSuggestions = true;
+        if (!this.clearSuggestions) {
+          this.onInputChange({ value: this.value });
+          this.showSuggestions = true;
+        }
         /**
           * When user press in input
           * @event focus
@@ -368,9 +412,7 @@
     padding: 0 10px;
   }
 
-  .suggestions {
-    margin: 0;
-    padding: 0;
+  .expandedContainer {
     position: absolute;
     top: 100%;
     left: 0;
@@ -380,6 +422,11 @@
     border-top: 0;
     background: #FFF;
     box-shadow: inset 0px 2px 4px -2px rgba(0, 0, 0, 0.29);
+  }
+
+  .suggestions {
+    margin: 0;
+    padding: 0;
   }
 
   .suggestion {

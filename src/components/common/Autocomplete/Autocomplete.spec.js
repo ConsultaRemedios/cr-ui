@@ -14,6 +14,7 @@ const defaultProps = {
   ],
   suggestionKey: 'permalink',
   inputName: 'searchInput',
+  highlighterKey: 'name',
 };
 
 const shallowAutocomplete = customProps => shallowMount(Autocomplete, {
@@ -76,30 +77,64 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
+    it('when prop highlighterKey is passed', async () => {
+      const suggestions = () => [
+        { title: 'Consulta', permalink: '/p/ibuprofeno-25' },
+        { title: 'Minuto', permalink: '/p/ibruprofeno-50' },
+        { title: 'Bleeza', permalink: '/p/ibruprofeno-150' },
+      ]
+
+      const localWrapper = shallowAutocomplete({ highlighterKey: 'title', getSuggestions: suggestions });
+
+      wrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+
+      await flushPromises();
+
+      localWrapper.find(BaseInput).vm.$emit('change', {
+        value: 'Con',
+      });
+
+      localWrapper.setData({ suggestions: suggestions });
+
+      await flushPromises();
+
+      expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+    });
+
+
     describe('#styles', () => {
       let wrapper;
       beforeEach(() => {
         wrapper = shallowAutocomplete();
-        wrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+        wrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
       });
 
       it('when listItemClass is passed', () => {
         const localWrapper = shallowAutocomplete({ listItemClass: '$style.customListItemSyle' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
       });
 
       it('when inputClass is passed', () => {
         const localWrapper = shallowAutocomplete({ inputClass: '$style.customInputClass' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
       });
 
       it('when listClass is passed', () => {
         const localWrapper = shallowAutocomplete({ listClass: '$style.customListClass' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
+
+      it('when expandedClass is passed', () => {
+        const localWrapper = shallowAutocomplete({ expandedClass: '$style.customExpandedClass' });
+        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
       });
@@ -447,6 +482,54 @@ describe('Autocomplete component', () => {
 
           expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
         });
+      });
+    });
+
+    describe('when "placeholderSuggestion" slot is passed', () => {
+      it('render "placeholderSuggestion" while searching for the term', async () => {
+        const scopedSlots = {
+          placeholderSuggestion: `
+            <template slot-scope="{ suggestion }">
+              <span>Buscando</span>
+            </template>
+          `,
+        };
+
+        const wrapper = shallowMount(Autocomplete, {
+          propsData: defaultProps,
+          scopedSlots,
+        });
+
+        wrapper.find(BaseInput).vm.$emit('change', {
+          value: 'ibu',
+        });
+
+        expect(wrapper.element).toMatchSnapshot();
+      });
+    });
+
+    describe('when "footerListSuggestions" slot is passed', () => {
+      it('render "footerListSuggestions" while searching for the term', async () => {
+        const scopedSlots = {
+          footerListSuggestions: `
+            <template slot-scope="{ suggestion }">
+              <span>Footer da lista</span>
+            </template>
+          `,
+        };
+
+        const wrapper = shallowMount(Autocomplete, {
+          propsData: defaultProps,
+          scopedSlots,
+        });
+
+        wrapper.find(BaseInput).vm.$emit('change', {
+          value: 'ibu',
+        });
+
+        await flushPromises();
+
+        expect(wrapper.element).toMatchSnapshot();
       });
     });
   });
