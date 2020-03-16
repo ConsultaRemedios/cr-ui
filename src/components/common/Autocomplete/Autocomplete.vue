@@ -41,7 +41,7 @@
       >
         <li
           v-for="(suggestion, index) in suggestions"
-          :key="suggestion[suggestionKey]"
+          :key="suggestion[itemKey]"
           :class="[
             $style.suggestion, { [$style.hovered]: suggestion.selected, [hoveredClass]: suggestion.selected },
             listItemClass
@@ -52,6 +52,7 @@
           <slot
             :suggestion="suggestion"
             name="listItem"
+            :on-click="onClick"
           >
             <span v-html="suggestion.highlight"></span>
             <BaseIcon
@@ -121,7 +122,7 @@
         required: true,
       },
 
-      suggestionKey: {
+      itemKey: {
         type: String,
         default: 'id',
       },
@@ -161,7 +162,7 @@
         default: '',
       },
 
-      highlighterKey: {
+      suggestionKey: {
         type: String,
         default: 'name',
       },
@@ -205,6 +206,10 @@
       cacheKey() {
         this.onInputChange({ value: this.value });
       },
+
+      term(value) {
+        this.value = value;
+      },
     },
 
     mounted() {
@@ -212,6 +217,12 @@
     },
 
     methods: {
+      onClick(ev) {
+        this.showSuggestions = false;
+        this.value = ev[this.suggestionKey];
+        this.$emit('change', ev);
+      },
+
       onInputChange(ev) {
         this.value = ev.value;
 
@@ -236,7 +247,7 @@
               ...suggestion,
               highlight: this.highlighter({
                 term: this.value,
-                word: suggestion[this.highlighterKey],
+                word: suggestion[this.suggestionKey],
               }),
               selected: false,
             }));
@@ -260,7 +271,7 @@
 
       populateTerm() {
         this.value = this.suggestions[this.selectedSuggestionIndex]
-          ? this.suggestions[this.selectedSuggestionIndex].name
+          ? this.suggestions[this.selectedSuggestionIndex][this.suggestionKey]
           : this.inputedTerm;
       },
 
@@ -364,6 +375,7 @@
             * @event change
           */
           this.$emit('change', this.suggestions[this.selectedSuggestionIndex]);
+          this.showSuggestions = false;
         } else {
           /**
             * When user press enter and dont have option selected
