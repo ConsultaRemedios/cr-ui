@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Autocomplete component #events emits event "change" when users clicks in item of suggestions 1`] = `
+<div
+  class="wrapper"
+>
+  <baseinput-stub
+    class="baseInput"
+    classes=""
+    model=""
+    name="searchInput"
+    placeholder=""
+    size="medium"
+    type="search"
+    value="Ibuprofeno 50mg"
+  />
+   
+  <button
+    class="buttonSearch"
+    type="submit"
+  >
+    <baseicon-stub
+      id="search.icon.svg"
+    />
+  </button>
+   
+  <!---->
+</div>
+`;
+
 exports[`Autocomplete component matches the snapshot #styles when expandedClass is passed 1`] = `
 Snapshot Diff:
 - First value
@@ -205,7 +233,47 @@ Snapshot Diff:
   </div>
 `;
 
-exports[`Autocomplete component matches the snapshot when prop highlighterKey is passed 1`] = `
+exports[`Autocomplete component matches the snapshot when prop inputName is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -3,11 +3,11 @@
+  >
+    <baseinput-stub
+      class="baseInput"
+      classes=""
+      model=""
+-     name="searchInput"
++     name="cr"
+      placeholder=""
+      size="medium"
+      type="search"
+      value=""
+    />
+`;
+
+exports[`Autocomplete component matches the snapshot when prop placeholder is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -4,11 +4,11 @@
+    <baseinput-stub
+      class="baseInput"
+      classes=""
+      model=""
+      name="searchInput"
+-     placeholder=""
++     placeholder="this is a placeholder"
+      size="medium"
+      type="search"
+      value=""
+    />
+     
+`;
+
+exports[`Autocomplete component matches the snapshot when prop suggestionKey is passed 1`] = `
 Snapshot Diff:
 - First value
 + Second value
@@ -271,46 +339,6 @@ Snapshot Diff:
           <baseicon-stub
             class="suggestionIcon"
             id="next.icon.svg"
-`;
-
-exports[`Autocomplete component matches the snapshot when prop inputName is passed 1`] = `
-Snapshot Diff:
-- First value
-+ Second value
-
-@@ -3,11 +3,11 @@
-  >
-    <baseinput-stub
-      class="baseInput"
-      classes=""
-      model=""
--     name="searchInput"
-+     name="cr"
-      placeholder=""
-      size="medium"
-      type="search"
-      value=""
-    />
-`;
-
-exports[`Autocomplete component matches the snapshot when prop placeholder is passed 1`] = `
-Snapshot Diff:
-- First value
-+ Second value
-
-@@ -4,11 +4,11 @@
-    <baseinput-stub
-      class="baseInput"
-      classes=""
-      model=""
-      name="searchInput"
--     placeholder=""
-+     placeholder="this is a placeholder"
-      size="medium"
-      type="search"
-      value=""
-    />
-     
 `;
 
 exports[`Autocomplete component matches the snapshot when prop term is passed 1`] = `

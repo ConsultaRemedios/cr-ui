@@ -14,7 +14,7 @@ const defaultProps = {
   ],
   suggestionKey: 'permalink',
   inputName: 'searchInput',
-  highlighterKey: 'name',
+  suggestionKey: 'name',
 };
 
 const shallowAutocomplete = customProps => shallowMount(Autocomplete, {
@@ -77,14 +77,14 @@ describe('Autocomplete component', () => {
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when prop highlighterKey is passed', async () => {
+    it('when prop suggestionKey is passed', async () => {
       const suggestions = () => [
         { title: 'Consulta', permalink: '/p/ibuprofeno-25' },
         { title: 'Minuto', permalink: '/p/ibruprofeno-50' },
         { title: 'Bleeza', permalink: '/p/ibruprofeno-150' },
       ]
 
-      const localWrapper = shallowAutocomplete({ highlighterKey: 'title', getSuggestions: suggestions });
+      const localWrapper = shallowAutocomplete({ suggestionKey: 'title', getSuggestions: suggestions });
 
       wrapper.find(BaseInput).vm.$emit('change', {
         value: 'ibu',
@@ -205,6 +205,38 @@ describe('Autocomplete component', () => {
       parentMount.find('#outside').trigger('click');
 
       expect(autocomplemete.vm.$emit).not.toHaveBeenCalled();
+    });
+
+    it('emits event "change" when users clicks in item of suggestions', async () => {
+      const scopedSlots = {
+        listItem: `
+          <template slot-scope="{ suggestion, onClick }">
+            <span @click="onClick(suggestion) "v-html="suggestion.highlight"></span>
+          </template>
+        `,
+      }
+
+      const wrapper = shallowMount(Autocomplete, {
+        propsData: defaultProps,
+        scopedSlots,
+      });
+
+      wrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+
+      jest.spyOn(wrapper.vm, '$emit');
+
+      await flushPromises();
+
+      wrapper.findAll('span').at(1).trigger('click')
+
+
+      expect(wrapper.element).toMatchSnapshot()
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
+        highlight: '<strong>Ibu</strong>profeno 50mg', name: 'Ibuprofeno 50mg', permalink: '/p/ibruprofeno-50', selected: false,
+      });
     });
   });
 
