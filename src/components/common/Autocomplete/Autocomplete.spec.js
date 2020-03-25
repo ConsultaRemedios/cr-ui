@@ -148,7 +148,7 @@ describe('Autocomplete component', () => {
 
       wrapper.find(BaseInput).vm.$emit('focus');
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('focus');
     });
 
@@ -166,7 +166,7 @@ describe('Autocomplete component', () => {
         event: { code: 'Escape' },
       });
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('escape');
     });
 
@@ -183,7 +183,7 @@ describe('Autocomplete component', () => {
 
       wrapper.find(Autocomplete).vm.$emit('close');
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('close');
     });
 
@@ -237,6 +237,18 @@ describe('Autocomplete component', () => {
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
         highlight: '<strong>Ibu</strong>profeno 50mg', name: 'Ibuprofeno 50mg', permalink: '/p/ibruprofeno-50', selected: false,
       });
+    });
+
+    it('emits event "inputChanged" when users when users search for term', () => {
+      const wrapper = shallowAutocomplete();
+      jest.spyOn(wrapper.vm, '$emit');
+
+      wrapper.find(BaseInput).vm.$emit('change', {
+        value: 'ibu',
+      });
+
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledWith("inputChanged", "ibu");
     });
   });
 
@@ -295,7 +307,7 @@ describe('Autocomplete component', () => {
         event: { code: 'Enter' },
       });
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
         highlight: '<strong>Ibu</strong>profeno 150mg', name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150', selected: true,
       });
@@ -306,7 +318,7 @@ describe('Autocomplete component', () => {
         event: { code: 'Enter' },
       });
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('submit', 'ibu');
     });
 
@@ -319,7 +331,7 @@ describe('Autocomplete component', () => {
         event: { code: 'Tab' },
       });
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
         highlight: '<strong>Ibu</strong>profeno 150mg', name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150', selected: true,
       });
@@ -374,7 +386,7 @@ describe('Autocomplete component', () => {
       it('when input in slot is focused', () => {
         wrapper.find('input').trigger('focus');
 
-        expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+        expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
         expect(wrapper.vm.$emit).toHaveBeenCalledWith('focus');
         expect(wrapper.element).toMatchSnapshot();
       });
