@@ -32,11 +32,12 @@
       </button>
     </slot>
     <div
-      v-if="showSuggestions && expanded"
+      v-if="expanded"
       :class="[$style.expandedContainer, expandedClass]"
     >
       <ul
         :class="[$style.suggestions, listClass]"
+        v-if="showSuggestions"
         data-suggestions
       >
         <li
@@ -225,6 +226,7 @@
 
       onInputChange(ev) {
         this.value = ev.value;
+        this.$emit('inputChanged', this.value);
 
         if (
           this.suggestionsCache[this.cacheKey] &&
