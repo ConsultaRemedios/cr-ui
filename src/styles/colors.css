@@ -3,10 +3,12 @@
 :root {
   --link-color: #138484;
   --link-color-active: #0b6666;
+
   --text-default: #333333;
   --text-info: #1346e1;
   --text-success: #008554;
   --text-danger:  #fa503f;
+  
   --cta-primary: #fa503f;
   --cta-secundary: #d30b3f;
 }
