@@ -3,4 +3,11 @@
 :root {
   --link-color: #138484;
   --link-color-active: #0b6666;
+  --text-default: #333333;
+  --text-info: #1346E1;
+  --text-success: #008554;
+  --text-error: #fa503f;
+  --text-danger: #D30B3F;
+  --cta-primary: #fa503f;
+  --cta-secundary: #D30B3F;
 }
