@@ -1,11 +1,1 @@
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>IconClock</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="IconClock">
-            <path d="M11.99,2 C6.47,2 2,6.48 2,12 C2,17.52 6.47,22 11.99,22 C17.52,22 22,17.52 22,12 C22,6.48 17.52,2 11.99,2 Z M12,20 C7.58,20 4,16.42 4,12 C4,7.58 7.58,4 12,4 C16.42,4 20,7.58 20,12 C20,16.42 16.42,20 12,20 Z M12.5,7 L11,7 L11,13 L16.25,16.15 L17,14.92 L12.5,12.25 L12.5,7 Z" id="Mask" fill="currentColor" fill-rule="nonzero"></path>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" fill-rule="evenodd" transform="translate(0 .18)"><path id="prefix__a" d="M10.5 1.75c-4.832 0-8.75 3.918-8.75 8.75s3.918 8.75 8.75 8.75 8.75-3.918 8.75-8.75c0-2.32-.922-4.546-2.563-6.187-1.64-1.641-3.866-2.563-6.187-2.563zm0 1.59c3.954 0 7.16 3.206 7.16 7.16s-3.206 7.16-7.16 7.16-7.16-3.206-7.16-7.16 3.206-7.16 7.16-7.16zm0 1.592c-.44 0-.795.356-.795.795v4.884c0 .44.356.796.795.796h3.182c.44 0 .795-.356.795-.796 0-.439-.356-.795-.795-.795h-2.387V5.727c0-.439-.356-.795-.795-.795z"/></g></svg>
