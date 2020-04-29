@@ -10,6 +10,7 @@
       { [$style.rounded]: rounded && !isOpen },
       { [$style.topRounded]: rounded && isOpen },
       { [$style.hasError]: hasError },
+      { [styleSelectOpenedClass]: isOpen }
     ]">
       <slot name="selected" :current-label="currentLabel">
         {{currentLabel.label}}
@@ -37,7 +38,13 @@
     />
 
     <div v-show="isOpen"
-      :class="[$style.options, { [$style.bottomRounded]: rounded }, listOptionsClass]"
+      :class="[
+        { [listOptionsErrorClass]: hasError },
+        $style.options,
+        { [$style.bottomRounded]: rounded },
+        { [styleSelectOpenedClass]: isOpen },
+        listOptionsClass
+      ]"
       data-options
     >
       <slot></slot>
@@ -85,6 +92,16 @@
       },
 
       listOptionsClass: {
+        type: Array,
+        default: () => [],
+      },
+
+      listOptionsErrorClass: {
+        type: Array,
+        default: () => [],
+      },
+
+      styleSelectOpenedClass: {
         type: Array,
         default: () => [],
       },

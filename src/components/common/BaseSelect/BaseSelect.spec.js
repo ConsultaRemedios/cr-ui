@@ -51,6 +51,18 @@ describe('BaseSelect', () => {
 
         expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
       });
+
+      it('when "listOptionsErrorClass" is passed', () => {
+        const localWrapper = setup({ listOptionsClass: ['$style.listOptionsErrorClass' ]}).wrapper;
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
+
+      it('when "styleSelectOpenedClass" is passed', () => {
+        const localWrapper = setup({ listOptionsClass: ['$style.styleSelectOpenedClass' ]}).wrapper;
+
+        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      });
     });
   });
 
