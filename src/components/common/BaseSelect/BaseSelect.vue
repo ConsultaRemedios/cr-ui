@@ -5,9 +5,12 @@
     :style="{ zIndex }"
   >
     <div :class="[$style.selectedBlock,
+      { [selectedBlockErrorClass]: hasError },
+      selectedBlockClass,
       { [$style.rounded]: rounded && !isOpen },
       { [$style.topRounded]: rounded && isOpen },
-      { [$style.hasError]: hasError }
+      { [$style.hasError]: hasError },
+      { [styleSelectOpenedClass]: isOpen }
     ]">
       <slot name="selected" :current-label="currentLabel">
         {{currentLabel.label}}
@@ -35,7 +38,13 @@
     />
 
     <div v-show="isOpen"
-      :class="[$style.options, { [$style.bottomRounded]: rounded }]"
+      :class="[
+        { [listOptionsErrorClass]: hasError },
+        $style.options,
+        { [$style.bottomRounded]: rounded },
+        { [styleSelectOpenedClass]: isOpen },
+        listOptionsClass
+      ]"
       data-options
     >
       <slot></slot>
@@ -70,6 +79,31 @@
       rounded: {
         type: Boolean,
         default: true,
+      },
+
+      selectedBlockClass: {
+        type: Array,
+        default: () => [],
+      },
+
+      selectedBlockErrorClass: {
+        type: Array,
+        default: () => [],
+      },
+
+      listOptionsClass: {
+        type: Array,
+        default: () => [],
+      },
+
+      listOptionsErrorClass: {
+        type: Array,
+        default: () => [],
+      },
+
+      styleSelectOpenedClass: {
+        type: Array,
+        default: () => [],
       },
     },
 
@@ -187,7 +221,13 @@
     computed: {
       currentLabel() {
         if (this.selected !== '') {
-          return this.getOption(this.selected);
+          const selected = this.getOption(this.selected);
+          if (selected) return this.getOption(this.selected);
+
+          return {
+            label: this.selected,
+            value: this.selected,
+          };
         }
 
         return typeof this.placeholder === 'string'

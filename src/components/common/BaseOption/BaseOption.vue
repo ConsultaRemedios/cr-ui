@@ -18,17 +18,22 @@
         type: [String, Number],
         required: true,
       },
+
+      emitEvent: {
+        type: Boolean,
+        default: true,
+      },
     },
 
     computed: {
       isHover() {
-        return this.$parent.hovered && this.$parent.hovered === this.value;
+        return this.emitEvent && this.$parent.hovered && this.$parent.hovered === this.value;
       },
     },
 
     methods: {
       onClick() {
-        this.$parent.$emit('change', this.value);
+        if (this.emitEvent) this.$parent.$emit('change', this.value);
       },
 
       onHover() {

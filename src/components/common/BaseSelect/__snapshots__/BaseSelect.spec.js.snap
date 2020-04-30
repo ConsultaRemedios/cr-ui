@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseSelect matches the snapshot #styles when "listOptionsClass" is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -20,10 +20,10 @@
+      class="arrowDown"
+      src="./../../../assets/select-arrow.svg"
+    />
+     
+    <div
+-     class="options bottomRounded"
++     class="options bottomRounded $style.listOptionsClassStyle"
+      data-options=""
+      style="display: none;"
+    />
+  </div>
+`;
+
+exports[`BaseSelect matches the snapshot #styles when "listOptionsErrorClass" is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -20,10 +20,10 @@
+      class="arrowDown"
+      src="./../../../assets/select-arrow.svg"
+    />
+     
+    <div
+-     class="options bottomRounded"
++     class="options bottomRounded $style.listOptionsErrorClass"
+      data-options=""
+      style="display: none;"
+    />
+  </div>
+`;
+
+exports[`BaseSelect matches the snapshot #styles when "selectedBlockClass" is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,11 +1,11 @@
+  <div
+    class="select"
+    style="z-index: 1;"
+  >
+    <div
+-     class="selectedBlock rounded"
++     class="selectedBlock $style.selectedBlockStyle rounded"
+    >
+      
+        Option 1
+      
+    </div>
+`;
+
+exports[`BaseSelect matches the snapshot #styles when "selectedBlockErrorClass" is passed 1`] = `
+Snapshot Diff:
+Compared values have no visual difference.
+`;
+
+exports[`BaseSelect matches the snapshot #styles when "styleSelectOpenedClass" is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -20,10 +20,10 @@
+      class="arrowDown"
+      src="./../../../assets/select-arrow.svg"
+    />
+     
+    <div
+-     class="options bottomRounded"
++     class="options bottomRounded $style.styleSelectOpenedClass"
+      data-options=""
+      style="display: none;"
+    />
+  </div>
+`;
+
+exports[`BaseSelect matches the snapshot when component is mounted 1`] = `
+<div
+  class="select"
+  style="z-index: 1;"
+>
+  <div
+    class="selectedBlock rounded"
+  >
+    
+      Option 1
+    
+  </div>
+   
+  <input
+    class="selectedLabel"
+    readonly="readonly"
+    type="text"
+  />
+   
+  <img
+    class="arrowDown"
+    src="./../../../assets/select-arrow.svg"
+  />
+   
+  <div
+    class="options bottomRounded"
+    data-options=""
+    style="display: none;"
+  />
+</div>
+`;
