@@ -1,11 +1,1 @@
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>IconCard</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="IconCard">
-            <path d="M20,4 L4,4 C2.89,4 2.01,4.89 2.01,6 L2,18 C2,19.11 2.89,20 4,20 L20,20 C21.11,20 22,19.11 22,18 L22,6 C22,4.89 21.11,4 20,4 Z M20,18 L4,18 L4,12 L20,12 L20,18 Z M20,8 L4,8 L4,6 L20,6 L20,8 Z" id="Shape" fill="currentColor" fill-rule="nonzero"></path>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" fill-rule="evenodd"><path id="prefix__a" d="M19.006 18.19H4.994c-.823 0-1.497-.674-1.497-1.497v-5.045h17.006v5.045c0 .823-.674 1.497-1.497 1.497M4.994 6.497h14.012c.823 0 1.497.675 1.497 1.497v1.658H3.497V7.994c0-.822.674-1.497 1.497-1.497M19.006 5H4.994C3.344 5 2 6.343 2 7.994v8.699c0 1.65 1.343 2.994 2.994 2.994h14.012c1.65 0 2.994-1.344 2.994-2.994V7.994C22 6.344 20.657 5 19.006 5m-6.37 8.963l-6.931.066c-.358.004-.646.297-.642.655.003.357.292.643.649.643h.006l6.93-.066c.36-.004.647-.297.644-.655-.004-.359-.336-.66-.655-.643"/></g></svg>
