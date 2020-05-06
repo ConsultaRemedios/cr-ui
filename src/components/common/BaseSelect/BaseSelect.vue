@@ -28,11 +28,14 @@
       @keydown.prevent.down="navigateDown"
     />
 
-    <img :class="{
-        [$style.arrowDown]: !isOpen,
-        [$style.arrowUp]: isOpen
-      }"
-      src="./../../../assets/select-arrow.svg"
+    <BaseIcon
+      :class="[
+        'cr-base-select__svg',
+        { ['cr-base-select__svg__error']: hasError },
+        { [$style.arrowDown]: !isOpen },
+        { [$style.arrowUp]: isOpen }
+      ]"
+      :id="icons.nextIcon.id"
     />
 
     <div v-show="isOpen"
@@ -51,9 +54,14 @@
 
 <script>
   import clickOutside from './../../../directives/click-outside';
+  import BaseIcon from '../BaseIcon';
+  import nextIcon from '../../../icons/next.icon.svg';
 
   export default {
     name: 'BaseSelect',
+
+    components: { BaseIcon },
+
     props: {
       placeholder: {
         type: [String, Object],
@@ -210,6 +218,12 @@
       zIndex() {
         return this.isOpen ? 2 : 1;
       },
+
+      icons() {
+        return {
+          nextIcon,
+        };
+      },
     },
   };
 </script>
@@ -244,6 +258,7 @@
   }
 
   .arrow {
+    font-size: 20px;
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -252,12 +267,13 @@
   }
 
   .arrowDown {
+    transform: translateY(-50%) rotate(90deg);
     composes: arrow;
   }
 
   .arrowUp {
     composes: arrow;
-    transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(-90deg);
   }
 
   .options {
@@ -344,4 +360,3 @@
     }
   }
 </style>
-web

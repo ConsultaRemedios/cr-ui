@@ -19,9 +19,9 @@ exports[`BaseSelect matches the snapshot when component is mounted 1`] = `
     type="text"
   />
    
-  <img
-    class="arrowDown"
-    src="./../../../assets/select-arrow.svg"
+  <baseicon-stub
+    class="cr-base-select__svg arrowDown"
+    id="next.icon.svg"
   />
    
   <div
