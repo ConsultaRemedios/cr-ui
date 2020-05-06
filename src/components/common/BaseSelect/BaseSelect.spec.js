@@ -1,5 +1,4 @@
 import { shallowMount } from '@vue/test-utils';
-import snapshotDiff from 'snapshot-diff';
 import BaseSelect from './BaseSelect.vue';
 
 const setup = (props = {}) => {
@@ -31,38 +30,6 @@ describe('BaseSelect', () => {
 
     it('when component is mounted', () => {
       expect(wrapper.element).toMatchSnapshot();
-    });
-
-    describe('#styles', () => {
-      it('when "selectedBlockClass" is passed', () => {
-        const localWrapper = setup({ selectedBlockClass: ['$style.selectedBlockStyle' ]}).wrapper;
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when "selectedBlockErrorClass" is passed', () => {
-        const localWrapper = setup({ selectedBlockErrorClass: ['$style.selectedBlockErrorStyle' ]}).wrapper;
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when "listOptionsClass" is passed', () => {
-        const localWrapper = setup({ listOptionsClass: ['$style.listOptionsClassStyle' ]}).wrapper;
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when "listOptionsErrorClass" is passed', () => {
-        const localWrapper = setup({ listOptionsClass: ['$style.listOptionsErrorClass' ]}).wrapper;
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when "styleSelectOpenedClass" is passed', () => {
-        const localWrapper = setup({ listOptionsClass: ['$style.styleSelectOpenedClass' ]}).wrapper;
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
     });
   });
 
