@@ -64,6 +64,15 @@ module.exports = {
         {
           test: /\.icon\.svg$/,
           loader: 'svg-sprite-loader'
+        },
+
+        {
+          test: /\.scss$/,
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            'sass-loader'
+          ]
         }
       ]
     },
