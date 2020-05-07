@@ -2,6 +2,7 @@
 
 exports[`StoreBaseModal component Snapshot matches when is loading 1`] = `
 <basemodal-stub
+  customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
@@ -36,6 +37,7 @@ exports[`StoreBaseModal component Snapshot matches when is loading 1`] = `
 
 exports[`StoreBaseModal component Snapshot matches when is not loading 1`] = `
 <basemodal-stub
+  customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
@@ -70,6 +72,7 @@ exports[`StoreBaseModal component Snapshot matches when is not loading 1`] = `
 
 exports[`StoreBaseModal component Snapshot matches when is on desktop 1`] = `
 <basemodal-stub
+  customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
@@ -104,6 +107,7 @@ exports[`StoreBaseModal component Snapshot matches when is on desktop 1`] = `
 
 exports[`StoreBaseModal component Snapshot matches when is on mobile 1`] = `
 <basemodal-stub
+  customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
