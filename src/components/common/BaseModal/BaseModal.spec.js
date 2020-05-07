@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
-import BaseModal from './../BaseModal';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import snapshotDiff from 'snapshot-diff';
+import BaseModal from './../BaseModal';
 
 jest.mock('body-scroll-lock', () => ({
   disableBodyScroll: jest.fn(),
@@ -75,7 +76,7 @@ describe('BaseModal Component', () => {
       wrapper.find('button[data-modal-close]').trigger('click');
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
     });
-});
+  });
 
   describe('When click on modal element', () => {
     let wrapper;
@@ -120,14 +121,28 @@ describe('BaseModal Component', () => {
   });
 
   describe('When rendered', () => {
-    it('matches to snapshot', () => {
-      const wrapper = mount(BaseModal, {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = mount(BaseModal, {
         slots: {
           default: ['<div>Modal content here</div>'],
         },
       });
+    });
 
+    it('matches to snapshot', () => {
       expect(wrapper.vm.$el).toMatchSnapshot();
+    });
+
+    it('matches to snapshot when props "customCssClass" is passed', () => {
+      const localWrapper = mount(BaseModal, {
+        slots: {
+          default: ['<div>Modal content here</div>'],
+        },
+        propsData: { customCssClass: ['some-weird-css-class'] }
+      });
+
+      expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
   });
 });

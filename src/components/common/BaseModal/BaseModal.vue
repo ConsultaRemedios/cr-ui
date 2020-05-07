@@ -3,7 +3,7 @@
     :enter-class="$style.enterTransition"
     :leave-active-class="$style.leaveActiveTransition"
   >
-    <div :class="[$style.overlay, 'cr-base-modal__overlay']" @click="onClickOverlay" data-modal-overlay>
+    <div :class="[$style.overlay, 'cr-base-modal__overlay', customCssClass]" @click="onClickOverlay" data-modal-overlay>
       <div :class="[$style.container, 'cr-base-modal__container']" data-modal-container>
         <div :class="[$style.content, 'cr-base-modal__content']" data-modal-content>
           <button v-if="dismissible" data-modal-close
@@ -29,6 +29,11 @@
       dismissible: {
         type: Boolean,
         default: true,
+      },
+
+      customCssClass: {
+        type: Array,
+        default: () => [],
       },
     },
 
