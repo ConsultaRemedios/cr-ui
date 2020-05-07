@@ -2,21 +2,21 @@
 
 exports[`BaseModal Component When rendered matches to snapshot 1`] = `
 <div
-  class="overlay"
+  class="overlay cr-base-modal__overlay"
   data-modal-overlay=""
   enter-class="enterTransition"
   leave-active-class="leaveActiveTransition"
 >
   <div
-    class="container"
+    class="container cr-base-modal__container"
     data-modal-container=""
   >
     <div
-      class="content"
+      class="content cr-base-modal__content"
       data-modal-content=""
     >
       <button
-        class="closeButton"
+        class="closeButton cr-base-modall__close"
         data-modal-close=""
       >
         <span
