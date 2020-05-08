@@ -16,7 +16,7 @@ exports[`BaseModal Component When rendered matches to snapshot 1`] = `
       data-modal-content=""
     >
       <button
-        class="closeButton cr-base-modall__close"
+        class="closeButton cr-base-modal__close"
         data-modal-close=""
       >
         <span
