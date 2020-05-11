@@ -7,7 +7,7 @@
       <div :class="[$style.container, 'cr-base-modal__container']" data-modal-container>
         <div :class="[$style.content, 'cr-base-modal__content']" data-modal-content>
           <button v-if="dismissible" data-modal-close
-            :class="[$style.closeButton, 'cr-base-modall__close']"
+            :class="[$style.closeButton, 'cr-base-modal__close']"
             @click="$emit('close')"
           >
             <span :class="$style.closeButtonLabel">Fechar</span>
