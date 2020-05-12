@@ -2,21 +2,21 @@
 
 exports[`BaseModal Component When rendered matches to snapshot 1`] = `
 <div
-  class="overlay"
+  class="overlay cr-base-modal__overlay"
   data-modal-overlay=""
   enter-class="enterTransition"
   leave-active-class="leaveActiveTransition"
 >
   <div
-    class="container"
+    class="container cr-base-modal__container"
     data-modal-container=""
   >
     <div
-      class="content"
+      class="content cr-base-modal__content"
       data-modal-content=""
     >
       <button
-        class="closeButton"
+        class="closeButton cr-base-modal__close"
         data-modal-close=""
       >
         <span
@@ -32,4 +32,20 @@ exports[`BaseModal Component When rendered matches to snapshot 1`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`BaseModal Component When rendered matches to snapshot when props "customCssClass" is passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,7 +1,7 @@
+  <div
+-   class="overlay cr-base-modal__overlay"
++   class="overlay cr-base-modal__overlay some-weird-css-class"
+    data-modal-overlay=""
+    enter-class="enterTransition"
+    leave-active-class="leaveActiveTransition"
+  >
+    <div
 `;

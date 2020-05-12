@@ -3,11 +3,11 @@
     :enter-class="$style.enterTransition"
     :leave-active-class="$style.leaveActiveTransition"
   >
-    <div :class="$style.overlay" @click="onClickOverlay" data-modal-overlay>
-      <div :class="$style.container" data-modal-container>
-        <div :class="$style.content" data-modal-content>
+    <div :class="[$style.overlay, 'cr-base-modal__overlay', customCssClass]" @click="onClickOverlay" data-modal-overlay>
+      <div :class="[$style.container, 'cr-base-modal__container']" data-modal-container>
+        <div :class="[$style.content, 'cr-base-modal__content']" data-modal-content>
           <button v-if="dismissible" data-modal-close
-            :class="$style.closeButton"
+            :class="[$style.closeButton, 'cr-base-modal__close']"
             @click="$emit('close')"
           >
             <span :class="$style.closeButtonLabel">Fechar</span>
@@ -29,6 +29,11 @@
       dismissible: {
         type: Boolean,
         default: true,
+      },
+
+      customCssClass: {
+        type: Array,
+        default: () => [],
       },
     },
 

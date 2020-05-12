@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseSelect matches the snapshot when component is mounted 1`] = `
+<div
+  class="select"
+  style="z-index: 1;"
+>
+  <div
+    class="cr-base-select cr-base-select__rounded"
+  >
+    
+      Option 1
+    
+  </div>
+   
+  <input
+    class="selectedLabel"
+    readonly="readonly"
+    type="text"
+  />
+   
+  <baseicon-stub
+    class="cr-base-select__svg arrowDown"
+    id="next.icon.svg"
+  />
+   
+  <div
+    class="cr-base-select__options cr-base-select__options__bottomRounded"
+    data-options=""
+    style="display: none;"
+  />
+</div>
+`;

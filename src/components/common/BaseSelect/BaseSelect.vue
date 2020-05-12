@@ -4,10 +4,11 @@
     :class="$style.select"
     :style="{ zIndex }"
   >
-    <div :class="[$style.selectedBlock,
-      { [$style.rounded]: rounded && !isOpen },
-      { [$style.topRounded]: rounded && isOpen },
-      { [$style.hasError]: hasError }
+    <div :class="['cr-base-select',
+      { ['cr-base-select__has-error']: hasError },
+      { ['cr-base-select__rounded']: rounded && !isOpen },
+      { ['cr-base-select__top-rounded']: rounded && isOpen },
+      { ['cr-base-select__select-opened']: isOpen }
     ]">
       <slot name="selected" :current-label="currentLabel">
         {{currentLabel.label}}
@@ -27,15 +28,23 @@
       @keydown.prevent.down="navigateDown"
     />
 
-    <img :class="{
-        [$style.arrowDown]: !isOpen,
-        [$style.arrowUp]: isOpen
-      }"
-      src="./../../../assets/select-arrow.svg"
+    <BaseIcon
+      :class="[
+        'cr-base-select__svg',
+        { ['cr-base-select__svg__error']: hasError },
+        { [$style.arrowDown]: !isOpen },
+        { [$style.arrowUp]: isOpen }
+      ]"
+      :id="icons.nextIcon.id"
     />
 
     <div v-show="isOpen"
-      :class="[$style.options, { [$style.bottomRounded]: rounded }]"
+      :class="[
+        'cr-base-select__options',
+        { ['cr-base-select__options__error']: hasError },
+        { ['cr-base-select__options__bottomRounded']: rounded },
+        { ['cr-base-select__options__opened']: isOpen }
+      ]"
       data-options
     >
       <slot></slot>
@@ -45,9 +54,14 @@
 
 <script>
   import clickOutside from './../../../directives/click-outside';
+  import BaseIcon from '../BaseIcon';
+  import nextIcon from '../../../icons/next.icon.svg';
 
   export default {
     name: 'BaseSelect',
+
+    components: { BaseIcon },
+
     props: {
       placeholder: {
         type: [String, Object],
@@ -187,7 +201,13 @@
     computed: {
       currentLabel() {
         if (this.selected !== '') {
-          return this.getOption(this.selected);
+          const selected = this.getOption(this.selected);
+          if (selected) return this.getOption(this.selected);
+
+          return {
+            label: this.selected,
+            value: this.selected,
+          };
         }
 
         return typeof this.placeholder === 'string'
@@ -197,6 +217,12 @@
 
       zIndex() {
         return this.isOpen ? 2 : 1;
+      },
+
+      icons() {
+        return {
+          nextIcon,
+        };
       },
     },
   };
@@ -232,6 +258,7 @@
   }
 
   .arrow {
+    font-size: 20px;
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -240,12 +267,13 @@
   }
 
   .arrowDown {
+    transform: translateY(-50%) rotate(90deg);
     composes: arrow;
   }
 
   .arrowUp {
     composes: arrow;
-    transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(-90deg);
   }
 
   .options {
@@ -280,5 +308,55 @@
 
   .bottomRounded {
     border-radius: 0 0 3px 3px;
+  }
+</style>
+
+<style lang="scss">
+  .cr-base-select {
+    font-size: 15px;
+    padding: 11px 44px 11px 15px;
+    border: 1px solid #DADADA;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    background: #FFF;
+
+    &__rounded {
+      border-radius: 3px;
+    }
+
+    &__top-rounded {
+      border-radius: 3px 3px 0 0;
+    }
+
+    &__has-error {
+      border-color: #D30B3F;
+    }
+
+    &__select-opened {
+
+    }
+  }
+
+  .cr-base-select__options {
+    padding: 10px 0;
+    max-height: 300px;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transform: translateY(-1px);
+
+    overflow: auto;
+    z-index: 1;
+
+    border: 1px solid #DADADA;
+    background: #FFF;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.10);
+
+    &__bottom-rounded {
+      border-radius: 0 0 3px 3px;
+    }
   }
 </style>

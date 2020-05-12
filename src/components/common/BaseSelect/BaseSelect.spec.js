@@ -22,6 +22,17 @@ const setup = (props = {}) => {
 };
 
 describe('BaseSelect', () => {
+  describe('matches the snapshot', () => {
+    let wrapper;
+    beforeEach(() => {
+      ({ wrapper } = setup());
+    });
+
+    it('when component is mounted', () => {
+      expect(wrapper.element).toMatchSnapshot();
+    });
+  });
+
   it('updates selected data when value prop changes', () => {
     const { wrapper } = setup();
 
@@ -68,6 +79,15 @@ describe('BaseSelect', () => {
         const { wrapper } = setup({ value: '', placeholder: 'Selecione' });
         expect(wrapper.vm.currentLabel).toEqual({
           label: 'Selecione'
+        });
+      });
+
+      it('set currentLabel when option selet not present in options', () => {
+        const { wrapper } = setup({ value: '', placeholder: 'Selecione' });
+        wrapper.setData({ selected: 3 });
+        expect(wrapper.vm.currentLabel).toEqual({
+          label: 3,
+          value: 3,
         });
       });
     });
