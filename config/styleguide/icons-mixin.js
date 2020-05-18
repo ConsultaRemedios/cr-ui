@@ -39,6 +39,11 @@ import deliveryExpress from './../../src/icons/delivery-express.icon.svg';
 import priceLabel from './../../src/icons/price-label.icon.svg';
 import store from './../../src/icons/store.icon.svg';
 import mail from './../../src/icons/icon-mail.icon.svg';
+import bestPrice from './../../src/icons/best-price.icon.svg';
+import brand from './../../src/icons/brand.icon.svg';
+import factory from './../../src/icons/factory.icon.svg';
+import formula from './../../src/icons/formula.icon.svg';
+import leafletResume from './../../src/icons/leaflet-resume.icon.svg';
 
 import menu from './../../src/icons/menu.icon.svg';
 import padlock from './../../src/icons/pad-lock.icon.svg';
@@ -151,6 +156,11 @@ const icons = [
   youtube,
   target,
   loader,
+  bestPrice,
+  brand,
+  factory,
+  formula,
+  leafletResume,
 ];
 
 export default {
