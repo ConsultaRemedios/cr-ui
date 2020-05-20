@@ -20,7 +20,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
     title="Something wrong happened"
     message="Lorem ipsum dolor!!"
     type="danger"
-    :icon="getIcon(icons, 'warning')"
+    :icon="getIcon(allIcons, 'warning')"
   />
 
   <br />
@@ -29,7 +29,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
     title="Sorry, you got an error!"
     message="Lorem ipsum dolor sit amet"
     type="warning"
-    :icon="getIcon(icons, 'info')"
+    :icon="getIcon(allIcons, 'info')"
   />
 
   <br />
@@ -37,7 +37,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
   <BaseNotice
     title="Congrats all works!"
     type="success"
-    :icon="getIcon(icons, 'thumb-up')"
+    :icon="getIcon(allIcons, 'thumb-up')"
   />
 
   <br />
@@ -46,7 +46,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
     title="Something wrong happened"
     message="Lorem ipsum dolor?"
     type="info"
-    :icon="getIcon(icons, 'help')"
+    :icon="getIcon(allIcons, 'help')"
   />
 
 

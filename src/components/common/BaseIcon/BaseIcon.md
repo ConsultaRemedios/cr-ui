@@ -42,7 +42,7 @@ import favorite from 'cr-ui/src/icons/favorite.icon.svg';
 
 ```js
 <div>
-  <div v-for="icon in icons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
+  <div v-for="icon in allIcons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
     <BaseIcon :id="icon.id"/>
     <span>src/icons/{{icon.id}}.svg</span>
   </div>

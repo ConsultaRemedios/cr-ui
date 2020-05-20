@@ -6,7 +6,7 @@
 
     <div :class="$style.errorsBlock">
       <ul :class="$style.errorList">
-        <li v-for="(error, index) in errorList.withKeys" :key="index">
+        <li v-for="(error, index) in errorList.withKeys" :key="'withKeys-' + index">
           {{error.field}}
 
           <ul :class="$style.fieldErrorList">
@@ -16,7 +16,7 @@
           </ul>
         </li>
 
-        <li v-for="(error, index) in errorList.withoutKeys" :key="index">
+        <li v-for="(error, index) in errorList.withoutKeys" :key="'withoutKeys-' + index">
           {{error}}
         </li>
       </ul>

@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 import favorite from './../../src/icons/favorite.icon.svg';
 import favoriteFill from './../../src/icons/favorite-fill.icon.svg';
 import gallery from './../../src/icons/gallery.icon.svg';
@@ -80,7 +82,7 @@ import youtube from './../../src/icons/youtube.icon.svg';
 import target from './../../src/icons/target.icon.svg';
 import loader from './../../src/icons/loader.icon.svg';
 
-const icons = [
+const allIcons = [
   favorite,
   favoriteFill,
   mosaic,
@@ -163,14 +165,14 @@ const icons = [
   leafletResume,
 ];
 
-export default {
+Vue.mixin({
   data() {
-    return { icons };
+    return { allIcons };
   },
 
   methods: {
     $getIcon(name) {
-      return this.icons.find((icon) => icon.id === `${name}.icon`);
+      return this.allIcons.find((icon) => icon.id === `${name}.icon`);
     }
   }
-};
+});
