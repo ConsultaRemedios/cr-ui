@@ -56,31 +56,80 @@ import filterList from './../../src/icons/filter-list.icon.svg';
 import filter from './../../src/icons/filter.icon.svg';
 import thumbUp from './../../src/icons/thumb-up.icon.svg';
 import camera from './../../src/icons/camera.icon.svg';
-import pinOutline from './../../src/icons/pin-outline.icon.svg';
 import orders from './../../src/icons/orders.icon.svg';
 import prescription from './../../src/icons/prescription.icon.svg';
 import outlineExit from './../../src/icons/outline-exit.icon.svg';
 import welcome from './../../src/icons/welcome.icon.svg';
 import postOffices from './../../src/icons/post-offices.icon.svg';
 import shippingCompany from './../../src/icons/shipping-company.icon.svg';
-import beauty from './../../src/icons/beauty.icon.svg';
-import biological from './../../src/icons/biological.icon.svg';
-import generic from './../../src/icons/generic.icon.svg';
-import medicineNew from './../../src/icons/medicine-new.icon.svg';
-import others from './../../src/icons/others.icon.svg';
-import reference from './../../src/icons/reference.icon.svg';
-import similarInt from './../../src/icons/similar-int.icon.svg';
-import similar from './../../src/icons/similar.icon.svg';
-import specific from './../../src/icons/specific.icon.svg';
-import radiofarmaco from './../../src/icons/radiofarmaco.icon.svg';
 import emptyCart from './../../src/icons/empty-cart.icon.svg';
+import target from './../../src/icons/target.icon.svg';
+import loader from './../../src/icons/loader.icon.svg';
+
+import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
+import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
+import classificationGeneric from './../../src/icons/classification-generic.icon.svg';
+import classificationNew from './../../src/icons/classification-new.icon.svg';
+import classificationOther from './../../src/icons/classification-other.icon.svg';
+import classificationReference from './../../src/icons/classification-reference.icon.svg';
+import classificationSimilarInterchangeable from './../../src/icons/classification-similar-interchangeable.icon.svg';
+import classificationSimilar from './../../src/icons/classification-similar.icon.svg';
+import classificationSpecific from './../../src/icons/classification-specific.icon.svg';
+import classificationRadiofarmaco from './../../src/icons/classification-radiofarmaco.icon.svg';
+
 import facebook from './../../src/icons/facebook.icon.svg';
 import instagram from './../../src/icons/instagram.icon.svg';
 import linkedin from './../../src/icons/linkedin.icon.svg';
 import twitter from './../../src/icons/twitter.icon.svg';
 import youtube from './../../src/icons/youtube.icon.svg';
-import target from './../../src/icons/target.icon.svg';
-import loader from './../../src/icons/loader.icon.svg';
+import facebookColorful from './../../src/icons/facebook-colorful.icon.svg';
+import instagramColorful from './../../src/icons/instagram-colorful.icon.svg';
+import linkedinColorful from './../../src/icons/linkedin-colorful.icon.svg';
+import twitterColorful from './../../src/icons/twitter-colorful.icon.svg';
+import youtubeColorful from './../../src/icons/youtube-colorful.icon.svg';
+
+
+import visa from './../../src/icons/visa.icon.svg';
+import master from './../../src/icons/master.icon.svg';
+import hiper from './../../src/icons/hiper.icon.svg';
+import american from './../../src/icons/american.icon.svg';
+import elo from './../../src/icons/elo.icon.svg';
+import dinners from './../../src/icons/dinners.icon.svg';
+
+const classificationIcons = [
+  classificationBeauty,
+  classificationBiologic,
+  classificationGeneric,
+  classificationNew,
+  classificationOther,
+  classificationReference,
+  classificationSimilarInterchangeable,
+  classificationSimilar,
+  classificationSpecific,
+  classificationRadiofarmaco,
+];
+
+const socialIcons = [
+  facebook,
+  instagram,
+  linkedin,
+  twitter,
+  youtube,
+  facebookColorful,
+  instagramColorful,
+  linkedinColorful,
+  twitterColorful,
+  youtubeColorful,
+];
+
+const creditCardIcons = [
+  visa,
+  master,
+  hiper,
+  american,
+  elo,
+  dinners,
+]
 
 const allIcons = [
   favorite,
@@ -134,28 +183,12 @@ const allIcons = [
   store,
   mail,
   camera,
-  pinOutline,
   orders,
   prescription,
   outlineExit,
   welcome,
   postOffices,
   shippingCompany,
-  beauty,
-  biological,
-  generic,
-  medicineNew,
-  others,
-  reference,
-  similarInt,
-  similar,
-  specific,
-  radiofarmaco,
-  facebook,
-  instagram,
-  linkedin,
-  twitter,
-  youtube,
   target,
   loader,
   bestPrice,
@@ -167,12 +200,17 @@ const allIcons = [
 
 Vue.mixin({
   data() {
-    return { allIcons };
+    return {
+      allIcons,
+      classificationIcons,
+      socialIcons,
+      creditCardIcons,
+    };
   },
 
   methods: {
-    $getIcon(name) {
-      return this.allIcons.find((icon) => icon.id === `${name}.icon`);
+    $getIcon(icons, name) {
+      return icons.find((icon) => icon.id === `${name}.icon`);
     }
   }
 });

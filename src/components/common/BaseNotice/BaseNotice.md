@@ -5,7 +5,6 @@ Icon, it works the same as `BaseIcon` component.
 The component also has a `timeout` prop, it works with miliseconds, default is 5000, if you need more, just send as prop as we use in examples:
 
 ```
-const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`) ;
 <BaseNotice
   title="Something wrong happened"
   message="Lorem ipsum dolor sit amet"
@@ -13,14 +12,12 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
 ```
 #### Types
 ```
-const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`) ;
-
 <div>
   <BaseNotice
     title="Something wrong happened"
     message="Lorem ipsum dolor!!"
     type="danger"
-    :icon="getIcon(allIcons, 'warning')"
+    :icon="$getIcon(allIcons, 'warning')"
   />
 
   <br />
@@ -29,7 +26,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
     title="Sorry, you got an error!"
     message="Lorem ipsum dolor sit amet"
     type="warning"
-    :icon="getIcon(allIcons, 'info')"
+    :icon="$getIcon(allIcons, 'info')"
   />
 
   <br />
@@ -37,7 +34,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
   <BaseNotice
     title="Congrats all works!"
     type="success"
-    :icon="getIcon(allIcons, 'thumb-up')"
+    :icon="$getIcon(allIcons, 'thumb-up')"
   />
 
   <br />
@@ -46,7 +43,7 @@ const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`
     title="Something wrong happened"
     message="Lorem ipsum dolor?"
     type="info"
-    :icon="getIcon(allIcons, 'help')"
+    :icon="$getIcon(allIcons, 'help')"
   />
 
 

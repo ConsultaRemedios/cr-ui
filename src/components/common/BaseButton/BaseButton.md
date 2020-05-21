@@ -114,11 +114,9 @@ const loading = false;
 Add a icon in button
 
 ```js
-  const getIcon = (icons, name) => icons.find((icon) => icon.id === `${name}.icon`);
-
   <div>
-      <BaseButton size="small" :icon="getIcon(allIcons, 'info')" type="success">Button success</BaseButton>
-      <BaseButton size="medium" :icon="getIcon(allIcons, 'cancel')" type="neutral">Button success</BaseButton>
-      <BaseButton size="large" :icon="getIcon(allIcons, 'change')" type="warning">Button success</BaseButton>
+      <BaseButton size="small" :icon="$getIcon(allIcons, 'info')" type="success">Button success</BaseButton>
+      <BaseButton size="medium" :icon="$getIcon(allIcons, 'cancel')" type="neutral">Button success</BaseButton>
+      <BaseButton size="large" :icon="$getIcon(allIcons, 'change')" type="warning">Button success</BaseButton>
   </div>
 ```

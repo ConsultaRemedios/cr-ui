@@ -39,10 +39,44 @@ import favorite from 'cr-ui/src/icons/favorite.icon.svg';
 ```
 
 ## List of availables icons
+### Common icons
 
 ```js
 <div>
   <div v-for="icon in allIcons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
+    <BaseIcon :id="icon.id"/>
+    <span>src/icons/{{icon.id}}.svg</span>
+  </div>
+</div>
+```
+
+### Classifications
+
+```js
+<div>
+  <div v-for="icon in classificationIcons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
+    <BaseIcon :id="icon.id"/>
+    <span>src/icons/{{icon.id}}.svg</span>
+  </div>
+</div>
+```
+
+### Credit card
+
+```js
+<div>
+  <div v-for="icon in creditCardIcons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
+    <BaseIcon :id="icon.id"/>
+    <span>src/icons/{{icon.id}}.svg</span>
+  </div>
+</div>
+```
+
+### Social
+
+```js
+<div>
+  <div v-for="icon in socialIcons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
     <BaseIcon :id="icon.id"/>
     <span>src/icons/{{icon.id}}.svg</span>
   </div>
