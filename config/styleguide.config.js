@@ -3,7 +3,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   styleguideDir: '../public',
-  mixins: ['./styleguide/icons-mixin.js'],
   sections: [{
     name: 'Components',
     components: '../src/components/**/[A-Z]*.vue'
@@ -27,7 +26,10 @@ module.exports = {
     }]
   }],
   showUsage: true,
-  require: ['./src/style.css'],
+  require: [
+    './src/style.css',
+    path.join(__dirname, 'styleguide/icons-mixin.js')
+  ],
   webpackConfig: {
     module: {
       rules: [
