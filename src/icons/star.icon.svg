@@ -1,11 +1,1 @@
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>IconStarOutline</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="IconStarOutline">
-            <path d="M22,9.62105263 L14.81,8.96842105 L12,2 L9.19,8.97894737 L2,9.62105263 L7.46,14.6 L5.82,22 L12,18.0736842 L18.18,22 L16.55,14.6 L22,9.62105263 Z M12,16.1052632 L8.24,18.4947368 L9.24,13.9894737 L5.92,10.9578947 L10.3,10.5578947 L12,6.31578947 L13.71,10.5684211 L18.09,10.9684211 L14.77,14 L15.77,18.5052632 L12,16.1052632 Z" id="Shape" fill="currentColor" fill-rule="nonzero"></path>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 9.621l-7.19-.653L12 2 9.19 8.979 2 9.62 7.46 14.6 5.82 22 12 18.074 18.18 22l-1.63-7.4L22 9.621zm-10 6.484l-3.76 2.39 1-4.506-3.32-3.031 4.38-.4L12 6.316l1.71 4.252 4.38.4L14.77 14l1 4.505-3.77-2.4z" fill="currentColor" fill-rule="nonzero"/></svg>

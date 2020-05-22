@@ -1,11 +1,1 @@
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>IconStarFill</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="IconStarFill">
-            <polygon id="Shape" fill="currentColor" fill-rule="nonzero" points="12 18.0736842 18.18 22 16.54 14.6 22 9.62105263 14.81 8.97894737 12 2 9.19 8.97894737 2 9.62105263 7.46 14.6 5.82 22"></polygon>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="nonzero" d="M12 18.074L18.18 22l-1.64-7.4L22 9.621l-7.19-.642L12 2 9.19 8.979 2 9.62 7.46 14.6 5.82 22z"/></svg>

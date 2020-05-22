@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>IconFacebook</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-        <g id="IconFacebook" transform="translate(0.000000, 0.000000)">
-            <path d="M17,6 L17,2 L13.7107143,2 C9.05142857,2 9.16142857,5.50466667 9.16142857,6.028 L9.16142857,9.00628662 L7,9.00628662 L7,13 L9.16142857,13 L9.16142857,22 L13.4285714,22 L13.4285714,13 L16,13 L17,9.00628662 L13.4285714,9.00628662 L13.4285714,6.66666667 C13.4285714,6.22933333 13.6964286,6 14.1428571,6 L17,6 Z" id="mask" fill="currentColor"></path>
-        </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6V2h-3.29C9.052 2 9.162 5.505 9.162 6.028v2.978H7V13h2.161v9h4.268v-9H16l1-3.994h-3.571v-2.34c0-.437.267-.666.714-.666H17z" fill="currentColor"/></svg>
