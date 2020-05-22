@@ -75,7 +75,7 @@ import classificationReference from './../../src/icons/classification-reference.
 import classificationInterchangeable from './../../src/icons/classification-interchangeable.icon.svg';
 import classificationSimilar from './../../src/icons/classification-similar.icon.svg';
 import classificationSpecific from './../../src/icons/classification-specific.icon.svg';
-import classificationRadiofarmac from './../../src/icons/classification-radiofarma.icon.svg';
+import classificationRadiofarmac from './../../src/icons/classification-radiofarmac.icon.svg';
 
 import facebook from './../../src/icons/facebook.icon.svg';
 import instagram from './../../src/icons/instagram.icon.svg';
