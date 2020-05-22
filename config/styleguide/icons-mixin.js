@@ -72,10 +72,10 @@ import classificationGeneric from './../../src/icons/classification-generic.icon
 import classificationNew from './../../src/icons/classification-new.icon.svg';
 import classificationOther from './../../src/icons/classification-other.icon.svg';
 import classificationReference from './../../src/icons/classification-reference.icon.svg';
-import classificationSimilarInterchangeable from './../../src/icons/classification-similar-interchangeable.icon.svg';
+import classificationInterchangeable from './../../src/icons/classification-interchangeable.icon.svg';
 import classificationSimilar from './../../src/icons/classification-similar.icon.svg';
 import classificationSpecific from './../../src/icons/classification-specific.icon.svg';
-import classificationRadiofarmaco from './../../src/icons/classification-radiofarmaco.icon.svg';
+import classificationRadiofarmac from './../../src/icons/classification-radiofarma.icon.svg';
 
 import facebook from './../../src/icons/facebook.icon.svg';
 import instagram from './../../src/icons/instagram.icon.svg';
@@ -103,10 +103,10 @@ const classificationIcons = [
   classificationNew,
   classificationOther,
   classificationReference,
-  classificationSimilarInterchangeable,
+  classificationInterchangeable,
   classificationSimilar,
   classificationSpecific,
-  classificationRadiofarmaco,
+  classificationRadiofarmac,
 ];
 
 const socialIcons = [
