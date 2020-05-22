@@ -40,6 +40,7 @@ import drop from './../../src/icons/drop.icon.svg';
 import close from './../../src/icons/close.icon.svg';
 import file from './../../src/icons/file.icon.svg';
 import priceLabel from './../../src/icons/price-label.icon.svg';
+import tag from './../../src/icons/tag.icon.svg';
 import mail from './../../src/icons/icon-mail.icon.svg';
 import menu from './../../src/icons/menu.icon.svg';
 import padlock from './../../src/icons/pad-lock.icon.svg';
@@ -209,6 +210,7 @@ const allIcons = [
   filter,
   thumbUp,
   priceLabel,
+  tag,
   mail,
   camera,
   orders,
