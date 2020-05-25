@@ -10,7 +10,7 @@ const documentHandler = el => (event) => {
   }
 
   if (typeof el[ctx].bindingFn === 'function') {
-    el[ctx].bindingFn();
+    el[ctx].bindingFn(event);
   }
 };
 
