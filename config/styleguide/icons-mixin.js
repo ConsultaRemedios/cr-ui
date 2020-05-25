@@ -11,11 +11,13 @@ import change from './../../src/icons/change.icon.svg';
 import edit from './../../src/icons/edit.icon.svg';
 import place from './../../src/icons/place.icon.svg';
 import person from './../../src/icons/person.icon.svg';
+import profile from './../../src/icons/profile.icon.svg';
 import cart from './../../src/icons/cart.icon.svg';
 import search from './../../src/icons/search.icon.svg';
 import starFill from './../../src/icons/star-fill.icon.svg';
 import star from './../../src/icons/star.icon.svg';
 import halfStar from './../../src/icons/half-star.icon.svg';
+import signOut from './../../src/icons/signout.icon.svg';
 import arrowRight from './../../src/icons/arrow-right.icon.svg';
 import arrowLeft from './../../src/icons/arrow-left.icon.svg';
 import arrowUp from './../../src/icons/arrow-up.icon.svg';
@@ -37,16 +39,9 @@ import error from './../../src/icons/error.icon.svg';
 import drop from './../../src/icons/drop.icon.svg';
 import close from './../../src/icons/close.icon.svg';
 import file from './../../src/icons/file.icon.svg';
-import deliveryExpress from './../../src/icons/delivery-express.icon.svg';
 import priceLabel from './../../src/icons/price-label.icon.svg';
-import store from './../../src/icons/store.icon.svg';
+import tag from './../../src/icons/tag.icon.svg';
 import mail from './../../src/icons/icon-mail.icon.svg';
-import bestPrice from './../../src/icons/best-price.icon.svg';
-import brand from './../../src/icons/brand.icon.svg';
-import factory from './../../src/icons/factory.icon.svg';
-import formula from './../../src/icons/formula.icon.svg';
-import leafletResume from './../../src/icons/leaflet-resume.icon.svg';
-
 import menu from './../../src/icons/menu.icon.svg';
 import padlock from './../../src/icons/pad-lock.icon.svg';
 import card from './../../src/icons/card.icon.svg';
@@ -57,11 +52,8 @@ import filter from './../../src/icons/filter.icon.svg';
 import thumbUp from './../../src/icons/thumb-up.icon.svg';
 import camera from './../../src/icons/camera.icon.svg';
 import orders from './../../src/icons/orders.icon.svg';
-import prescription from './../../src/icons/prescription.icon.svg';
 import outlineExit from './../../src/icons/outline-exit.icon.svg';
 import welcome from './../../src/icons/welcome.icon.svg';
-import postOffices from './../../src/icons/post-offices.icon.svg';
-import shippingCompany from './../../src/icons/shipping-company.icon.svg';
 import emptyCart from './../../src/icons/empty-cart.icon.svg';
 import target from './../../src/icons/target.icon.svg';
 import loader from './../../src/icons/loader.icon.svg';
@@ -88,13 +80,30 @@ import linkedinColorful from './../../src/icons/linkedin-colorful.icon.svg';
 import twitterColorful from './../../src/icons/twitter-colorful.icon.svg';
 import youtubeColorful from './../../src/icons/youtube-colorful.icon.svg';
 
-
 import visa from './../../src/icons/visa.icon.svg';
 import master from './../../src/icons/master.icon.svg';
 import hiper from './../../src/icons/hiper.icon.svg';
 import american from './../../src/icons/american.icon.svg';
 import elo from './../../src/icons/elo.icon.svg';
 import dinners from './../../src/icons/dinners.icon.svg';
+import barcodeBoxed from './../../src/icons/barcode-boxed.icon.svg';
+
+import expressDelivery from './../../src/icons/express-delivery.icon.svg';
+import store from './../../src/icons/store.icon.svg';
+import postOffices from './../../src/icons/post-offices.icon.svg';
+import shippingCompany from './../../src/icons/shipping-company.icon.svg';
+import bestPrice from './../../src/icons/best-price.icon.svg';
+import brand from './../../src/icons/brand.icon.svg';
+import factory from './../../src/icons/factory.icon.svg';
+import formula from './../../src/icons/formula.icon.svg';
+import leafletResume from './../../src/icons/leaflet-resume.icon.svg';
+import prescription from './../../src/icons/prescription.icon.svg';
+import twentyFourHours from './../../src/icons/24-hours.icon.svg';
+import basket from './../../src/icons/basket.icon.svg';
+import invoice from './../../src/icons/invoice.icon.svg';
+import perfume from './../../src/icons/perfume.icon.svg';
+import pet from './../../src/icons/pet.icon.svg';
+import pill from './../../src/icons/pill.icon.svg';
 
 const classificationIcons = [
   classificationBeauty,
@@ -129,7 +138,27 @@ const creditCardIcons = [
   american,
   elo,
   dinners,
-]
+  barcodeBoxed,
+];
+
+const crIcons = [
+  expressDelivery,
+  store,
+  postOffices,
+  shippingCompany,
+  bestPrice,
+  brand,
+  factory,
+  formula,
+  leafletResume,
+  prescription,
+  twentyFourHours,
+  basket,
+  invoice,
+  perfume,
+  pet,
+  pill,
+];
 
 const allIcons = [
   favorite,
@@ -143,12 +172,14 @@ const allIcons = [
   edit,
   place,
   person,
+  profile,
   cart,
   emptyCart,
   search,
   starFill,
   star,
   halfStar,
+  signOut,
   arrowRight,
   arrowLeft,
   arrowUp,
@@ -178,24 +209,15 @@ const allIcons = [
   filterList,
   filter,
   thumbUp,
-  deliveryExpress,
   priceLabel,
-  store,
+  tag,
   mail,
   camera,
   orders,
-  prescription,
   outlineExit,
   welcome,
-  postOffices,
-  shippingCompany,
   target,
   loader,
-  bestPrice,
-  brand,
-  factory,
-  formula,
-  leafletResume,
 ];
 
 Vue.mixin({
@@ -205,6 +227,7 @@ Vue.mixin({
       classificationIcons,
       socialIcons,
       creditCardIcons,
+      crIcons,
     };
   },
 

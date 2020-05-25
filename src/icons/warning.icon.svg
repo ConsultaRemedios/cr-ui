@@ -1,11 +1,1 @@
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>IconWarning</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="IconWarning">
-            <path d="M1,22 L23,22 L12,3 L1,22 L1,22 Z M13,19 L11,19 L11,17 L13,17 L13,19 L13,19 Z M13,15 L11,15 L11,11 L13,11 L13,15 L13,15 Z" id="Mask" fill="currentColor"></path>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 22h22L12 3 1 22zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="currentColor" fill-rule="evenodd"/></svg>
