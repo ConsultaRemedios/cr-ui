@@ -57,6 +57,7 @@ import welcome from './../../src/icons/welcome.icon.svg';
 import emptyCart from './../../src/icons/empty-cart.icon.svg';
 import target from './../../src/icons/target.icon.svg';
 import loader from './../../src/icons/loader.icon.svg';
+import refresh from './../../src/icons/refresh.icon.svg';
 
 import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
 import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
