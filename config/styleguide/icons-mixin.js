@@ -22,6 +22,10 @@ import arrowRight from './../../src/icons/arrow-right.icon.svg';
 import arrowLeft from './../../src/icons/arrow-left.icon.svg';
 import arrowUp from './../../src/icons/arrow-up.icon.svg';
 import arrowDown from './../../src/icons/arrow-down.icon.svg';
+import chevronRight from './../../src/icons/chevron-right.icon.svg';
+import chevronLeft from './../../src/icons/chevron-left.icon.svg';
+import chevronUp from './../../src/icons/chevron-up.icon.svg';
+import chevronDown from './../../src/icons/chevron-down.icon.svg';
 import backward from './../../src/icons/backward.icon.svg';
 import previous from './../../src/icons/previous.icon.svg';
 import next from './../../src/icons/next.icon.svg';
@@ -185,6 +189,10 @@ const allIcons = [
   arrowLeft,
   arrowUp,
   arrowDown,
+  chevronRight,
+  chevronLeft,
+  chevronUp,
+  chevronDown,
   backward,
   previous,
   next,
@@ -219,6 +227,7 @@ const allIcons = [
   welcome,
   target,
   loader,
+  refresh,
 ];
 
 Vue.mixin({
