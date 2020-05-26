@@ -109,6 +109,8 @@ import invoice from './../../src/icons/invoice.icon.svg';
 import perfume from './../../src/icons/perfume.icon.svg';
 import pet from './../../src/icons/pet.icon.svg';
 import pill from './../../src/icons/pill.icon.svg';
+import crpro from './../../src/icons/crpro.icon.svg';
+import crproColorful from './../../src/icons/crpro-colorful.icon.svg';
 
 const classificationIcons = [
   classificationBeauty,
@@ -163,6 +165,8 @@ const crIcons = [
   perfume,
   pet,
   pill,
+  crpro,
+  crproColorful,
 ];
 
 const allIcons = [
