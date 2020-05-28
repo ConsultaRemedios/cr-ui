@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
 import favorite from './../../src/icons/favorite.icon.svg';
 import favoriteFill from './../../src/icons/favorite-fill.icon.svg';
@@ -62,6 +62,7 @@ import emptyCart from './../../src/icons/empty-cart.icon.svg';
 import target from './../../src/icons/target.icon.svg';
 import loader from './../../src/icons/loader.icon.svg';
 import refresh from './../../src/icons/refresh.icon.svg';
+import navigationMore from './../../src/icons/navigation-more.icon.svg';
 
 import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
 import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
@@ -232,6 +233,7 @@ const allIcons = [
   target,
   loader,
   refresh,
+  navigationMore,
 ];
 
 Vue.mixin({
@@ -247,7 +249,7 @@ Vue.mixin({
 
   methods: {
     $getIcon(icons, name) {
-      return icons.find((icon) => icon.id === `${name}.icon`);
-    }
-  }
+      return icons.find(icon => icon.id === `${name}.icon`);
+    },
+  },
 });
