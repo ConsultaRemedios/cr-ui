@@ -10,6 +10,9 @@
   "files": [
     "src"
   ],
+  "resolutions": {
+    "@babel/preset-env": "7.5.5"
+  },
   "scripts": {
     "optimize-icons": "./scripts/optimize-icons.js",
     "lint": "eslint --ext js --ext vue ./",
