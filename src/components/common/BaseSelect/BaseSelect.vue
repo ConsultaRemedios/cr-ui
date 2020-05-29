@@ -55,7 +55,7 @@
 <script>
   import clickOutside from './../../../directives/click-outside';
   import BaseIcon from '../BaseIcon';
-  import nextIcon from '../../../icons/next.icon.svg';
+  import nextIcon from '../../../icons/chevron-right.icon.svg';
 
   export default {
     name: 'BaseSelect',
