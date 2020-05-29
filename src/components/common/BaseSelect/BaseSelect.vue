@@ -147,16 +147,16 @@
       },
 
       onPressEsc(e) {
-        this.closeSelect(e.currentTarget);
+        this.closeSelect();
+
+        if (e.currentTarget) {
+          e.currentTarget.blur();
+        }
       },
 
-      closeSelect($input = null) {
+      closeSelect() {
         this.isOpen = false;
         this.hovered = null;
-
-        if ($input) {
-          $input.blur();
-        }
       },
 
       navigateUp() {
