@@ -98,7 +98,6 @@ import expressDelivery from './../../src/icons/express-delivery.icon.svg';
 import store from './../../src/icons/store.icon.svg';
 import postOffices from './../../src/icons/post-offices.icon.svg';
 import shippingCompany from './../../src/icons/shipping-company.icon.svg';
-import bestPrice from './../../src/icons/best-price.icon.svg';
 import brand from './../../src/icons/brand.icon.svg';
 import factory from './../../src/icons/factory.icon.svg';
 import formula from './../../src/icons/formula.icon.svg';
@@ -154,7 +153,6 @@ const crIcons = [
   store,
   postOffices,
   shippingCompany,
-  bestPrice,
   brand,
   factory,
   formula,
