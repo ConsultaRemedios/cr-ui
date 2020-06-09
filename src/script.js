@@ -25,6 +25,7 @@ import StorePolicyModal from './components/cr/StorePolicyModal';
 import CreditCardField from './components/common/CreditCardField';
 import InputGroup from './components/common/InputGroup';
 import Autocomplete from './components/common/Autocomplete';
+import SkeletonPlaceholder from './components/common/SkeletonPlaceholder';
 
 export {
   BaseIcon,
@@ -54,4 +55,5 @@ export {
   CreditCardField,
   InputGroup,
   Autocomplete,
+  SkeletonPlaceholder,
 };
