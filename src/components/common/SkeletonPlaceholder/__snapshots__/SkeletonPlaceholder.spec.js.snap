@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonPlaceholder matches the snapshot 1`] = `
+<span
+  class="cr-ui-skeleton-placeholder"
+/>
+`;
+
+exports[`SkeletonPlaceholder matches the snapshot when props are passed 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+  <span
+    class="cr-ui-skeleton-placeholder"
++   style="width: 20px; height: 20px;"
+  />
+`;
