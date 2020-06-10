@@ -63,6 +63,8 @@ import target from './../../src/icons/target.icon.svg';
 import loader from './../../src/icons/loader.icon.svg';
 import refresh from './../../src/icons/refresh.icon.svg';
 import navigationMore from './../../src/icons/navigation-more.icon.svg';
+import megaphone from './../../src/icons/megaphone.icon.svg';
+import coupon from './../../src/icons/coupon.icon.svg';
 
 import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
 import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
@@ -232,6 +234,8 @@ const allIcons = [
   loader,
   refresh,
   navigationMore,
+  megaphone,
+  coupon,
 ];
 
 Vue.mixin({
