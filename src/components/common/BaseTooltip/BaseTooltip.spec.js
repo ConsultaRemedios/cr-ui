@@ -1,7 +1,7 @@
-import Vue from 'vue';
 import { mount } from '@vue/test-utils';
-import BaseTooltip from './BaseTooltip.vue';
 import PopperJS from 'popper.js';
+import Vue from 'vue';
+import BaseTooltip from './BaseTooltip.vue';
 
 jest.mock('popper.js', () => {
   const PopperJS = jest.requireActual('popper.js');
@@ -158,6 +158,12 @@ describe('BaseTooltip', () => {
             placement: 'top',
             removeOnDestroy: true,
             positionFixed: false,
+            modifiers: {
+              preventOverflow: {
+                enabled: true,
+                boundariesElement: 'window',
+              },
+            },
           }
         );
       });
@@ -173,6 +179,12 @@ describe('BaseTooltip', () => {
             placement: 'top',
             removeOnDestroy: true,
             positionFixed: false,
+            modifiers: {
+              preventOverflow: {
+                enabled: true,
+                boundariesElement: 'window',
+              },
+            },
           }
         );
       });
