@@ -89,6 +89,12 @@
           placement: this.position,
           removeOnDestroy: true,
           positionFixed: this.fixed,
+          modifiers: {
+            preventOverflow: {
+              enabled: true,
+              boundariesElement: 'window',
+            },
+          },
         });
       },
 
