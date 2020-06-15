@@ -300,7 +300,7 @@
           Enter: () => this.onChange(event),
           Tab: () => {
             if (this.selectedSuggestionIndex !== -1) {
-              this.onChange();
+              this.onChange(event);
             }
           },
         };
@@ -370,12 +370,15 @@
         }
       },
 
-      onChange() {
+      onChange(event) {
         if (this.suggestions[this.selectedSuggestionIndex]) {
           /**
             * When user navigate in list of options with kayboard and press enter
             * @event change
           */
+
+          event.preventDefault();
+
           this.$emit('change', this.suggestions[this.selectedSuggestionIndex]);
           this.showSuggestions = false;
         } else {

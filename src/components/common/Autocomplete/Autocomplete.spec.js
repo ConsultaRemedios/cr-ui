@@ -300,11 +300,11 @@ describe('Autocomplete component', () => {
 
     it('when have an option selected and user press enter', () => {
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'ArrowUp' },
+        event: { code: 'ArrowUp', preventDefault: jest.fn() },
       });
 
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'Enter' },
+        event: { code: 'Enter', preventDefault: jest.fn() },
       });
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
@@ -324,11 +324,11 @@ describe('Autocomplete component', () => {
 
     it('when have an option selected and user press tab', () => {
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'ArrowUp' },
+        event: { code: 'ArrowUp', preventDefault: jest.fn() },
       });
 
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'Tab' },
+        event: { code: 'Tab', preventDefault: jest.fn() },
       });
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
@@ -341,13 +341,13 @@ describe('Autocomplete component', () => {
       const localWrapper = shallowAutocomplete();
 
       localWrapper.find(BaseInput).vm.$emit('change', {
-        value: 'ibu',
+        value: 'ibu', preventDefault: jest.fn()
       });
 
       await flushPromises();
 
       localWrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'Escape' },
+        event: { code: 'Escape', preventDefault: jest.fn() },
       });
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
@@ -474,11 +474,11 @@ describe('Autocomplete component', () => {
 
         it('when have an option selected and user press enter', () => {
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'ArrowUp' },
+            event: { code: 'ArrowUp', preventDefault: jest.fn() },
           });
 
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'Enter' },
+            event: { code: 'Enter', preventDefault: jest.fn() },
           });
 
           expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
@@ -496,13 +496,13 @@ describe('Autocomplete component', () => {
           expect(wrapper.vm.$emit).toHaveBeenCalledWith('submit', 'ibu');
         });
 
-        it('when hava an option selected and use press tab', () => {
+        it('when have an option selected and use press tab', () => {
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'ArrowUp' },
+            event: { code: 'ArrowUp', preventDefault: jest.fn() },
           });
 
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'Tab' },
+            event: { code: 'Tab', preventDefault: jest.fn() },
           });
 
           expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
