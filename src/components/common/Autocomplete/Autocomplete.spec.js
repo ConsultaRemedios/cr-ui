@@ -363,13 +363,13 @@ describe('Autocomplete component', () => {
       const localWrapper = shallowAutocomplete();
 
       localWrapper.find(BaseInput).vm.$emit('change', {
-        value: 'ibu', preventDefault: jest.fn()
+        value: 'ibu'
       });
 
       await flushPromises();
 
       localWrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'Escape', preventDefault: jest.fn() },
+        event: { code: 'Escape' },
       });
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
