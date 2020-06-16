@@ -299,17 +299,28 @@ describe('Autocomplete component', () => {
     });
 
     it('when have an option selected and user press enter', () => {
+      const preventDefault = jest.fn();
+
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'ArrowUp', preventDefault: jest.fn() },
+        event: { code: 'ArrowUp', preventDefault },
       });
 
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'Enter', preventDefault: jest.fn() },
+        event: { code: 'Enter', preventDefault },
       });
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
-        highlight: '<strong>Ibu</strong>profeno 150mg', name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150', selected: true,
+        suggestion: {
+          highlight: '<strong>Ibu</strong>profeno 150mg',
+          name: 'Ibuprofeno 150mg',
+          permalink: '/p/ibruprofeno-150',
+          selected: true
+        },
+        event: {
+          code: 'Enter',
+          preventDefault
+        }
       });
     });
 
@@ -323,17 +334,28 @@ describe('Autocomplete component', () => {
     });
 
     it('when have an option selected and user press tab', () => {
+      const preventDefault = jest.fn()
+
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'ArrowUp', preventDefault: jest.fn() },
+        event: { code: 'ArrowUp', preventDefault },
       });
 
       wrapper.find(BaseInput).vm.$emit('keydown', {
-        event: { code: 'Tab', preventDefault: jest.fn() },
+        event: { code: 'Tab', preventDefault },
       });
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
-        highlight: '<strong>Ibu</strong>profeno 150mg', name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150', selected: true,
+        suggestion: {
+          highlight: '<strong>Ibu</strong>profeno 150mg',
+          name: 'Ibuprofeno 150mg',
+          permalink: '/p/ibruprofeno-150',
+          selected: true
+        },
+        event: {
+          code: 'Tab',
+          preventDefault
+        }
       });
     });
 
@@ -473,17 +495,28 @@ describe('Autocomplete component', () => {
         });
 
         it('when have an option selected and user press enter', () => {
+          const preventDefault = jest.fn();
+
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'ArrowUp', preventDefault: jest.fn() },
+            event: { code: 'ArrowUp', preventDefault },
           });
 
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'Enter', preventDefault: jest.fn() },
+            event: { code: 'Enter', preventDefault },
           });
 
           expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
           expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
-            highlight: '<strong>Ibu</strong>profeno 150mg', name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150', selected: true,
+            suggestion: {
+              highlight: '<strong>Ibu</strong>profeno 150mg',
+              name: 'Ibuprofeno 150mg',
+              permalink: '/p/ibruprofeno-150',
+              selected: true
+            },
+            event: {
+              code: 'Enter',
+              preventDefault
+            }
           });
         });
 
@@ -497,17 +530,28 @@ describe('Autocomplete component', () => {
         });
 
         it('when have an option selected and use press tab', () => {
+          const preventDefault = jest.fn()
+
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'ArrowUp', preventDefault: jest.fn() },
+            event: { code: 'ArrowUp', preventDefault },
           });
 
           wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
-            event: { code: 'Tab', preventDefault: jest.fn() },
+            event: { code: 'Tab', preventDefault },
           });
 
           expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
           expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
-            highlight: '<strong>Ibu</strong>profeno 150mg', name: 'Ibuprofeno 150mg', permalink: '/p/ibruprofeno-150', selected: true,
+            suggestion: {
+              highlight: '<strong>Ibu</strong>profeno 150mg',
+              name: 'Ibuprofeno 150mg',
+              permalink: '/p/ibruprofeno-150',
+              selected: true
+            },
+            event: {
+              code: 'Tab',
+              preventDefault
+            }
           });
         });
 

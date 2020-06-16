@@ -377,9 +377,7 @@
             * @event change
           */
 
-          event.preventDefault();
-
-          this.$emit('change', this.suggestions[this.selectedSuggestionIndex]);
+          this.$emit('change', { suggestion: this.suggestions[this.selectedSuggestionIndex], event });
           this.showSuggestions = false;
         } else {
           /**
