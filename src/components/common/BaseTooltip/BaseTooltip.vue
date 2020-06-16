@@ -185,7 +185,7 @@
   .wrapper[data-popper-placement^="top"] .arrow {
     width: 30px;
     height: 15px;
-    top: 99%;
+    top: 100%;
     transform: translateX(-50%);
   }
 
@@ -197,7 +197,7 @@
   .wrapper[data-popper-placement^="left"] .arrow {
     width: 15px;
     height: 30px;
-    left: 99%;
+    left: 100%;
     transform: translateY(-50%);
   }
 
@@ -209,7 +209,7 @@
   .wrapper[data-popper-placement^="right"] .arrow {
     width: 15px;
     height: 30px;
-    right: 99%;
+    right: 100%;
     transform: translateY(-50%);
   }
 
@@ -221,7 +221,7 @@
   .wrapper[data-popper-placement^="bottom"] .arrow {
     width: 30px;
     height: 15px;
-    bottom: 99%;
+    bottom: 100%;
     transform: translateX(-50%);
   }
 
