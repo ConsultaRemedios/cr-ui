@@ -14,13 +14,13 @@
     >
       <slot></slot>
 
-      <div :class="$style.arrow" x-arrow></div>
+      <div :class="$style.arrow" data-popper-arrow></div>
     </div>
   </transition>
 </template>
 
 <script>
-  import Popper from 'popper.js';
+  import { createPopper } from '@popperjs/core';
 
   export default {
     name: 'BaseTooltip',
@@ -85,22 +85,30 @@
 
     methods: {
       initPopper() {
-        this.popper = new Popper(this.reference, this.content, {
+        this.popper = createPopper(this.reference, this.content, {
           placement: this.position,
           removeOnDestroy: true,
-          positionFixed: this.fixed,
-          modifiers: {
-            preventOverflow: {
-              enabled: true,
-              boundariesElement: 'window',
+          strategy: this.fixed ? 'fixed' : 'absolute',
+          modifiers: [
+            {
+              name: 'arrow',
+              options: {
+                padding: 5,
+              },
             },
-          },
+            {
+              name: 'offset',
+              options: {
+                offset: [0, 9],
+              },
+            },
+          ],
         });
       },
 
       updatePopper() {
         if (this.popper) {
-          this.popper.update();
+          this.popper.forceUpdate();
         }
       },
 
@@ -152,22 +160,6 @@
     opacity: 1;
   }
 
-  .wrapper[x-placement^="top"] {
-    margin-bottom: 15px;
-  }
-
-  .wrapper[x-placement^="bottom"] {
-    margin-top: 15px;
-  }
-
-  .wrapper[x-placement^="left"] {
-    margin-right: 15px;
-  }
-
-  .wrapper[x-placement^="right"] {
-    margin-left: 15px;
-  }
-
   .arrow {
     position: absolute;
     overflow: hidden;
@@ -190,58 +182,50 @@
     box-shadow: 0 0 6px 0 rgba(0,0,0,0.31);
   }
 
-  .wrapper[x-placement^="top"] .arrow {
+  .wrapper[data-popper-placement^="top"] .arrow {
     width: 30px;
     height: 15px;
     top: 100%;
-    left: 50%;
     transform: translateX(-50%);
-    margin-left: 30px;
   }
 
-  .wrapper[x-placement^="top"] .arrow::after {
+  .wrapper[data-popper-placement^="top"] .arrow::after {
     bottom: 8px;
     left: 8px;
   }
 
-  .wrapper[x-placement^="left"] .arrow {
+  .wrapper[data-popper-placement^="left"] .arrow {
     width: 15px;
     height: 30px;
     left: 100%;
-    top: 50%;
     transform: translateY(-50%);
-    margin-top: 25px;
   }
 
-  .wrapper[x-placement^="left"] .arrow::after {
+  .wrapper[data-popper-placement^="left"] .arrow::after {
     top: 8px;
     right: 8px;
   }
 
-  .wrapper[x-placement^="right"] .arrow {
+  .wrapper[data-popper-placement^="right"] .arrow {
     width: 15px;
     height: 30px;
     right: 100%;
-    top: 50%;
     transform: translateY(-50%);
-    margin-top: 25px;
   }
 
-  .wrapper[x-placement^="right"] .arrow::after {
+  .wrapper[data-popper-placement^="right"] .arrow::after {
     top: 8px;
     left: 8px;
   }
 
-  .wrapper[x-placement^="bottom"] .arrow {
+  .wrapper[data-popper-placement^="bottom"] .arrow {
     width: 30px;
     height: 15px;
     bottom: 100%;
-    left: 50%;
     transform: translateX(-50%);
-    margin-left: 30px;
   }
 
-  .wrapper[x-placement^="bottom"] .arrow::after {
+  .wrapper[data-popper-placement^="bottom"] .arrow::after {
     top: 8px;
     left: 8px;
   }
