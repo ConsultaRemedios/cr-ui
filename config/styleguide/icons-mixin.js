@@ -114,6 +114,8 @@ import pill from './../../src/icons/pill.icon.svg';
 import crpro from './../../src/icons/crpro.icon.svg';
 import crproColorful from './../../src/icons/crpro-colorful.icon.svg';
 
+import emojiHappy from './../../src/icons/emoji-happy.icon.svg';
+
 const classificationIcons = [
   classificationBeauty,
   classificationBiologic,
@@ -238,6 +240,10 @@ const allIcons = [
   coupon,
 ];
 
+const emojiIcons = [
+  emojiHappy,
+]
+
 Vue.mixin({
   data() {
     return {
@@ -246,6 +252,7 @@ Vue.mixin({
       socialIcons,
       creditCardIcons,
       crIcons,
+      emojiIcons,
     };
   },
 

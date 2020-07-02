@@ -93,3 +93,15 @@ import favorite from 'cr-ui/src/icons/favorite.icon.svg';
   </div>
 </div>
 ```
+
+### Emojis
+
+```js
+<div>
+  <div v-for="icon in emojiIcons" :style="{ display: 'inline-block', padding: '15px 0', width: '33%' }">
+    <BaseIcon :id="icon.id"/>
+    <span>src/icons/{{icon.id}}.svg</span>
+  </div>
+</div>
+
+```
