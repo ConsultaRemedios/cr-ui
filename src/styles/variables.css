@@ -1,13 +1,21 @@
-/* Breakpoints */
+/* Deprecated Breakpoints */
 @value xs: 0;
 @value sm: 576px;
 @value md: 768px;
 @value lg: 992px;
 @value xl: 1200px;
 
-/* Media queries */
+/* Deprecated Media queries */
 @value media-xs: (min-width: 0);
 @value media-sm: (min-width: 576px);
 @value media-md: (min-width: 768px);
 @value media-lg: (min-width: 992px);
 @value media-xl: (min-width: 1200px);
+
+/* New breakpoints */
+@value screen-xs-max: 767px;
+@value screen-sm-min: 768px;
+@value screen-sm-max: 991px;
+@value screen-md-min: 992px;
+@value screen-md-max: 1199px;
+@value screen-lg-min: 1200px;
