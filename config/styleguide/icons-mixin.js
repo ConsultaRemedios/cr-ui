@@ -63,6 +63,8 @@ import target from './../../src/icons/target.icon.svg';
 import loader from './../../src/icons/loader.icon.svg';
 import refresh from './../../src/icons/refresh.icon.svg';
 import navigationMore from './../../src/icons/navigation-more.icon.svg';
+import megaphone from './../../src/icons/megaphone.icon.svg';
+import coupon from './../../src/icons/coupon.icon.svg';
 
 import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
 import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
@@ -111,6 +113,8 @@ import pet from './../../src/icons/pet.icon.svg';
 import pill from './../../src/icons/pill.icon.svg';
 import crpro from './../../src/icons/crpro.icon.svg';
 import crproColorful from './../../src/icons/crpro-colorful.icon.svg';
+
+import emojiHappy from './../../src/icons/emoji-happy.icon.svg';
 
 const classificationIcons = [
   classificationBeauty,
@@ -232,7 +236,13 @@ const allIcons = [
   loader,
   refresh,
   navigationMore,
+  megaphone,
+  coupon,
 ];
+
+const emojiIcons = [
+  emojiHappy,
+]
 
 Vue.mixin({
   data() {
@@ -242,6 +252,7 @@ Vue.mixin({
       socialIcons,
       creditCardIcons,
       crIcons,
+      emojiIcons,
     };
   },
 

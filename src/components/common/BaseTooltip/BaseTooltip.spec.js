@@ -1,22 +1,15 @@
-import Vue from 'vue';
+import { createPopper } from '@popperjs/core';
 import { mount } from '@vue/test-utils';
+import Vue from 'vue';
 import BaseTooltip from './BaseTooltip.vue';
-import PopperJS from 'popper.js';
 
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
-
-  const Popper = jest.fn(() => {
-    return {
+jest.mock('@popperjs/core', () => {
+  return {
+    createPopper: jest.fn(() => ({
+      forceUpdate: jest.fn(),
       destroy: jest.fn(),
-      update: jest.fn(),
-      scheduleUpdate: jest.fn(),
-    };
-  });
-
-  Popper.placements = PopperJS.placements;
-
-  return Popper;
+    })),
+  };
 });
 
 describe('BaseTooltip', () => {
@@ -33,7 +26,7 @@ describe('BaseTooltip', () => {
       render(h) {
         return h('div', { class: 'parent' }, [
           h(BaseTooltip, {
-            props: { defaultProps, ...props },
+            props: { ...defaultProps, ...props },
           }, [
             'Tooltip Example'
           ])
@@ -151,13 +144,27 @@ describe('BaseTooltip', () => {
         wrapper = mountWithRect();
         wrapper.vm.initPopper();
 
-        expect(PopperJS).toHaveBeenCalledWith(
+        expect(createPopper).toHaveBeenCalledWith(
           wrapper.vm.reference,
           wrapper.vm.content,
           {
             placement: 'top',
             removeOnDestroy: true,
-            positionFixed: false,
+            strategy: 'absolute',
+            modifiers: [
+              {
+                name: 'arrow',
+                options: {
+                  padding: 5,
+                },
+              },
+              {
+                name: 'offset',
+                options: {
+                  offset: [0, 9],
+                },
+              },
+            ],
           }
         );
       });
@@ -166,13 +173,27 @@ describe('BaseTooltip', () => {
         wrapper = mountWithRect('top', true);
         wrapper.vm.initPopper();
 
-        expect(PopperJS).toHaveBeenCalledWith(
+        expect(createPopper).toHaveBeenCalledWith(
           wrapper.vm.reference,
           wrapper.vm.content,
           {
             placement: 'top',
             removeOnDestroy: true,
-            positionFixed: false,
+            strategy: 'fixed',
+            modifiers: [
+              {
+                name: 'arrow',
+                options: {
+                  padding: 5,
+                },
+              },
+              {
+                name: 'offset',
+                options: {
+                  offset: [0, 9],
+                },
+              },
+            ],
           }
         );
       });
@@ -185,7 +206,7 @@ describe('BaseTooltip', () => {
           wrapper.vm.initPopper();
           wrapper.vm.updatePopper();
 
-          expect(wrapper.vm.popper.update).toHaveBeenCalled();
+          expect(wrapper.vm.popper.forceUpdate).toHaveBeenCalled();
         });
       });
     });
@@ -256,7 +277,7 @@ describe('BaseTooltip', () => {
       expect(mountForSnapshot('top', false).element).toMatchSnapshot();
     });
 
-    it('matches Snapshot when position is top', () => {
+    it('matches Snapshot when position is not passed', () => {
       expect(mountForSnapshot().element).toMatchSnapshot();
     });
 
