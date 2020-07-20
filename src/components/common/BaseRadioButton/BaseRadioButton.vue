@@ -124,7 +124,7 @@
     width: 7px;
     height: 10px;
     border: solid #fff;
-    margin-top: 5.3px;
+    margin-top: 5px;
     border-radius: 1px;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
