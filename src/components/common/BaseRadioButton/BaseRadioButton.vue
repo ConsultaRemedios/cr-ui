@@ -9,123 +9,125 @@
         :checked="checked"
         v-bind="$attrs"
       />
-      <span
-        :class="$style.checkmark"
-      ></span>
+      <span :class="$style.checkmark"></span>
       <span v-if="label" :class="$style.label">{{ label }}</span>
     </label>
   </div>
 </template>
 
 <script>
-  export default {
-    inheritAttrs: false,
-    name: 'BaseRadioButton',
+export default {
+  inheritAttrs: false,
+  name: "BaseRadioButton",
 
-    props: {
-      label: {
-        type: String,
-        default: '',
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-
-      value: {
-        type: String,
-        required: true,
-      },
-
-      checked: {
-        type: Boolean,
-        default: false,
-      },
-
-      model: {
-        type: String,
-        default: '',
-      },
+  props: {
+    label: {
+      type: String,
+      default: ""
+    },
+    name: {
+      type: String,
+      required: true
     },
 
-    methods: {
-      onChange() {
-        this.$emit('change', {
-          name: this.model || this.name,
-          value: this.value,
-        });
-      },
+    value: {
+      type: String,
+      required: true
     },
-  };
+
+    checked: {
+      type: Boolean,
+      default: false
+    },
+
+    model: {
+      type: String,
+      default: ""
+    }
+  },
+
+  methods: {
+    onChange() {
+      this.$emit("change", {
+        name: this.model || this.name,
+        value: this.value
+      });
+    }
+  }
+};
 </script>
 
 <style module>
-  .wrapper {
-    cursor: pointer;
-    display: block;
-    position: relative;
-    user-select: none;
-    cursor: pointer;
-    min-height: 25px;
-  }
+.wrapper {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  min-height: 25px;
+}
 
-  .wrapper::before {
-    content: '';
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
-    vertical-align: top;
-    font-weight: 400;
-  }
+.wrapper::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  vertical-align: top;
+  font-weight: 400;
+}
 
-  .wrapper:hover .checkmark {
-    border-color: #ccc
-  }
+.wrapper:hover .checkmark {
+  border-color: #138484;
+}
 
-  .label {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 3px;
-    font-weight: 400;
-    line-height: 1.4;
-  }
+.label {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 3px;
+  font-weight: 400;
+  line-height: 1.4;
+}
 
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: white;
-    border-radius: 50%;
-    border: 2px solid #BDBDBD;
-  }
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #595959;
+}
 
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 8px;
-    left: 8px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: white;
-  }
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
 
-  .wrapper input {
-    position: absolute;
-    opacity: 0;
-  }
+.wrapper input {
+  position: absolute;
+  opacity: 0;
+}
 
-  .wrapperSelected .checkmark {
-    background-color: #00AAE5;
-    display: block;
-    border: 0;
-  }
+.wrapperSelected .checkmark {
+  display: block;
+  border-color: #138484;
+  background-color: #138484;
+  
+}
 
-  .wrapperSelected .checkmark:after {
-    display: block;
-  }
+.wrapperSelected .checkmark:after {
+  display: block;
+  left: 7px;
+  width: 7px;
+  height: 10px;
+  border: solid #fff;
+  margin-top: 5.3px;
+  border-radius: 1px;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  background: #138484;
+}
 </style>
