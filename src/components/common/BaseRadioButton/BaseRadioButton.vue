@@ -18,42 +18,42 @@
 <script>
 export default {
   inheritAttrs: false,
-  name: "BaseRadioButton",
+  name: 'BaseRadioButton',
 
   props: {
     label: {
       type: String,
-      default: ""
+      default: '',
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
 
     value: {
       type: String,
-      required: true
+      required: true,
     },
 
     checked: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     model: {
       type: String,
-      default: ""
-    }
+      default: '',
+    },
   },
 
   methods: {
     onChange() {
-      this.$emit("change", {
+      this.$emit('change', {
         name: this.model || this.name,
-        value: this.value
+        value: this.value,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -115,7 +115,7 @@ export default {
   display: block;
   border-color: #138484;
   background-color: #138484;
-  
+
 }
 
 .wrapperSelected .checkmark:after {
