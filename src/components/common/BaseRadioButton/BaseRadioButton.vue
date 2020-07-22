@@ -78,7 +78,7 @@
   }
 
   .wrapper:hover .checkmark {
-    border-color: #138484;
+    border-color: var(--border-color-primary);
   }
 
   .label {
@@ -97,7 +97,7 @@
     width: 24px;
     background-color: white;
     border-radius: 50%;
-    border: 1px solid #595959;
+    border: 1px solid var(--border-color-secondary);
   }
 
   .checkmark:after {
@@ -113,8 +113,8 @@
 
   .wrapperSelected .checkmark {
     display: block;
-    border-color: #138484;
-    background-color: #138484;
+    border-color: var(--border-color-primary);
+    background: var(--color-primary);
 
   }
 
@@ -128,6 +128,6 @@
     border-radius: 1px;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
-    background: #138484;
+    background: var(--color-primary);
   }
 </style>

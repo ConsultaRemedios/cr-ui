@@ -1,4 +1,5 @@
 const path = require('path');
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
@@ -28,6 +29,7 @@ module.exports = {
   showUsage: true,
   require: [
     './src/style.css',
+    './src/styles/colors.css',
     path.join(__dirname, 'styleguide/icons-mixin.js')
   ],
   webpackConfig: {
