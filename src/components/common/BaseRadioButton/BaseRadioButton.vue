@@ -114,7 +114,7 @@
   .wrapperSelected .checkmark {
     display: block;
     border-color: var(--border-color-primary);
-    background: var(--color-primary);
+    background: var(--background-color-primary);
 
   }
 
@@ -128,6 +128,6 @@
     border-radius: 1px;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
-    background: var(--color-primary);
+    background: var(--background-color-primary);
   }
 </style>
