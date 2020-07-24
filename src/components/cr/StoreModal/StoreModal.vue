@@ -1,52 +1,152 @@
 <template>
   <StoreBaseModal
-    title="Dados do vendedor"
     :name="name"
     :logoPath="logoPath"
     :isLoading="isLoading"
     @close="$emit('close')"
   >
-    <div :class="$style.fields">
-      <div v-for="(field, i) in informations" :key="i" :class="$style.field">
-        <span :class="$style.fieldTitle">{{ field.title }}</span>
-        <div :class="$style.fieldContent" v-html="field.content" />
+    <div :class="$style.content">
+      <span :class="$style.title">{{ name }} é uma loja confiável!</span>
+      <span :class="$style.subTitle">O CR faz uma análise rigorosa para exibir somente lojas 100% confiáveis.</span>
+      <BaseIcon :id="icons.truckIcon.id" :class="$style.truckIcon"/>
+      <span :class="$style.info"><strong>Economize no frete</strong> adicionando produtos da mesma loja</span>
+      <BaseButton
+        :path="storePath"
+        :class="$style.baseButton"
+      >Ver mais produtos da loja</BaseButton>
+
+      <div :class="$style.fields">
+        <div v-for="(field, i) in informations" :key="i" :class="$style.field">
+          <div
+            :class="$style.infoData"
+            v-if="isData(field.title)"
+            v-html="field.content"
+          >
+          </div>
+          <div v-else>
+            <span :class="$style.fieldTitle">{{ field.title }}</span>
+            <div :class="$style.fieldContent" v-html="field.content" />
+          </div>
+        </div>
       </div>
     </div>
-
     <slot></slot>
   </StoreBaseModal>
 </template>
 
 <script>
   import StoreBaseModal from '../StoreBaseModal';
+  import BaseButton from '../../common/BaseButton';
+  import BaseIcon from '../../common/BaseIcon';
+  import truckIcon from '../../../icons/truck.icon.svg' ;
 
   export default {
     name: 'StoreModal',
-    components: { StoreBaseModal },
+    components: { StoreBaseModal, BaseButton, BaseIcon },
     props: {
       name: {
         type: String,
         default: '',
       },
+
       logoPath: {
         type: String,
         default: '',
       },
+
       informations: {
         type: Array,
         default: () => [],
       },
+
       isLoading: {
         type: Boolean,
         default: false,
       },
+
+      storePath: {
+        type: String,
+        default: '',
+      },
     },
+
+    computed: {
+      icons() {
+        return {
+          truckIcon,
+        };
+      },
+    },
+
+    methods: {
+      isData(title) {
+        return title.toLocaleLowerCase() === 'dados da loja';
+      }
+    }
   };
 </script>
 
 <style module>
+  @value screen-sm-min from './../../../styles/variables.css';
+
+  .infoData > p {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .subTitle {
+    display: block;
+    font-size: 14px;
+    color : var(--text-default);
+    margin-bottom: 34px;
+  }
+
+  .title {
+    display: block;
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    margin-bottom: 3px;
+    line-height: 20px;
+  }
+
+  .baseButton {
+    margin-top: 8px;
+    width: 100%;
+    background: var(--background-color-primary);
+    border-color: var(--border-color-primary);
+    height: 44px;
+    margin-bottom: 20px;
+  }
+
+  .baseButton span {
+    color: white;
+  }
+
+  .baseButton:hover {
+    background: var(--background-color-primary);
+    border-color: var(--border-color-primary);
+  }
+
+  .addressTitle {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .titleInfos {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  .info {
+    font-size: 14px;
+    color: var(--text-success);
+  }
+
   .field {
-    margin-bottom: 15px;
+    margin-bottom: 32px;
   }
 
   .field:last-child {
@@ -54,30 +154,33 @@
   }
 
   .fieldTitle {
-    color: #333333;
+    font-weight: bold;
+    color: var(--text-secondary);
     display: block;
-    font-weight: 800;
     margin-bottom: 2px;
     font-size: 14px;
   }
 
-  .fieldContent > p {
-    color: #333333;
+  .fieldContent, .fieldContent > p {
+    color: var(--text-secondary);
     font-weight: normal;
-    margin: 0 0 10px;
+    margin: 0;
     font-size: 14px;
+  }
+
+  .fieldContent a {
+    color: var(--link-color);
   }
 
   .fieldContent p:last-child {
     margin-bottom: 0;
   }
 
-  @media (min-width: 768px) {
-    .fields {
-      columns: 2;
-      column-gap: 30px;
-    }
+  .truckIcon {
+    color: var(--link-color);
+  }
 
+  @media (min-width: screen-sm-min) {
     .field {
       display: inline-block;
       width: 100%;
