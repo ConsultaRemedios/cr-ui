@@ -6,6 +6,10 @@
 
   --border-color: #cccccc;
 
+  --background-color-primary: #138484;
+  --border-color-primary: #138484;
+  --border-color-secondary: #595959;
+
   --text-default: #333333;
   --text-secondary: #595959;
   --text-info: #1346e1;
