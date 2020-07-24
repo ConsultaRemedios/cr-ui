@@ -2,23 +2,30 @@
 
 exports[`StoreBaseModal component Snapshot matches when is loading 1`] = `
 <basemodal-stub
+  class="baseModal"
   customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
   <div
+    class="header"
+  >
+    <button
+      class="arrowButton"
+    >
+      <baseicon-stub
+        id="arrow-left.icon.svg"
+      />
+    </button>
+  </div>
+   
+  <div
     class="wrapper"
     style="max-height: 920px;"
   >
-    <div>
-      <span
-        class="title"
-      >
-        
-        
-      
-      </span>
-       
+    <div
+      class="logoWrapper"
+    >
       <img
         alt=""
         class="logo"
@@ -37,23 +44,30 @@ exports[`StoreBaseModal component Snapshot matches when is loading 1`] = `
 
 exports[`StoreBaseModal component Snapshot matches when is not loading 1`] = `
 <basemodal-stub
+  class="baseModal"
   customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
   <div
+    class="header"
+  >
+    <button
+      class="arrowButton"
+    >
+      <baseicon-stub
+        id="arrow-left.icon.svg"
+      />
+    </button>
+  </div>
+   
+  <div
     class="wrapper loadingMaxHeight"
     style="max-height: 920px;"
   >
-    <div>
-      <span
-        class="title"
-      >
-        
-        
-      
-      </span>
-       
+    <div
+      class="logoWrapper"
+    >
       <img
         alt=""
         class="logo"
@@ -72,23 +86,30 @@ exports[`StoreBaseModal component Snapshot matches when is not loading 1`] = `
 
 exports[`StoreBaseModal component Snapshot matches when is on desktop 1`] = `
 <basemodal-stub
+  class="baseModal"
   customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
   <div
+    class="header"
+  >
+    <button
+      class="arrowButton"
+    >
+      <baseicon-stub
+        id="arrow-left.icon.svg"
+      />
+    </button>
+  </div>
+   
+  <div
     class="wrapper loadingMaxHeight"
     style="max-height: 920px;"
   >
-    <div>
-      <span
-        class="title"
-      >
-        
-        
-      
-      </span>
-       
+    <div
+      class="logoWrapper"
+    >
       <img
         alt=""
         class="logo"
@@ -107,23 +128,30 @@ exports[`StoreBaseModal component Snapshot matches when is on desktop 1`] = `
 
 exports[`StoreBaseModal component Snapshot matches when is on mobile 1`] = `
 <basemodal-stub
+  class="baseModal"
   customcssclass=""
   dismissible="true"
   information="<p>Some content</p>"
 >
   <div
+    class="header"
+  >
+    <button
+      class="arrowButton"
+    >
+      <baseicon-stub
+        id="arrow-left.icon.svg"
+      />
+    </button>
+  </div>
+   
+  <div
     class="wrapper loadingMaxHeight"
     style="max-height: 920px;"
   >
-    <div>
-      <span
-        class="title"
-      >
-        
-        
-      
-      </span>
-       
+    <div
+      class="logoWrapper"
+    >
       <img
         alt=""
         class="logo"

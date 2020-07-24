@@ -1,5 +1,14 @@
 <template>
-  <BaseModal @close="$emit('close')">
+  <BaseModal @close="$emit('close')" :class="$style.baseModal">
+    <div :class="$style.header">
+      <button
+        :class="$style.arrowButton"
+        @click="$emit('close')"
+      >
+        <BaseIcon :id="icons.arrowLeft.id"/>
+      </button>
+    </div>
+
     <div
       :class="[
         $style.wrapper,
@@ -7,10 +16,7 @@
       ]"
       :style="{ maxHeight: `${ui.maxContentHeight}px` }"
     >
-      <div>
-        <span :class="$style.title">
-          {{ title }}
-        </span>
+      <div :class="$style.logoWrapper">
         <img
           :class="$style.logo"
           :src="logoPath"
@@ -40,8 +46,10 @@
 
 <script>
   import BaseModal from '../../common/BaseModal';
+  import BaseIcon from '../../common/BaseIcon';
   import SimpleLoader from '../../common/SimpleLoader';
   import breakpointable from '../../../mixins/breakpointable';
+  import arrowLeft from '../../../icons/arrow-left.icon.svg';
 
   const modalExternalPadding = 40;
 
@@ -51,16 +59,12 @@
     components: {
       BaseModal,
       SimpleLoader,
+      BaseIcon,
     },
 
     mixins: [breakpointable],
 
     props: {
-      title: {
-        type: String,
-        default: '',
-      },
-
       name: {
         type: String,
         default: '',
@@ -91,6 +95,14 @@
       },
     },
 
+    computed: {
+      icons() {
+        return {
+          arrowLeft,
+        };
+      },
+    },
+
     mounted() {
       this.updateMaxContentHeight();
 
@@ -104,30 +116,51 @@
 </script>
 
 <style module>
+  @value screen-sm-min, screen-xs-max, screen-sm-max from './../../../styles/variables.css';
+
+  .logoWrapper {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 120px;
+    height: 84px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    margin-right: 16px;
+    margin-top: -25px;
+  }
+
+  .header {
+    background: url('./../../../assets/header.svg') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 80px;
+  }
+
+  .arrowButton {
+    border: none;
+    background: transparent;
+    margin-top: 10px;
+    color: var(--link-color);
+  }
+
   .loadingMaxHeight {
     max-height: 116px;
   }
 
   .wrapper {
     display: flex;
-    flex-direction: column;
     max-height: 2000px;
     transition: max-height 0.15s ease-out;
-    padding: 20px;
-  }
-
-  .title {
-    display: block;
-    min-width: 200px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #333333;
+    padding: 0 16px 16px;
   }
 
   .logo {
-    margin-bottom: 15px;
-    max-width: 130px;
+    margin: 0;
+    width: 99px;
+    height: 57px;
     vertical-align: middle;
   }
 
@@ -169,10 +202,63 @@
     background-color: transparent;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: screen-sm-min) {
     .wrapper {
-      width: 585px;
-      padding: 40px;
+      width: 615px;
+    }
+  }
+
+  @media (min-width: screen-sm-max) {
+    .arrowButton {
+      display: none;
+    }
+  }
+
+  @media (max-width: screen-xs-max) {
+    .content {
+      width: 100%;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px 10px;
+    }
+
+    .logoWrapper {
+      margin-right: 0;
+      margin-bottom: 24px;
+    }
+
+  }
+
+  @media (min-width: screen-xs-max) and (max-width: screen-sm-max) {
+    .content {
+      width: 100%;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      padding: 0 10px 10px;
+    }
+  }
+
+  @media (max-width: screen-sm-max) {
+    .baseModal :global(.cr-base-modal__close) {
+      display: none;
+    }
+
+    .baseModal :global(.cr-base-modal__content) {
+      border-radius: 0;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .baseModal :global(.cr-base-modal__container) {
+      padding: 0;
     }
   }
 </style>
