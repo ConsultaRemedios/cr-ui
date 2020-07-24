@@ -38,7 +38,7 @@
   import StoreBaseModal from '../StoreBaseModal';
   import BaseButton from '../../common/BaseButton';
   import BaseIcon from '../../common/BaseIcon';
-  import truckIcon from '../../../icons/truck.icon.svg' ;
+  import truckIcon from '../../../icons/truck.icon.svg';
 
   export default {
     name: 'StoreModal',
@@ -81,8 +81,8 @@
     methods: {
       isData(title) {
         return title.toLocaleLowerCase() === 'dados da loja';
-      }
-    }
+      },
+    },
   };
 </script>
 
