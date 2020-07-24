@@ -16,7 +16,7 @@ exports[`StoreModal component Snapshot When "isLoading" is "true" matches 1`] = 
     <span
       class="subTitle"
     >
-      O CR faz uma análise rigorosa para exibir somente lojas 100% confiáveis.
+      O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
     </span>
      
     <baseicon-stub
@@ -63,7 +63,7 @@ exports[`StoreModal component Snapshot When has "name", "logoPath" and "informat
     <span
       class="subTitle"
     >
-      O CR faz uma análise rigorosa para exibir somente lojas 100% confiáveis.
+      O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
     </span>
      
     <baseicon-stub

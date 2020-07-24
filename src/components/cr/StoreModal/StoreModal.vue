@@ -7,7 +7,7 @@
   >
     <div :class="$style.content">
       <span :class="$style.title">{{ name }} é uma loja confiável!</span>
-      <span :class="$style.subTitle">O CR faz uma análise rigorosa para exibir somente lojas 100% confiáveis.</span>
+      <span :class="$style.subTitle">O CR faz uma análise rigorosa para exibir somente lojas confiáveis.</span>
       <BaseIcon :id="icons.truckIcon.id" :class="$style.truckIcon"/>
       <span :class="$style.info"><strong>Economize no frete</strong> adicionando produtos da mesma loja</span>
       <BaseButton
