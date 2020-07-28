@@ -122,8 +122,8 @@
   }
 
   .baseButton:focus {
-    background: var(---background-color-hover-primary);
-    border-color: var(--border-color-hover-primary);
+    background: var(--background-color-primary-hover);
+    border-color: var(--border-color-primary-hover);
   }
 
   .baseButton span {
@@ -133,8 +133,8 @@
   }
 
   .baseButton:hover {
-    background: var(---background-color-hover-primary);
-    border-color: var(--border-color-hover-primary);
+    background: var(--background-color-primary-hover);
+    border-color: var(--border-color-primary-hover);
   }
 
   .addressTitle {
