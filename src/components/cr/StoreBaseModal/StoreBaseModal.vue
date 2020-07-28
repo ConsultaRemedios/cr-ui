@@ -209,6 +209,11 @@
   }
 
   @media (min-width: screen-sm-max) {
+    .header {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
     .arrowButton {
       display: none;
     }

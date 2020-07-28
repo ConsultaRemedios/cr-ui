@@ -8,8 +8,10 @@
     <div :class="$style.content">
       <span :class="$style.title">{{ name }} é uma loja confiável!</span>
       <span :class="$style.subTitle">O CR faz uma análise rigorosa para exibir somente lojas confiáveis.</span>
-      <BaseIcon :id="icons.truckIcon.id" :class="$style.truckIcon"/>
-      <span :class="$style.info"><strong>Economize no frete</strong> adicionando produtos da mesma loja</span>
+      <div :class="$style.wrapperTitleCta">
+        <BaseIcon :id="icons.truckIcon.id" :class="$style.truckIcon"/>
+        <span :class="$style.info"><strong>Economize no frete</strong> adicionando produtos da mesma loja</span>
+      </div>
       <BaseButton
         :path="storePath"
         :class="$style.baseButton"
@@ -91,7 +93,7 @@
 
   .infoData > p {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--text-default);
   }
 
   .subTitle {
@@ -104,7 +106,7 @@
   .title {
     display: block;
     font-size: 20px;
-    color: var(--text-secondary);
+    color: var(--text-default);
     margin-top: 10px;
     margin-bottom: 3px;
     line-height: 20px;
@@ -119,13 +121,20 @@
     margin-bottom: 20px;
   }
 
+  .baseButton:focus {
+    background: var(--background-color-primary);
+    border-color: var(--border-color-primary);
+  }
+
   .baseButton span {
     color: white;
+    font-size: 16px;
+    font-weight: normal;
   }
 
   .baseButton:hover {
-    background: var(--background-color-primary);
-    border-color: var(--border-color-primary);
+    background: var(--background-color-secondary);
+    border-color: var(--border-color-tertiary);
   }
 
   .addressTitle {
@@ -155,14 +164,14 @@
 
   .fieldTitle {
     font-weight: bold;
-    color: var(--text-secondary);
+    color: var(--text-default);
     display: block;
     margin-bottom: 2px;
     font-size: 14px;
   }
 
   .fieldContent, .fieldContent > p {
-    color: var(--text-secondary);
+    color: var(--text-default);
     font-weight: normal;
     margin: 0;
     font-size: 14px;
@@ -176,8 +185,16 @@
     margin-bottom: 0;
   }
 
+  .wrapperTitleCta {
+    display: flex;
+    align-items: center;
+  }
+
   .truckIcon {
-    color: var(--link-color);
+    width: 20px;
+    height: 20px;
+    color: var(--text-success);
+    margin-right: 8px;
   }
 
   @media (min-width: screen-sm-min) {
