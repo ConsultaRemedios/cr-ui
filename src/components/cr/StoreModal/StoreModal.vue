@@ -93,7 +93,7 @@
 
   .infoData > p {
     font-size: 14px;
-    color: var(--text-default);
+    color: var(--text-secondary);
   }
 
   .subTitle {
