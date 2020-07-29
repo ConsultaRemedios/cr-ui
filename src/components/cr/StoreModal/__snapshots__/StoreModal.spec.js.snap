@@ -19,19 +19,23 @@ exports[`StoreModal component Snapshot When "isLoading" is "true" matches 1`] = 
       O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
     </span>
      
-    <baseicon-stub
-      class="truckIcon"
-      id="truck.icon.svg"
-    />
-     
-    <span
-      class="info"
+    <div
+      class="wrapperTitleCta"
     >
-      <strong>
-        Economize no frete
-      </strong>
-       adicionando produtos da mesma loja
-    </span>
+      <baseicon-stub
+        class="truckIcon"
+        id="truck.icon.svg"
+      />
+       
+      <span
+        class="info"
+      >
+        <strong>
+          Economize no frete
+        </strong>
+         adicionando produtos da mesma loja
+      </span>
+    </div>
      
     <basebutton-stub
       class="baseButton"
@@ -66,19 +70,23 @@ exports[`StoreModal component Snapshot When has "name", "logoPath" and "informat
       O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
     </span>
      
-    <baseicon-stub
-      class="truckIcon"
-      id="truck.icon.svg"
-    />
-     
-    <span
-      class="info"
+    <div
+      class="wrapperTitleCta"
     >
-      <strong>
-        Economize no frete
-      </strong>
-       adicionando produtos da mesma loja
-    </span>
+      <baseicon-stub
+        class="truckIcon"
+        id="truck.icon.svg"
+      />
+       
+      <span
+        class="info"
+      >
+        <strong>
+          Economize no frete
+        </strong>
+         adicionando produtos da mesma loja
+      </span>
+    </div>
      
     <basebutton-stub
       class="baseButton"
