@@ -65,6 +65,7 @@ import refresh from './../../src/icons/refresh.icon.svg';
 import navigationMore from './../../src/icons/navigation-more.icon.svg';
 import megaphone from './../../src/icons/megaphone.icon.svg';
 import coupon from './../../src/icons/coupon.icon.svg';
+import counter from './../../src/icons/counter.icon.svg';
 
 import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
 import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
@@ -171,6 +172,7 @@ const crIcons = [
   pill,
   crpro,
   crproColorful,
+  counter,
 ];
 
 const allIcons = [
