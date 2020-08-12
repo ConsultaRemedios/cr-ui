@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BaseOption component matches the snapshot adds class "cr-base-option__hover" when prop isHover is true 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,7 +1,7 @@
+  <div
+-   class="option"
++   class="option cr-base-option__hover"
+    data-option-value="2"
+  >
+    <span>
+      Just span
+    </span>
+`;
+
 exports[`BaseOption component matches the snapshot when component is mounted 1`] = `
 <div
   class="option"

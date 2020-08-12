@@ -92,4 +92,24 @@ describe('BaseSelect', () => {
       });
     });
   });
+
+  describe('methods', () => {
+    describe('#getOption', () => {
+      it('returns correct object when prop keyValue is passed', () => {
+        const localOptions = [{
+          label: 'Option 2',
+          id: 1,
+        }, {
+          label: 'Option 1',
+          id: 0,
+        }];
+        const { wrapper } = setup({ value: 1, keyValue: 'id', options: localOptions });
+
+        expect(wrapper.vm.getOption(1)).toEqual({
+          label: 'Option 2',
+          id: 1,
+        });
+      });
+    });
+  })
 });
