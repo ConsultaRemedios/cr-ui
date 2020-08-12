@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.option, {
-      [$style.hover]: this.isHover
+      ['cr-base-option__hover']: this.isHover
     }]"
     @click="onClick"
     @mouseover="onHover"
@@ -48,8 +48,10 @@
     font-size: 15px;
     padding: 10px 15px;
   }
+</style>
 
-  .hover {
+<style>
+  .cr-base-option__hover {
     background: #F9F9F9;
   }
 </style>
