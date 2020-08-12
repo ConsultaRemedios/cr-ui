@@ -86,11 +86,6 @@
         default: true,
       },
 
-      opened: {
-        type: Boolean,
-        default: true,
-      },
-
       keyValue: {
         type: String,
         default: 'value',
@@ -148,9 +143,7 @@
           e.currentTarget.blur();
         }
 
-        if (this.opened) {
-          this.isOpen = !this.isOpen;
-        }
+        this.isOpen = !this.isOpen;
       },
 
       onPressEnter() {

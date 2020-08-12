@@ -65,15 +65,6 @@ describe('BaseSelect', () => {
     });
   });
 
-  describe('on prop "opened" is false', () => {
-    it("doesn't open select", () => {
-      const { wrapper } = setup({ opened: false });
-      wrapper.find('.selectedLabel').trigger('click')
-
-      expect(wrapper.vm.isOpen).toBe(false)
-    });
-  });
-
   describe('computed props', () => {
     describe('#currentLabel', () => {
       it('does not set placeholder as currentLabel when selected value is 0', () => {
