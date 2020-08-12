@@ -48,10 +48,8 @@
     font-size: 15px;
     padding: 10px 15px;
   }
-</style>
 
-<style>
-  .cr-base-option__hover {
+  :global(.cr-base-option__hover) {
     background: #F9F9F9;
   }
 </style>
