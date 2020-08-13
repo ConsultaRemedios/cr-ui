@@ -85,6 +85,11 @@
         type: Boolean,
         default: true,
       },
+
+      keyValue: {
+        type: String,
+        default: 'value',
+      },
     },
 
     data() {
@@ -121,7 +126,7 @@
 
     methods: {
       getOption(value) {
-        return this.options.find(o => o.value === value);
+        return this.options.find(o => o[this.keyValue] === value);
       },
 
       onOptionChange(value) {
@@ -181,7 +186,7 @@
         }
 
         if (nextOptionIndex >= 0 && nextOptionIndex <= length - 1) {
-          this.hovered = this.options[nextOptionIndex].value;
+          this.hovered = this.options[nextOptionIndex][this.keyValue];
           this.$nextTick(() => this.scrollToOption(this.hovered));
         }
       },
