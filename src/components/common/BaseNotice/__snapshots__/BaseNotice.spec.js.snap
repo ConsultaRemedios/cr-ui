@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`BaseNotice component When is a snackbar matches the snapshot 1`] = `
 <transition-stub
   enteractiveclass="enterActive"
   enterclass="enter"
