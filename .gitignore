@@ -2,3 +2,4 @@ node_modules/
 /public
 yarn-error.log
 .tool-versions
+.vscode/
