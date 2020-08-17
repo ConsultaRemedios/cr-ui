@@ -58,15 +58,17 @@ describe('BaseNotice component', () => {
   });
 
   describe('When is a snackbar', async () => {
-    const wrapper = shallowMount(BaseNotice, {
-      propsData: {
-        title: 'Você precisa corrigir os erros a baixo',
-        snackbar: true,
-      }
+    it('matches the snapshot', () => {
+      const wrapper = shallowMount(BaseNotice, {
+        propsData: {
+          title: 'Você precisa corrigir os erros a baixo',
+          snackbar: true,
+        }
+      });
+  
+      await wrapper.vm.$nextTick();
+  
+      expect(wrapper.element).toMatchSnapshot();
     });
-
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.element).toMatchSnapshot();
   })
 });
