@@ -1,13 +1,17 @@
 <template>
-  <svg viewBox="0 0 24 24" :class="$style.icon" v-bind="$attrs">
+  <svg
+    viewBox="0 0 24 24"
+    :class="$style.icon"
+    v-bind="$attrs"
+  >
     <use :xlink:href="`#${id}`" />
   </svg>
 </template>
 
 <script>
 export default {
-  inheritAttrs: false,
   name: 'BaseIcon',
+  inheritAttrs: false,
   props: {
     id: String,
   },

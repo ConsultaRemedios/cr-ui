@@ -3,11 +3,11 @@
     <div v-if="label">
       <BaseLabel
         :is-for="isFor"
-        :hasError="!!error"
+        :has-error="!!error"
         :required="required"
         :disabled="disabled"
       >
-        {{label}}
+        {{ label }}
 
         <template slot="outerSlot">
           <div :class="$style.innerSlot">
@@ -17,50 +17,53 @@
       </BaseLabel>
     </div>
 
-    <slot v-if="!label"></slot>
+    <slot v-if="!label" />
 
-    <div v-if="error" :class="$style.errorMessage">
+    <div
+      v-if="error"
+      :class="$style.errorMessage"
+    >
       <span>
-        {{error | capitalize}}
+        {{ error | capitalize }}
       </span>
     </div>
   </div>
 </template>
 
 <script>
-  import BaseLabel from './../BaseLabel';
-  import { capitalize } from './../../../filters';
+import BaseLabel from '../BaseLabel';
+import { capitalize } from '../../../filters';
 
-  export default {
-    name: 'FormField',
-    props: {
-      label: {
-        type: String,
-        default: '',
-      },
-      isFor: {
-        type: String,
-      },
-      error: {
-        type: String,
-        default: '',
-      },
-      required: {
-        type: Boolean,
-        default: true,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
+export default {
+  name: 'FormField',
+  components: {
+    BaseLabel,
+  },
+  filters: {
+    capitalize,
+  },
+  props: {
+    label: {
+      type: String,
+      default: '',
     },
-    components: {
-      BaseLabel,
+    isFor: {
+      type: String,
     },
-    filters: {
-      capitalize,
+    error: {
+      type: String,
+      default: '',
     },
-  };
+    required: {
+      type: Boolean,
+      default: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
 
 <style module>

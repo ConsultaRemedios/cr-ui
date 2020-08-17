@@ -1,91 +1,106 @@
 <template>
   <StoreBaseModal
     :name="name"
-    :logoPath="logoPath"
-    :isLoading="isLoading"
+    :logo-path="logoPath"
+    :is-loading="isLoading"
     @close="$emit('close')"
   >
     <div :class="$style.content">
       <span :class="$style.title">{{ name }} é uma loja confiável!</span>
-      <span :class="$style.subTitle">O CR faz uma análise rigorosa para exibir somente lojas confiáveis.</span>
+      <span :class="$style.subTitle">
+        O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
+      </span>
       <div :class="$style.wrapperTitleCta">
-        <BaseIcon :id="icons.truckIcon.id" :class="$style.truckIcon"/>
-        <span :class="$style.info"><strong>Economize no frete</strong> adicionando produtos da mesma loja</span>
+        <BaseIcon
+          :id="icons.truckIcon.id"
+          :class="$style.truckIcon"
+        />
+        <span :class="$style.info">
+          <strong>Economize no frete</strong> adicionando produtos da mesma loja
+        </span>
       </div>
       <BaseButton
         :path="storePath"
         :class="$style.baseButton"
-      >Ver mais produtos da loja</BaseButton>
+      >
+        Ver mais produtos da loja
+      </BaseButton>
 
       <div :class="$style.fields">
-        <div v-for="(field, i) in informations" :key="i" :class="$style.field">
+        <div
+          v-for="(field, i) in informations"
+          :key="i"
+          :class="$style.field"
+        >
           <div
-            :class="$style.infoData"
             v-if="isData(field.title)"
+            :class="$style.infoData"
             v-html="field.content"
-          >
-          </div>
+          />
           <div v-else>
             <span :class="$style.fieldTitle">{{ field.title }}</span>
-            <div :class="$style.fieldContent" v-html="field.content" />
+            <div
+              :class="$style.fieldContent"
+              v-html="field.content"
+            />
           </div>
         </div>
       </div>
     </div>
-    <slot></slot>
+    <slot />
   </StoreBaseModal>
 </template>
 
 <script>
-  import StoreBaseModal from '../StoreBaseModal';
-  import BaseButton from '../../common/BaseButton';
-  import BaseIcon from '../../common/BaseIcon';
-  import truckIcon from '../../../icons/truck.icon.svg';
+import StoreBaseModal from '../StoreBaseModal';
+import BaseButton from '../../common/BaseButton';
+import BaseIcon from '../../common/BaseIcon';
+import truckIcon from '../../../icons/truck.icon.svg';
 
-  export default {
-    name: 'StoreModal',
-    components: { StoreBaseModal, BaseButton, BaseIcon },
-    props: {
-      name: {
-        type: String,
-        default: '',
-      },
-
-      logoPath: {
-        type: String,
-        default: '',
-      },
-
-      informations: {
-        type: Array,
-        default: () => [],
-      },
-
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
-
-      storePath: {
-        type: String,
-        default: '',
-      },
+export default {
+  name: 'StoreModal',
+  components: { StoreBaseModal, BaseButton, BaseIcon },
+  props: {
+    name: {
+      type: String,
+      default: '',
     },
 
-    computed: {
-      icons() {
-        return {
-          truckIcon,
-        };
-      },
+    logoPath: {
+      type: String,
+      default: '',
     },
 
-    methods: {
-      isData(title) {
-        return title.toLocaleLowerCase() === 'dados da loja';
-      },
+    informations: {
+      type: Array,
+      default: () => [],
     },
-  };
+
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+
+    storePath: {
+      type: String,
+      default: '',
+    },
+  },
+
+  computed: {
+    icons() {
+      return {
+        truckIcon,
+      };
+    },
+  },
+
+  methods: {
+    isData(title) {
+      return title.toLocaleLowerCase() === 'dados da loja';
+    },
+  },
+};
 </script>
 
 <style module>

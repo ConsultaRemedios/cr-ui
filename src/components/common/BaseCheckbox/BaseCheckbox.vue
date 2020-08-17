@@ -1,66 +1,72 @@
 <template>
   <div>
-    <label :class="[$style.wrapper, { [$style.isSelected]: checked, [$style.isDisabled]: disabled }]">
+    <label :class="[
+      $style.wrapper,
+      { [$style.isSelected]: checked, [$style.isDisabled]: disabled }
+    ]">
       <input
         :class="$style.input"
         :name="name"
         type="checkbox"
-        @change="onChange"
         :checked="checked"
         :disabled="disabled"
         v-bind="$attrs"
-      />
+        @change="onChange"
+      >
 
-      <span v-if="label" :class="$style.label">
-        {{label}}
+      <span
+        v-if="label"
+        :class="$style.label"
+      >
+        {{ label }}
       </span>
     </label>
   </div>
 </template>
 
 <script>
-  export default {
-    inheritAttrs: false,
-    name: 'BaseCheckbox',
+export default {
+  name: 'BaseCheckbox',
+  inheritAttrs: false,
 
-    props: {
-      checked: {
-        type: Boolean,
-        default: false,
-      },
-
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-      value: {
-        type: [String, Number],
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      label: {
-        type: String,
-        default: '',
-      },
-
-      model: {
-        type: String,
-        default: '',
-      },
+  props: {
+    checked: {
+      type: Boolean,
+      default: false,
     },
 
-    methods: {
-      onChange() {
-        this.$emit('change', {
-          name: this.model || this.name,
-          value: this.checked ? '' : this.value,
-        });
-      },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-  };
+    value: {
+      type: [String, Number],
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      default: '',
+    },
+
+    model: {
+      type: String,
+      default: '',
+    },
+  },
+
+  methods: {
+    onChange() {
+      this.$emit('change', {
+        name: this.model || this.name,
+        value: this.checked ? '' : this.value,
+      });
+    },
+  },
+};
 </script>
 
 <style module>

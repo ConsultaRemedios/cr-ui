@@ -1,5 +1,5 @@
 import verge from 'verge';
-import { breakpointByWidth } from './../helpers/breakpoints/utils';
+import { breakpointByWidth } from '../helpers/breakpoints/utils';
 
 export default {
   data: () => ({

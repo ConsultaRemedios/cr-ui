@@ -16,7 +16,7 @@ const DEST_DIR = './src/icons/';
 
 log(say({ text: chalk`{yellow Calma aí parça}, estou otimizando os ícones.` }));
 
-const readDir = dirpath => new Promise((resolve, reject) => {
+const readDir = (dirpath) => new Promise((resolve, reject) => {
   fs.readdir(dirpath, (err, files) => {
     if (err) return reject(new Error(chalk`\n{red.bold ✖ Directory reading failed:}\n{white ${err}}\n`));
 
@@ -24,7 +24,7 @@ const readDir = dirpath => new Promise((resolve, reject) => {
   });
 });
 
-const readFile = filepath => new Promise((resolve, reject) => {
+const readFile = (filepath) => new Promise((resolve, reject) => {
   fs.readFile(filepath, 'utf8', (err, data) => {
     if (err) return reject(new Error(chalk`\n{red.bold ✖ File reading failed:}\n{white ${err}}\n`));
 
@@ -42,10 +42,10 @@ const writeFile = (filepath, data) => new Promise((resolve, reject) => {
 
 const svgoAddViewBoxPlugin = (item) => {
   if (
-    item.isElem(['svg']) &&
-    !item.hasAttr('viewBox') &&
-    item.hasAttr('width') &&
-    item.hasAttr('height')
+    item.isElem(['svg'])
+    && !item.hasAttr('viewBox')
+    && item.hasAttr('width')
+    && item.hasAttr('height')
   ) {
     const width = parseFloat(item.attr('width').value.replace(/px$/, ''));
     const height = parseFloat(item.attr('height').value.replace(/px$/, ''));

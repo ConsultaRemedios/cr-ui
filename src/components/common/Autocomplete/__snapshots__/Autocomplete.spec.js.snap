@@ -106,7 +106,7 @@ Snapshot Diff:
       >
         <li
 -         class="suggestion"
-+         class="suggestion $style.customListItemSyle"
++         class="suggestion $style.customListItemClass"
           data-suggestion-value="0"
         >
           <span />
@@ -118,7 +118,7 @@ Snapshot Diff:
         </li>
         <li
 -         class="suggestion"
-+         class="suggestion $style.customListItemSyle"
++         class="suggestion $style.customListItemClass"
           data-suggestion-value="1"
         >
           <span />
@@ -130,7 +130,7 @@ Snapshot Diff:
         </li>
         <li
 -         class="suggestion"
-+         class="suggestion $style.customListItemSyle"
++         class="suggestion $style.customListItemClass"
           data-suggestion-value="2"
         >
           <span />

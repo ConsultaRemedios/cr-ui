@@ -35,7 +35,7 @@ describe('Autocomplete component', () => {
     it('when user inputs term', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.find(BaseInput).vm.$emit('change', {
+      localWrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
@@ -45,19 +45,20 @@ describe('Autocomplete component', () => {
     });
 
     it('when prop expanded is changed to false', async () => {
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
       await flushPromises();
 
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.find(BaseInput).vm.$emit('change', {
+      localWrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
       await flushPromises();
 
-      localWrapper.setData({ expanded: false });
+      localWrapper.setProps({ expanded: false });
+      await wrapper.vm.$nextTick();
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
@@ -86,13 +87,13 @@ describe('Autocomplete component', () => {
 
       const localWrapper = shallowAutocomplete({ suggestionKey: 'title', getSuggestions: suggestions });
 
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      localWrapper.find(BaseInput).vm.$emit('change', {
+      localWrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'Con',
       });
 
@@ -108,35 +109,20 @@ describe('Autocomplete component', () => {
       let wrapper;
       beforeEach(() => {
         wrapper = shallowAutocomplete();
-        wrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
+        wrapper.setProps({ expanded: true });
+        wrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, value: 'dor' });
       });
 
-      it('when listItemClass is passed', () => {
-        const localWrapper = shallowAutocomplete({ listItemClass: '$style.customListItemSyle' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when inputClass is passed', () => {
-        const localWrapper = shallowAutocomplete({ inputClass: '$style.customInputClass' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when listClass is passed', () => {
-        const localWrapper = shallowAutocomplete({ listClass: '$style.customListClass' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
-      });
-
-      it('when expandedClass is passed', () => {
-        const localWrapper = shallowAutocomplete({ expandedClass: '$style.customExpandedClass' });
-        localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, expanded: true, value: 'dor' });
-
-        expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      ['listItemClass', 'inputClass', 'listClass', 'expandedClass'].forEach((cssClass) => {
+        it(`when ${cssClass} is passed`, async () => {
+          const localWrapper = shallowAutocomplete({ [cssClass]: `$style.custom${cssClass.charAt(0).toUpperCase() + cssClass.slice(1)}` });
+          localWrapper.setProps({ expanded: true });
+          localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, value: 'dor' });
+  
+          await wrapper.vm.$nextTick();
+  
+          expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+        });
       });
     })
   });
@@ -146,7 +132,7 @@ describe('Autocomplete component', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.find(BaseInput).vm.$emit('focus');
+      wrapper.findComponent(BaseInput).vm.$emit('focus');
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('focus');
@@ -156,13 +142,13 @@ describe('Autocomplete component', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      wrapper.find(BaseInput).vm.$emit('keydown', {
+      wrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'Escape' },
       });
 
@@ -175,13 +161,13 @@ describe('Autocomplete component', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      wrapper.find(Autocomplete).vm.$emit('close');
+      wrapper.findComponent(Autocomplete).vm.$emit('close');
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('close');
@@ -199,7 +185,7 @@ describe('Autocomplete component', () => {
       });
 
       const parentMount = mount(ParentComponent, { attachToDocument: true });
-      const autocomplemete = parentMount.find(Autocomplete);
+      const autocomplemete = parentMount.findComponent(Autocomplete);
 
       jest.spyOn(autocomplemete.vm, '$emit');
       parentMount.find('#outside').trigger('click');
@@ -221,7 +207,7 @@ describe('Autocomplete component', () => {
         scopedSlots,
       });
 
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
@@ -230,7 +216,8 @@ describe('Autocomplete component', () => {
       await flushPromises();
 
       wrapper.findAll('span').at(1).trigger('click')
-
+      
+      await wrapper.vm.$nextTick();
 
       expect(wrapper.element).toMatchSnapshot()
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
@@ -243,7 +230,7 @@ describe('Autocomplete component', () => {
       const wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
@@ -259,7 +246,7 @@ describe('Autocomplete component', () => {
       wrapper = shallowAutocomplete();
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.find(BaseInput).vm.$emit('change', {
+      wrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
@@ -269,15 +256,17 @@ describe('Autocomplete component', () => {
     it('when press ArrowDown', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.find(BaseInput).vm.$emit('change', {
+      localWrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      localWrapper.find(BaseInput).vm.$emit('keydown', {
+      localWrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowDown' },
       });
+
+      await wrapper.vm.$nextTick();
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
@@ -285,27 +274,29 @@ describe('Autocomplete component', () => {
     it('when press ArrowUp and there is no other element selected ', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.find(BaseInput).vm.$emit('change', {
+      localWrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu',
       });
 
       await flushPromises();
 
-      localWrapper.find(BaseInput).vm.$emit('keydown', {
+      localWrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowUp' },
       });
+
+      await wrapper.vm.$nextTick();
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
 
-    it('when have an option selected and user press enter', () => {
+    it('when have an option selected and user press enter', async () => {
       const preventDefault = jest.fn();
 
-      wrapper.find(BaseInput).vm.$emit('keydown', {
+      wrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowUp', preventDefault },
       });
 
-      wrapper.find(BaseInput).vm.$emit('keydown', {
+      wrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'Enter', preventDefault },
       });
 
@@ -325,7 +316,7 @@ describe('Autocomplete component', () => {
     });
 
     it('when dont have option selected and user press enter', () => {
-      wrapper.find(BaseInput).vm.$emit('keydown', {
+      wrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'Enter' },
       });
 
@@ -336,11 +327,11 @@ describe('Autocomplete component', () => {
     it('when have an option selected and user press tab', () => {
       const preventDefault = jest.fn()
 
-      wrapper.find(BaseInput).vm.$emit('keydown', {
+      wrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'ArrowUp', preventDefault },
       });
 
-      wrapper.find(BaseInput).vm.$emit('keydown', {
+      wrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'Tab', preventDefault },
       });
 
@@ -362,15 +353,17 @@ describe('Autocomplete component', () => {
     it('when user inputs a term and press esc', async () => {
       const localWrapper = shallowAutocomplete();
 
-      localWrapper.find(BaseInput).vm.$emit('change', {
+      localWrapper.findComponent(BaseInput).vm.$emit('change', {
         value: 'ibu'
       });
 
       await flushPromises();
 
-      localWrapper.find(BaseInput).vm.$emit('keydown', {
+      localWrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'Escape' },
       });
+      
+      await wrapper.vm.$nextTick();
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
     });
@@ -405,8 +398,10 @@ describe('Autocomplete component', () => {
         jest.spyOn(wrapper.vm, '$emit');
       });
 
-      it('when input in slot is focused', () => {
+      it('when input in slot is focused', async () => {
         wrapper.find('input').trigger('focus');
+
+        await wrapper.vm.$nextTick();
 
         expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
         expect(wrapper.vm.$emit).toHaveBeenCalledWith('focus');
@@ -428,6 +423,8 @@ describe('Autocomplete component', () => {
         await flushPromises();
 
         wrapper.find('input').trigger('keydown', { event: { code: 'ArrowDown' } });
+        
+        await wrapper.vm.$nextTick();
 
         expect(wrapper.element).toMatchSnapshot();
       });
@@ -449,7 +446,7 @@ describe('Autocomplete component', () => {
           scopedSlots,
         });
 
-        wrapper.find(BaseInput).vm.$emit('change', {
+        wrapper.findComponent(BaseInput).vm.$emit('change', {
           value: 'ibu',
         });
         jest.spyOn(wrapper.vm, '$emit');
@@ -465,15 +462,17 @@ describe('Autocomplete component', () => {
         it('when press ArrowDown', async () => {
           const localWrapper = shallowAutocomplete();
 
-          localWrapper.find(BaseInput).vm.$emit('change', {
+          localWrapper.findComponent(BaseInput).vm.$emit('change', {
             value: 'ibu',
           });
 
           await flushPromises();
 
-          localWrapper.find(BaseInput).vm.$emit('keydown', {
+          localWrapper.findComponent(BaseInput).vm.$emit('keydown', {
             event: { code: 'ArrowDown' },
           });
+
+          await wrapper.vm.$nextTick();
 
           expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
         });
@@ -481,15 +480,17 @@ describe('Autocomplete component', () => {
         it('when press ArrowUp and there is no other element selected ', async () => {
           const localWrapper = shallowAutocomplete();
 
-          localWrapper.find(BaseInput).vm.$emit('change', {
+          localWrapper.findComponent(BaseInput).vm.$emit('change', {
             value: 'ibu',
           });
 
           await flushPromises();
 
-          localWrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          localWrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'ArrowUp' },
           });
+
+          await wrapper.vm.$nextTick();
 
           expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
         });
@@ -497,11 +498,11 @@ describe('Autocomplete component', () => {
         it('when have an option selected and user press enter', () => {
           const preventDefault = jest.fn();
 
-          wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          wrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'ArrowUp', preventDefault },
           });
 
-          wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          wrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'Enter', preventDefault },
           });
 
@@ -521,7 +522,7 @@ describe('Autocomplete component', () => {
         });
 
         it('when dont have option selected and user press enter', () => {
-          wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          wrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'Enter' },
           });
 
@@ -532,11 +533,11 @@ describe('Autocomplete component', () => {
         it('when have an option selected and use press tab', () => {
           const preventDefault = jest.fn()
 
-          wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          wrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'ArrowUp', preventDefault },
           });
 
-          wrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          wrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'Tab', preventDefault },
           });
 
@@ -558,15 +559,17 @@ describe('Autocomplete component', () => {
         it('when user inputs term and press esc', async () => {
           const localWrapper = shallowAutocomplete();
 
-          localWrapper.findAll(BaseInput).at(0).vm.$emit('change', {
+          localWrapper.findAllComponents(BaseInput).at(0).vm.$emit('change', {
             value: 'ibu',
           });
 
           await flushPromises();
 
-          localWrapper.findAll(BaseInput).at(0).vm.$emit('keydown', {
+          localWrapper.findAllComponents(BaseInput).at(0).vm.$emit('keydown', {
             event: { code: 'Escape' },
           });
+
+          await wrapper.vm.$nextTick();
 
           expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
         });
@@ -588,9 +591,11 @@ describe('Autocomplete component', () => {
           scopedSlots,
         });
 
-        wrapper.find(BaseInput).vm.$emit('change', {
+        wrapper.findComponent(BaseInput).vm.$emit('change', {
           value: 'ibu',
         });
+
+        await wrapper.vm.$nextTick();
 
         expect(wrapper.element).toMatchSnapshot();
       });
@@ -611,7 +616,7 @@ describe('Autocomplete component', () => {
           scopedSlots,
         });
 
-        wrapper.find(BaseInput).vm.$emit('change', {
+        wrapper.findComponent(BaseInput).vm.$emit('change', {
           value: 'ibu',
         });
 

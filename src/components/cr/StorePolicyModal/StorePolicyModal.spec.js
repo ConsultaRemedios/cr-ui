@@ -44,13 +44,17 @@ describe('StorePolicyModal component', () => {
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('matches when is loading', () => {
+    it('matches when is loading', async () => {
       wrapper.setProps({ isLoading: true });
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('matches when is not loading', () => {
+    it('matches when is not loading', async () => {
       wrapper.setProps({ isLoading: false });
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.element).toMatchSnapshot();
     });
   });

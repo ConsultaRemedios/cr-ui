@@ -36,15 +36,18 @@
       :class="[$style.expandedContainer, expandedClass]"
     >
       <ul
-        :class="[$style.suggestions, listClass]"
         v-if="showSuggestions"
+        :class="[$style.suggestions, listClass]"
         data-suggestions
       >
         <li
           v-for="(suggestion, index) in suggestions"
           :key="suggestion[itemKey]"
           :class="[
-            $style.suggestion, { [$style.hovered]: suggestion.selected, [hoveredClass]: suggestion.selected },
+            $style.suggestion, {
+              [$style.hovered]: suggestion.selected,
+              [hoveredClass]: suggestion.selected
+            },
             listItemClass
           ]"
           :data-suggestion-value="index"
@@ -55,7 +58,7 @@
             name="listItem"
             :on-click="onClick"
           >
-            <span v-html="suggestion.highlight"></span>
+            <span v-html="suggestion.highlight" />
             <BaseIcon
               :id="icons.nextIcon.id"
               :class="$style.suggestionIcon"
@@ -66,341 +69,339 @@
       <slot
         v-if="suggestions.length === 0"
         name="placeholderSuggestion"
-      >
-      </slot>
+      />
       <slot
         name="footerListSuggestions"
-      >
-      </slot>
+      />
     </div>
   </div>
 </template>
 
 <script>
-  import BaseInput from '../BaseInput';
-  import BaseIcon from '../BaseIcon';
-  import clickOutside from './../../../directives/click-outside';
-  import searchIcon from '../../../icons/search.icon.svg';
-  import nextIcon from '../../../icons/next.icon.svg';
+import BaseInput from '../BaseInput';
+import BaseIcon from '../BaseIcon';
+import clickOutside from '../../../directives/click-outside';
+import searchIcon from '../../../icons/search.icon.svg';
+import nextIcon from '../../../icons/next.icon.svg';
 
-  const selectSuggestions = (suggestions, indexToSelect) => suggestions.map((s, i) => ({
-    ...s,
-    selected: i === indexToSelect,
-  }));
+const selectSuggestions = (suggestions, indexToSelect) => suggestions.map((s, i) => ({
+  ...s,
+  selected: i === indexToSelect,
+}));
 
-  const getSuggestionIndex = (suggestions, { selected, action }) => {
-    if (action === 'prev') {
-      if (selected === 0) return suggestions.length - 1;
-      return selected - 1;
-    }
+const getSuggestionIndex = (suggestions, { selected, action }) => {
+  if (action === 'prev') {
+    if (selected === 0) return suggestions.length - 1;
+    return selected - 1;
+  }
 
-    if (selected === suggestions.length - 1) return 0;
-    return selected + 1;
-  };
+  if (selected === suggestions.length - 1) return 0;
+  return selected + 1;
+};
 
-  export default {
-    name: 'Autocomplete',
+export default {
+  name: 'Autocomplete',
 
-    components: { BaseInput, BaseIcon },
+  components: { BaseInput, BaseIcon },
 
-    directives: {
-      clickOutside,
+  directives: {
+    clickOutside,
+  },
+
+  props: {
+    expanded: {
+      type: Boolean,
+      default: true,
     },
 
-    props: {
-      expanded: {
-        type: Boolean,
-        default: true,
-      },
-
-      cacheKey: {
-        type: String,
-        default: 'default',
-      },
-
-      getSuggestions: {
-        type: Function,
-        required: true,
-      },
-
-      itemKey: {
-        type: String,
-        default: 'id',
-      },
-
-      inputClass: {
-        type: Array,
-        default: () => [],
-      },
-
-      expandedClass: {
-        type: Array,
-        default: () => [],
-      },
-
-      listClass: {
-        type: Array,
-        default: () => [],
-      },
-
-      listItemClass: {
-        type: Array,
-        default: () => [],
-      },
-
-      inputName: {
-        type: String,
-        default: '',
-      },
-
-      term: {
-        type: String,
-        default: '',
-      },
-
-      placeholder: {
-        type: String,
-        default: '',
-      },
-
-      suggestionKey: {
-        type: String,
-        default: 'name',
-      },
-
-      clearSuggestions: {
-        type: Boolean,
-        default: false,
-      },
-
-      hoveredClass: {
-        type: Array,
-        default: () => [],
-      },
+    cacheKey: {
+      type: String,
+      default: 'default',
     },
 
-    data() {
+    getSuggestions: {
+      type: Function,
+      required: true,
+    },
+
+    itemKey: {
+      type: String,
+      default: 'id',
+    },
+
+    inputClass: {
+      type: [String, Array],
+      default: () => [],
+    },
+
+    expandedClass: {
+      type: [String, Array],
+      default: () => [],
+    },
+
+    listClass: {
+      type: [String, Array],
+      default: () => [],
+    },
+
+    listItemClass: {
+      type: [String, Array],
+      default: () => [],
+    },
+
+    inputName: {
+      type: String,
+      default: '',
+    },
+
+    term: {
+      type: String,
+      default: '',
+    },
+
+    placeholder: {
+      type: String,
+      default: '',
+    },
+
+    suggestionKey: {
+      type: String,
+      default: 'name',
+    },
+
+    clearSuggestions: {
+      type: Boolean,
+      default: false,
+    },
+
+    hoveredClass: {
+      type: Array,
+      default: () => [],
+    },
+  },
+
+  data() {
+    return {
+      value: '',
+      inputedTerm: '',
+      suggestions: [],
+      showSuggestions: false,
+      hovered: null,
+      suggestionsCache: {},
+    };
+  },
+
+  computed: {
+    selectedSuggestionIndex() {
+      return this.suggestions.findIndex((s) => s.selected);
+    },
+
+    icons() {
       return {
-        value: '',
-        inputedTerm: '',
-        suggestions: [],
-        showSuggestions: false,
-        hovered: null,
-        suggestionsCache: {},
+        searchIcon,
+        nextIcon,
       };
     },
+  },
 
-    computed: {
-      selectedSuggestionIndex() {
-        return this.suggestions.findIndex(s => s.selected);
-      },
-
-      icons() {
-        return {
-          searchIcon,
-          nextIcon,
-        };
-      },
+  watch: {
+    cacheKey() {
+      this.onInputChange({ value: this.value });
     },
 
-    watch: {
-      cacheKey() {
-        this.onInputChange({ value: this.value });
-      },
+    term(value) {
+      this.value = value;
+    },
+  },
 
-      term(value) {
-        this.value = value;
-      },
+  mounted() {
+    this.value = this.term;
+  },
+
+  methods: {
+    onClick(ev) {
+      this.showSuggestions = false;
+      this.value = ev[this.suggestionKey];
+      this.$emit('change', ev);
     },
 
-    mounted() {
-      this.value = this.term;
-    },
+    onInputChange(ev) {
+      this.value = ev.value;
+      this.$emit('inputChanged', this.value);
 
-    methods: {
-      onClick(ev) {
-        this.showSuggestions = false;
-        this.value = ev[this.suggestionKey];
-        this.$emit('change', ev);
-      },
+      if (
+        this.suggestionsCache[this.cacheKey]
+          && this.suggestionsCache[this.cacheKey][this.value]
+          && this.suggestionsCache[this.cacheKey][this.value].length > 0
+      ) {
+        this.suggestions = this.suggestionsCache[this.cacheKey][this.value];
+        this.showSuggestions = true;
+        return;
+      }
 
-      onInputChange(ev) {
-        this.value = ev.value;
-        this.$emit('inputChanged', this.value);
+      if (this.value && this.value.length >= 3) {
+        if (this.$slots.placeholderSuggestion) this.suggestions = [];
 
-        if (
-          this.suggestionsCache[this.cacheKey] &&
-          this.suggestionsCache[this.cacheKey][this.value] &&
-          this.suggestionsCache[this.cacheKey][this.value].length > 0
-        ) {
-          this.suggestions = this.suggestionsCache[this.cacheKey][this.value];
+        this.showSuggestions = true;
+        this.inputedTerm = ev.value;
+        Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
           this.showSuggestions = true;
-          return;
-        }
-
-        if (this.value && this.value.length >= 3) {
+          this.suggestions = suggestions.map((suggestion) => ({
+            ...suggestion,
+            highlight: this.highlighter({
+              term: this.value,
+              word: suggestion[this.suggestionKey],
+            }),
+            selected: false,
+          }));
+          if (this.suggestionsCache[this.cacheKey]) {
+            this.suggestionsCache[this.cacheKey][this.value] = this.suggestions;
+          } else {
+            this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
+          }
+        }).catch(() => {
           if (this.$slots.placeholderSuggestion) this.suggestions = [];
+        });
+      } else {
+        this.suggestions = [];
+        this.showSuggestions = false;
+      }
+    },
 
-          this.showSuggestions = true;
-          this.inputedTerm = ev.value;
-          Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
-            this.showSuggestions = true;
-            this.suggestions = suggestions.map(suggestion => ({
-              ...suggestion,
-              highlight: this.highlighter({
-                term: this.value,
-                word: suggestion[this.suggestionKey],
-              }),
-              selected: false,
-            }));
-            if (this.suggestionsCache[this.cacheKey]) {
-              this.suggestionsCache[this.cacheKey][this.value] = this.suggestions;
-            } else {
-              this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
-            }
-          }).catch(() => {
-            if (this.$slots.placeholderSuggestion) this.suggestions = [];
-          });
-        } else {
-          this.suggestions = [];
-          this.showSuggestions = false;
-        }
-      },
+    highlighter({ term, word }) {
+      return word.replace(new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), (match) => `<strong>${match}</strong>`);
+    },
 
-      highlighter({ term, word }) {
-        return word.replace(new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), match => `<strong>${match}</strong>`);
-      },
+    populateTerm() {
+      this.value = this.suggestions[this.selectedSuggestionIndex]
+        ? this.suggestions[this.selectedSuggestionIndex][this.suggestionKey]
+        : this.inputedTerm;
+    },
 
-      populateTerm() {
-        this.value = this.suggestions[this.selectedSuggestionIndex]
-          ? this.suggestions[this.selectedSuggestionIndex][this.suggestionKey]
-          : this.inputedTerm;
-      },
+    onKeyDown({ event }) {
+      if (!this.suggestions.length) return;
 
-      onKeyDown({ event }) {
-        if (!this.suggestions.length) return;
-
-        const actions = {
-          Escape: () => {
-            /**
+      const actions = {
+        Escape: () => {
+          /**
               * When user press esc
               * @event escape
             */
-            this.$emit('escape');
-            this.showSuggestions = false;
-          },
-          ArrowUp: () => {
-            this.nagivate('prev');
-            this.populateTerm();
-          },
-          ArrowDown: () => {
-            this.nagivate('next');
-            this.populateTerm();
-          },
-          Enter: () => this.onChange(event),
-          Tab: () => {
-            if (this.selectedSuggestionIndex !== -1) {
-              this.onChange(event);
-            }
-          },
-        };
-
-        if (Object.keys(actions).includes(event.code)) actions[event.code]();
-      },
-
-      nagivate(direction) {
-        const { length } = this.suggestions;
-        const nextOptionIndex = direction === 'next' ? 0 : length - 1;
-        const selected = this.selectedSuggestionIndex;
-        const index = getSuggestionIndex(this.suggestions, {
-          selected,
-          action: direction,
-        });
-
-        if (direction === 'prev' && nextOptionIndex === length - 1 && selected === 0) {
-          this.suggestions = selectSuggestions(this.suggestions);
-          return;
-        }
-
-        if (direction === 'next' && selected === length - 1) {
-          this.suggestions = selectSuggestions(this.suggestions);
-          return;
-        }
-
-        if (direction === 'prev' && selected === -1 && nextOptionIndex === length - 1) {
-          this.suggestions = selectSuggestions(this.suggestions, nextOptionIndex);
-          this.$nextTick(() => this.scrollToOption(nextOptionIndex));
-          this.hovered = this.selectedSuggestionIndex;
-          return;
-        }
-
-        if (nextOptionIndex >= 0 && nextOptionIndex <= length - 1) {
-          this.suggestions = selectSuggestions(this.suggestions, index);
-          this.hovered = this.selectedSuggestionIndex;
-          if (direction === 'prev') {
-            this.$nextTick(() => this.scrollToOption(selected - 1));
-          } else {
-            this.$nextTick(() => this.scrollToOption(selected + 1));
+          this.$emit('escape');
+          this.showSuggestions = false;
+        },
+        ArrowUp: () => {
+          this.nagivate('prev');
+          this.populateTerm();
+        },
+        ArrowDown: () => {
+          this.nagivate('next');
+          this.populateTerm();
+        },
+        Enter: () => this.onChange(event),
+        Tab: () => {
+          if (this.selectedSuggestionIndex !== -1) {
+            this.onChange(event);
           }
+        },
+      };
+
+      if (Object.keys(actions).includes(event.code)) actions[event.code]();
+    },
+
+    nagivate(direction) {
+      const { length } = this.suggestions;
+      const nextOptionIndex = direction === 'next' ? 0 : length - 1;
+      const selected = this.selectedSuggestionIndex;
+      const index = getSuggestionIndex(this.suggestions, {
+        selected,
+        action: direction,
+      });
+
+      if (direction === 'prev' && nextOptionIndex === length - 1 && selected === 0) {
+        this.suggestions = selectSuggestions(this.suggestions);
+        return;
+      }
+
+      if (direction === 'next' && selected === length - 1) {
+        this.suggestions = selectSuggestions(this.suggestions);
+        return;
+      }
+
+      if (direction === 'prev' && selected === -1 && nextOptionIndex === length - 1) {
+        this.suggestions = selectSuggestions(this.suggestions, nextOptionIndex);
+        this.$nextTick(() => this.scrollToOption(nextOptionIndex));
+        this.hovered = this.selectedSuggestionIndex;
+        return;
+      }
+
+      if (nextOptionIndex >= 0 && nextOptionIndex <= length - 1) {
+        this.suggestions = selectSuggestions(this.suggestions, index);
+        this.hovered = this.selectedSuggestionIndex;
+        if (direction === 'prev') {
+          this.$nextTick(() => this.scrollToOption(selected - 1));
+        } else {
+          this.$nextTick(() => this.scrollToOption(selected + 1));
         }
-      },
+      }
+    },
 
-      scrollToOption(optionValue) {
-        const $option = this.$el.querySelector(`[data-suggestion-value="${optionValue}"]`);
-        const $options = this.$el.querySelector('[data-suggestions]');
+    scrollToOption(optionValue) {
+      const $option = this.$el.querySelector(`[data-suggestion-value="${optionValue}"]`);
+      const $options = this.$el.querySelector('[data-suggestions]');
 
-        if ($option.offsetTop < $options.scrollTop) {
-          $options.scrollTop = $option.offsetTop;
-        } else if ($option.offsetTop + $option.clientHeight > $options.clientHeight) {
-          $options.scrollTop = ($option.offsetTop + $option.clientHeight) - $options.clientHeight;
-        }
-      },
+      if ($option.offsetTop < $options.scrollTop) {
+        $options.scrollTop = $option.offsetTop;
+      } else if ($option.offsetTop + $option.clientHeight > $options.clientHeight) {
+        $options.scrollTop = ($option.offsetTop + $option.clientHeight) - $options.clientHeight;
+      }
+    },
 
-      onClose() {
-        /**
+    onClose() {
+      /**
           * When user clicks outside
           * @event close
         */
 
-        if ((this.showSuggestions || this.expanded)) {
-          if (this.clearSuggestions) this.suggestions = [];
+      if ((this.showSuggestions || this.expanded)) {
+        if (this.clearSuggestions) this.suggestions = [];
 
-          this.$emit('close');
-          this.showSuggestions = false;
-        }
-      },
+        this.$emit('close');
+        this.showSuggestions = false;
+      }
+    },
 
-      onChange(event) {
-        if (this.suggestions[this.selectedSuggestionIndex]) {
-          /**
+    onChange(event) {
+      if (this.suggestions[this.selectedSuggestionIndex]) {
+        /**
             * When user navigate in list of options with kayboard and press enter
             * @event change
           */
 
-          this.$emit('change', { suggestion: this.suggestions[this.selectedSuggestionIndex], event });
-          this.showSuggestions = false;
-        } else {
-          /**
+        this.$emit('change', { suggestion: this.suggestions[this.selectedSuggestionIndex], event });
+        this.showSuggestions = false;
+      } else {
+        /**
             * When user press enter and dont have option selected
             * @event submit
           */
-          this.$emit('submit', this.value);
-        }
-      },
+        this.$emit('submit', this.value);
+      }
+    },
 
-      onFocus() {
-        if (!this.clearSuggestions) {
-          this.onInputChange({ value: this.value });
-          this.showSuggestions = true;
-        }
-        /**
+    onFocus() {
+      if (!this.clearSuggestions) {
+        this.onInputChange({ value: this.value });
+        this.showSuggestions = true;
+      }
+      /**
           * When user press in input
           * @event focus
         */
-        this.$emit('focus');
-      },
+      this.$emit('focus');
     },
-  };
+  },
+};
 </script>
 
 <style module>

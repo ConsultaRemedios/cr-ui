@@ -2,7 +2,7 @@ let nodeList = [];
 let seed = 0;
 const ctx = '@@click-outside';
 
-const documentHandler = el => (event) => {
+const documentHandler = (el) => (event) => {
   const { target } = event;
 
   if (el === target || el.contains(target)) {
@@ -15,7 +15,7 @@ const documentHandler = el => (event) => {
 };
 
 document.addEventListener('mouseup', (e) => {
-  nodeList.forEach(node => node[ctx].documentHandler(e));
+  nodeList.forEach((node) => node[ctx].documentHandler(e));
 });
 
 export default {

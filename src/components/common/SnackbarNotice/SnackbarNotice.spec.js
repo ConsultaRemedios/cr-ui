@@ -155,7 +155,7 @@ describe('SnackbarNotice', () => {
           type: 'error'
         });
 
-        expect(wrapper.find(BaseNotice).vm.$props).toEqual({
+        expect(wrapper.findComponent(BaseNotice).vm.$props).toEqual({
           ...props,
           type: 'danger',
           title: 'The title here',
@@ -172,7 +172,7 @@ describe('SnackbarNotice', () => {
           type: 'success'
         });
 
-        expect(wrapper.find(BaseNotice).vm.$props).toEqual({
+        expect(wrapper.findComponent(BaseNotice).vm.$props).toEqual({
           ...props,
           type: 'success',
           title: 'The title here',
@@ -189,7 +189,7 @@ describe('SnackbarNotice', () => {
           timeout: 6000
         });
 
-        expect(wrapper.find(BaseNotice).vm.$props).toEqual({
+        expect(wrapper.findComponent(BaseNotice).vm.$props).toEqual({
           ...props,
           title: 'The title here',
           message: undefined,
@@ -208,7 +208,7 @@ describe('SnackbarNotice', () => {
           timeout: 3000
         });
 
-        expect(wrapper.find(BaseNotice).vm.$props).toEqual({
+        expect(wrapper.findComponent(BaseNotice).vm.$props).toEqual({
           ...props,
           title: 'The important title here',
           message: 'An error details here if you want to',
@@ -235,7 +235,7 @@ describe('SnackbarNotice', () => {
 
       jest.spyOn(wrapper.vm, '$emit');
 
-      wrapper.find(BaseNotice).vm.$emit('hide');
+      wrapper.findComponent(BaseNotice).vm.$emit('hide');
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('hide');

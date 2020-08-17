@@ -1,58 +1,72 @@
 <template>
   <div :class="$style.wrapper">
     <div>
-      <FormField label="Nome" :error="fieldError('name')">
-        <BaseInput name="name" @change="onChangeField"/>
+      <FormField
+        label="Nome"
+        :error="fieldError('name')"
+      >
+        <BaseInput
+          name="name"
+          @change="onChangeField"
+        />
       </FormField>
     </div>
 
     <div>
-      <FormField label="Email" :error="fieldError('email')">
-        <BaseInput name="email" @change="onChangeField"/>
+      <FormField
+        label="Email"
+        :error="fieldError('email')"
+      >
+        <BaseInput
+          name="email"
+          @change="onChangeField"
+        />
       </FormField>
     </div>
 
     <div>
-      <BaseButton :disabled="!isFormValid">Enviar</BaseButton>
+      <BaseButton :disabled="!isFormValid">
+        Enviar
+      </BaseButton>
     </div>
   </div>
 </template>
 
 <script>
-  import { required, email, minLength as minLengthRef } from 'vuelidate/lib/validators';
+import { required, email, minLength as minLengthRef } from 'vuelidate/lib/validators';
 
-  import validator from './validator';
+import validator from './validator';
 
-  import FormField from './../../components/common/FormField';
-  import BaseInput from './../../components/common/BaseInput';
-  import BaseButton from './../../components/common/BaseButton';
+import FormField from '../../components/common/FormField';
+import BaseInput from '../../components/common/BaseInput';
+import BaseButton from '../../components/common/BaseButton';
 
-  // work around vue-docgen
-  const minLength = minLengthRef ? minLengthRef(3) : function empty() {};
+// work around vue-docgen
+const minLength = minLengthRef ? minLengthRef(3) : function empty() {};
 
-  export default {
-    name: 'ValidatorExample',
-    mixins: [validator],
-    components: { FormField, BaseInput, BaseButton },
+export default {
+  name: 'ValidatorExample',
+  components: { FormField, BaseInput, BaseButton },
+  mixins: [validator],
 
-    data: () => ({
-      name: '',
-      email: '',
-    }),
+  data: () => ({
+    name: '',
+    email: '',
+  }),
 
-    methods: {
-      onChangeField({ name, value }) {
-        this[name] = value;
+  methods: {
+    onChangeField({ name, value }) {
+      this[name] = value;
 
-        this.validateField(name);
-      },
+      this.validateField(name);
     },
+  },
 
-    validations: {
-      name: { required, minLength },
-      email: { required, email },
-    },
-  };
+  validations: {
+    name: { required, minLength },
+    email: { required, email },
+  },
+};
 </script>
 
 <style module>

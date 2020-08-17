@@ -18,15 +18,17 @@ describe('BaseNotice component', () => {
   }
 
   types.forEach((type) => {
-    it(`matches the snapshot when type is equal to ${type}`, () => {
-      const wrapper = mountComponent({ icon: warning, type })
+    it(`matches the snapshot when type is equal to ${type}`, async () => {
+      const wrapper = mountComponent({ icon: warning, type });
+
+      await wrapper.vm.$nextTick();
 
       expect(wrapper.element).toMatchSnapshot();
     });
   });
 
   describe('When there is no message', () => {
-    it('matches the snapshot', () => {
+    it('matches the snapshot', async () => {
       const wrapper = shallowMount(BaseNotice, {
         propsData: {
           title: 'title for foo',
@@ -34,6 +36,8 @@ describe('BaseNotice component', () => {
           type: 'warning',
         }
       });
+
+      await wrapper.vm.$nextTick();
 
       expect(wrapper.element).toMatchSnapshot();
     });
@@ -49,17 +53,19 @@ describe('BaseNotice component', () => {
         }
       });
 
-      expect(wrapper.find(BaseIcon).vm.id).toEqual('info.icon.svg');
+      expect(wrapper.findComponent(BaseIcon).vm.id).toEqual('info.icon.svg');
     });
   });
 
-  describe('When is a snackbar', () => {
+  describe('When is a snackbar', async () => {
     const wrapper = shallowMount(BaseNotice, {
       propsData: {
         title: 'Você precisa corrigir os erros a baixo',
         snackbar: true,
       }
     });
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.element).toMatchSnapshot();
   })

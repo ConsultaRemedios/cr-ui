@@ -34,7 +34,7 @@ describe('BaseTooltip', () => {
       }
     });
 
-    return mount(Component).find(BaseTooltip);
+    return mount(Component).findComponent(BaseTooltip);
   };
 
   const mountWithRect = (position = 'top', fixed = false) => {

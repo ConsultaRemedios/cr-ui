@@ -1,30 +1,33 @@
 <template>
-  <div v-show="show" :class="$style.loader">
+  <div
+    v-show="show"
+    :class="$style.loader"
+  >
     <SimpleLoader :text="text" />
   </div>
 </template>
 
 <script>
-  import SimpleLoader from '../SimpleLoader';
+import SimpleLoader from '../SimpleLoader';
 
-  export default {
-    name: 'FullLoader',
+export default {
+  name: 'FullLoader',
 
-    props: {
-      text: {
-        type: String,
-        required: true,
-      },
-      show: {
-        type: Boolean,
-        required: true,
-      },
+  components: {
+    SimpleLoader,
+  },
+
+  props: {
+    text: {
+      type: String,
+      required: true,
     },
-
-    components: {
-      SimpleLoader,
+    show: {
+      type: Boolean,
+      required: true,
     },
-  };
+  },
+};
 </script>
 
 <style module>

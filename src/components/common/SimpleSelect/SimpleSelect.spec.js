@@ -66,12 +66,11 @@ describe('SimpleSelect component', () => {
       expect(option.value).toEqual('F');
     });
 
-    it('selects the proper option when selected prop is changed', () => {
+    it('selects the proper option when selected prop is changed', async () => {
       const wrapper = mount(SimpleSelect, { propsData });
 
-      wrapper.vm.onChange({
-        target: { value: 'M' }
-      });
+      wrapper.find('option[value="M"]').trigger('change');
+      await wrapper.vm.$nextTick();
 
       const option = getSelected(wrapper);
 
@@ -87,7 +86,7 @@ describe('SimpleSelect component', () => {
 
       expect(wrapper.vm.$emit).not.toHaveBeenCalled();
 
-      wrapper.findAll('option').at(2).trigger('change');
+      wrapper.find('option[value="M"]').trigger('change');
 
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
       expect(wrapper.vm.$emit.mock.calls[0][1]).toEqual({name: "gender", value: "M"});

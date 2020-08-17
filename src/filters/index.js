@@ -37,8 +37,8 @@ export const currency = (value, opts = currencyDefaultOpts) => {
   return `${symbol} ${formatedInteger.join('')},${decimal}`.trim();
 };
 
-export const cpf = value => VMasker.toPattern(value, '999.999.999-99');
-export const zipcode = value => VMasker.toPattern(value, '99999-999');
+export const cpf = (value) => VMasker.toPattern(value, '999.999.999-99');
+export const zipcode = (value) => VMasker.toPattern(value, '99999-999');
 
 export const truncate = (string, length) => {
   if (string.length >= length) {

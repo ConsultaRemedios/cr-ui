@@ -1,11 +1,14 @@
 <template>
-  <BaseModal @close="$emit('close')" :class="$style.baseModal">
+  <BaseModal
+    :class="$style.baseModal"
+    @close="$emit('close')"
+  >
     <div :class="$style.header">
       <button
         :class="$style.arrowButton"
         @click="$emit('close')"
       >
-        <BaseIcon :id="icons.arrowLeft.id"/>
+        <BaseIcon :id="icons.arrowLeft.id" />
       </button>
     </div>
 
@@ -28,16 +31,16 @@
 
       <div
         :class="[$style.content, {
-            [$style.showScroll]: isMobileBreakpoint,
-            [$style.contentloader]: isLoading,
-          }]"
+          [$style.showScroll]: isMobileBreakpoint,
+          [$style.contentloader]: isLoading,
+        }]"
       >
         <SimpleLoader
           v-if="isLoading"
         />
 
         <div v-else>
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </div>
@@ -45,74 +48,74 @@
 </template>
 
 <script>
-  import BaseModal from '../../common/BaseModal';
-  import BaseIcon from '../../common/BaseIcon';
-  import SimpleLoader from '../../common/SimpleLoader';
-  import breakpointable from '../../../mixins/breakpointable';
-  import arrowLeft from '../../../icons/arrow-left.icon.svg';
+import BaseModal from '../../common/BaseModal';
+import BaseIcon from '../../common/BaseIcon';
+import SimpleLoader from '../../common/SimpleLoader';
+import breakpointable from '../../../mixins/breakpointable';
+import arrowLeft from '../../../icons/arrow-left.icon.svg';
 
-  const modalExternalPadding = 40;
+const modalExternalPadding = 40;
 
-  export default {
-    name: 'StoreBaseModal',
+export default {
+  name: 'StoreBaseModal',
 
-    components: {
-      BaseModal,
-      SimpleLoader,
-      BaseIcon,
+  components: {
+    BaseModal,
+    SimpleLoader,
+    BaseIcon,
+  },
+
+  mixins: [breakpointable],
+
+  props: {
+    name: {
+      type: String,
+      default: '',
     },
 
-    mixins: [breakpointable],
-
-    props: {
-      name: {
-        type: String,
-        default: '',
-      },
-
-      logoPath: {
-        type: String,
-        default: '',
-      },
-
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
+    logoPath: {
+      type: String,
+      default: '',
     },
 
-    data() {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  data() {
+    return {
+      ui: {
+        maxContentHeight: 0,
+      },
+    };
+  },
+
+  computed: {
+    icons() {
       return {
-        ui: {
-          maxContentHeight: 0,
-        },
+        arrowLeft,
       };
     },
+  },
 
-    methods: {
-      updateMaxContentHeight() {
-        this.ui.maxContentHeight = window.innerHeight - (modalExternalPadding * 2);
-      },
+  mounted() {
+    this.updateMaxContentHeight();
+
+    window.addEventListener('resize', this.updateMaxContentHeight);
+  },
+
+  destroyed() {
+    window.removeEventListener('resize', this.updateMaxContentHeight);
+  },
+
+  methods: {
+    updateMaxContentHeight() {
+      this.ui.maxContentHeight = window.innerHeight - (modalExternalPadding * 2);
     },
-
-    computed: {
-      icons() {
-        return {
-          arrowLeft,
-        };
-      },
-    },
-
-    mounted() {
-      this.updateMaxContentHeight();
-
-      window.addEventListener('resize', this.updateMaxContentHeight);
-    },
-
-    destroyed() {
-      window.removeEventListener('resize', this.updateMaxContentHeight);
-    },
-  };
+  },
+};
 </script>
 
 <style module>

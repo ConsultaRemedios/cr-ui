@@ -1,114 +1,117 @@
 <template>
-<transition
-  :enter-class="$style.enter"
-  :enter-active-class="$style.enterActive"
-  :enter-to-class="$style.enterTo"
-  :leave-class="$style.leave"
-  :leave-active-class="$style.leaveActive"
-  :leave-to-class="$style.leaveTo"
-  @after-leave="$emit('hide')"
->
-  <div
-    v-show="show"
-    :class="[{[$style.snackbar]: this.snackbar} , $style.notice, $style[type]]"
+  <transition
+    :enter-class="$style.enter"
+    :enter-active-class="$style.enterActive"
+    :enter-to-class="$style.enterTo"
+    :leave-class="$style.leave"
+    :leave-active-class="$style.leaveActive"
+    :leave-to-class="$style.leaveTo"
+    @after-leave="$emit('hide')"
   >
-    <ContainerBlock>
-      <div :class="$style.content">
-        <div :class="$style.iconBlock">
-          <BaseIcon :id="icon.id" />
+    <div
+      v-show="show"
+      :class="[{[$style.snackbar]: this.snackbar} , $style.notice, $style[type]]"
+    >
+      <ContainerBlock>
+        <div :class="$style.content">
+          <div :class="$style.iconBlock">
+            <BaseIcon :id="icon.id" />
+          </div>
+
+          <div :class="$style.textBlock">
+            <span :class="$style.title">
+              {{ title }}
+            </span>
+
+            <p
+              v-if="message"
+              :class="$style.message"
+            >
+              {{ message }}
+            </p>
+          </div>
         </div>
-
-       <div :class="$style.textBlock">
-         <span :class="$style.title">
-          {{title}}
-          </span>
-
-          <p v-if="message" :class="$style.message">
-            {{message}}
-          </p>
-       </div>
-      </div>
-    </ContainerBlock>
-  </div>
-</transition>
+      </ContainerBlock>
+    </div>
+  </transition>
 </template>
 
 <script>
-  import ContainerBlock from './../ContainerBlock';
-  import infoIcon from './../../../icons/info.icon.svg';
-  import BaseIcon from '../BaseIcon';
+import ContainerBlock from '../ContainerBlock';
+import infoIcon from '../../../icons/info.icon.svg';
+import BaseIcon from '../BaseIcon';
 
-  export default {
-    name: 'BaseNotice',
-    components: {
-      ContainerBlock,
-      BaseIcon,
-    },
+export default {
+  name: 'BaseNotice',
+  components: {
+    ContainerBlock,
+    BaseIcon,
+  },
 
-    data() {
-      return {
-        show: false,
-      };
-    },
-
-    props: {
-      type: {
-        type: String,
-        default: 'info',
-        validator(value) {
-          return ['info', 'warning', 'success', 'danger'].includes(value);
-        },
-      },
-
-      title: {
-        type: String,
-        required: true,
-      },
-
-      message: {
-        type: String,
-      },
-
-      scrollToSelf: {
-        type: Boolean,
-        default: true,
-      },
-
-      icon: {
-        type: Object,
-        default() { return infoIcon; },
-      },
-
-      timeout: {
-        type: Number,
-        default: 5000,
-      },
-
-      snackbar: {
-        type: Boolean,
-        default: false,
-      },
-
-      autoClose: {
-        type: Boolean,
-        default: false,
+  props: {
+    type: {
+      type: String,
+      default: 'info',
+      validator(value) {
+        return ['info', 'warning', 'success', 'danger'].includes(value);
       },
     },
 
-    mounted() {
-      if (this.scrollToSelf && !this.snackbar) {
-        window.scrollTo(0, this.$el.offsetTop);
-      }
-
-      this.show = true;
-
-      if (this.autoClose) {
-        setTimeout(() => {
-          this.show = false;
-        }, this.timeout);
-      }
+    title: {
+      type: String,
+      required: true,
     },
-  };
+
+    message: {
+      type: String,
+    },
+
+    scrollToSelf: {
+      type: Boolean,
+      default: true,
+    },
+
+    icon: {
+      type: Object,
+      default() { return infoIcon; },
+    },
+
+    timeout: {
+      type: Number,
+      default: 5000,
+    },
+
+    snackbar: {
+      type: Boolean,
+      default: false,
+    },
+
+    autoClose: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  data() {
+    return {
+      show: false,
+    };
+  },
+
+  mounted() {
+    if (this.scrollToSelf && !this.snackbar) {
+      window.scrollTo(0, this.$el.offsetTop);
+    }
+
+    this.show = true;
+
+    if (this.autoClose) {
+      setTimeout(() => {
+        this.show = false;
+      }, this.timeout);
+    }
+  },
+};
 </script>
 
 <style module>

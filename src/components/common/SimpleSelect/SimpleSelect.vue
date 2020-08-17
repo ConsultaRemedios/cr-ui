@@ -6,17 +6,20 @@
       </span>
 
       <span :class="$style.selectIcon">
-        <BaseIcon :id="icon.id"/>
+        <BaseIcon :id="icon.id" />
       </span>
     </div>
 
     <select
-      @change="onChange"
       :class="$style.nativeSelect"
       :name="name"
       v-bind="$attrs"
+      @change="onChange"
     >
-      <option disabled :selected="!value">
+      <option
+        disabled
+        :selected="!value"
+      >
         {{ placeholder }}
       </option>
 
@@ -33,64 +36,64 @@
 </template>
 
 <script>
-  import BaseIcon from '../BaseIcon';
-  import arrowIcon from '../../../icons/drop.icon.svg';
+import BaseIcon from '../BaseIcon';
+import arrowIcon from '../../../icons/drop.icon.svg';
 
-  export default {
-    inheritAttrs: false,
-    name: 'SimpleSelect',
-    components: { BaseIcon },
+export default {
+  name: 'SimpleSelect',
+  components: { BaseIcon },
+  inheritAttrs: false,
 
-    props: {
-      name: { type: String },
-      model: { type: String },
+  props: {
+    name: { type: String },
+    model: { type: String },
 
-      options: {
-        type: Array,
-        default: () => ([]),
-      },
-
-      selected: {
-        type: String,
-        default: '',
-      },
-
-      placeholder: {
-        type: String,
-        default: 'Selecione',
-      },
+    options: {
+      type: Array,
+      default: () => ([]),
     },
 
-    data() {
-      return {
-        value: this.selected,
-      };
+    selected: {
+      type: String,
+      default: '',
     },
 
-    methods: {
-      onChange({ target }) {
-        const { value } = target;
+    placeholder: {
+      type: String,
+      default: 'Selecione',
+    },
+  },
 
-        this.value = value;
+  data() {
+    return {
+      value: this.selected,
+    };
+  },
 
-        this.$emit('change', {
-          name: this.model || this.name || '',
-          value,
-        });
-      },
+  computed: {
+    label() {
+      const option = this.options.find((o) => o.value === this.value);
+      return option ? option.label : this.placeholder;
     },
 
-    computed: {
-      label() {
-        const option = this.options.find(o => o.value === this.value);
-        return option ? option.label : this.placeholder;
-      },
-
-      icon() {
-        return arrowIcon;
-      },
+    icon() {
+      return arrowIcon;
     },
-  };
+  },
+
+  methods: {
+    onChange({ target }) {
+      const { value } = target;
+
+      this.value = value;
+
+      this.$emit('change', {
+        name: this.model || this.name || '',
+        value,
+      });
+    },
+  },
+};
 </script>
 
 <style module>
