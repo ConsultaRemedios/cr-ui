@@ -57,8 +57,8 @@ describe('BaseNotice component', () => {
     });
   });
 
-  describe('When is a snackbar', async () => {
-    it('matches the snapshot', () => {
+  describe('When is a snackbar', () => {
+    it('matches the snapshot', async () => {
       const wrapper = shallowMount(BaseNotice, {
         propsData: {
           title: 'Você precisa corrigir os erros a baixo',
