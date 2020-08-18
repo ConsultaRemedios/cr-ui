@@ -1,259 +1,277 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-<div
-  class="snackbar notice info"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="display: none;"
+exports[`BaseNotice component When is a snackbar matches the snapshot 1`] = `
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  <containerblock-stub>
-    <div
-      class="content"
-    >
+  <div
+    class="snackbar notice info"
+    style=""
+  >
+    <containerblock-stub>
       <div
-        class="iconBlock"
+        class="content"
       >
-        <baseicon-stub
-          id="info.icon.svg"
-        />
-      </div>
-       
-      <div>
-        <span
-          class="title"
+        <div
+          class="iconBlock"
         >
-          
-          Você precisa corrigir os erros a baixo
-          
-        </span>
+          <baseicon-stub
+            id="info.icon.svg"
+          />
+        </div>
          
-        <!---->
+        <div>
+          <span
+            class="title"
+          >
+            
+            Você precisa corrigir os erros a baixo
+          
+          </span>
+           
+          <!---->
+        </div>
       </div>
-    </div>
-  </containerblock-stub>
-</div>
+    </containerblock-stub>
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseNotice component When there is no message matches the snapshot 1`] = `
-<div
-  class="notice warning"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style=""
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  <containerblock-stub>
-    <div
-      class="content"
-    >
+  <div
+    class="notice warning"
+    style=""
+  >
+    <containerblock-stub>
       <div
-        class="iconBlock"
+        class="content"
       >
-        <baseicon-stub
-          id="warning.icon.svg"
-        />
-      </div>
-       
-      <div>
-        <span
-          class="title"
+        <div
+          class="iconBlock"
         >
-          
-          title for foo
-          
-        </span>
+          <baseicon-stub
+            id="warning.icon.svg"
+          />
+        </div>
          
-        <!---->
+        <div>
+          <span
+            class="title"
+          >
+            
+            title for foo
+          
+          </span>
+           
+          <!---->
+        </div>
       </div>
-    </div>
-  </containerblock-stub>
-</div>
+    </containerblock-stub>
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseNotice component matches the snapshot when type is equal to danger 1`] = `
-<div
-  class="notice danger"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style=""
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  <containerblock-stub>
-    <div
-      class="content"
-    >
+  <div
+    class="notice danger"
+    style=""
+  >
+    <containerblock-stub>
       <div
-        class="iconBlock"
+        class="content"
       >
-        <baseicon-stub
-          id="warning.icon.svg"
-        />
-      </div>
-       
-      <div>
-        <span
-          class="title"
+        <div
+          class="iconBlock"
         >
-          
-          warning title!
-          
-        </span>
+          <baseicon-stub
+            id="warning.icon.svg"
+          />
+        </div>
          
-        <p
-          class="message"
-        >
+        <div>
+          <span
+            class="title"
+          >
+            
+            warning title!
           
+          </span>
+           
+          <p
+            class="message"
+          >
+            
             warning message
           
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
-  </containerblock-stub>
-</div>
+    </containerblock-stub>
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseNotice component matches the snapshot when type is equal to info 1`] = `
-<div
-  class="notice info"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style=""
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  <containerblock-stub>
-    <div
-      class="content"
-    >
+  <div
+    class="notice info"
+    style=""
+  >
+    <containerblock-stub>
       <div
-        class="iconBlock"
+        class="content"
       >
-        <baseicon-stub
-          id="warning.icon.svg"
-        />
-      </div>
-       
-      <div>
-        <span
-          class="title"
+        <div
+          class="iconBlock"
         >
-          
-          warning title!
-          
-        </span>
+          <baseicon-stub
+            id="warning.icon.svg"
+          />
+        </div>
          
-        <p
-          class="message"
-        >
+        <div>
+          <span
+            class="title"
+          >
+            
+            warning title!
           
+          </span>
+           
+          <p
+            class="message"
+          >
+            
             warning message
           
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
-  </containerblock-stub>
-</div>
+    </containerblock-stub>
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseNotice component matches the snapshot when type is equal to success 1`] = `
-<div
-  class="notice success"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style=""
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  <containerblock-stub>
-    <div
-      class="content"
-    >
+  <div
+    class="notice success"
+    style=""
+  >
+    <containerblock-stub>
       <div
-        class="iconBlock"
+        class="content"
       >
-        <baseicon-stub
-          id="warning.icon.svg"
-        />
-      </div>
-       
-      <div>
-        <span
-          class="title"
+        <div
+          class="iconBlock"
         >
-          
-          warning title!
-          
-        </span>
+          <baseicon-stub
+            id="warning.icon.svg"
+          />
+        </div>
          
-        <p
-          class="message"
-        >
+        <div>
+          <span
+            class="title"
+          >
+            
+            warning title!
           
+          </span>
+           
+          <p
+            class="message"
+          >
+            
             warning message
           
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
-  </containerblock-stub>
-</div>
+    </containerblock-stub>
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseNotice component matches the snapshot when type is equal to warning 1`] = `
-<div
-  class="notice warning"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style=""
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  <containerblock-stub>
-    <div
-      class="content"
-    >
+  <div
+    class="notice warning"
+    style=""
+  >
+    <containerblock-stub>
       <div
-        class="iconBlock"
+        class="content"
       >
-        <baseicon-stub
-          id="warning.icon.svg"
-        />
-      </div>
-       
-      <div>
-        <span
-          class="title"
+        <div
+          class="iconBlock"
         >
-          
-          warning title!
-          
-        </span>
+          <baseicon-stub
+            id="warning.icon.svg"
+          />
+        </div>
          
-        <p
-          class="message"
-        >
+        <div>
+          <span
+            class="title"
+          >
+            
+            warning title!
           
+          </span>
+           
+          <p
+            class="message"
+          >
+            
             warning message
           
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
-  </containerblock-stub>
-</div>
+    </containerblock-stub>
+  </div>
+</transition-stub>
 `;

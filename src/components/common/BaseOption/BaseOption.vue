@@ -1,46 +1,47 @@
 <template>
-  <div :class="[$style.option, {
+  <div
+    :class="[$style.option, {
       ['cr-base-option__hover']: this.isHover
     }]"
+    :data-option-value="value"
     @click="onClick"
     @mouseover="onHover"
-    :data-option-value="value"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'BaseOption',
-    props: {
-      value: {
-        type: [String, Number],
-        required: true,
-      },
-
-      emitEvent: {
-        type: Boolean,
-        default: true,
-      },
+export default {
+  name: 'BaseOption',
+  props: {
+    value: {
+      type: [String, Number],
+      required: true,
     },
 
-    computed: {
-      isHover() {
-        return this.emitEvent && this.$parent.hovered && this.$parent.hovered === this.value;
-      },
+    emitEvent: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    isHover() {
+      return this.emitEvent && this.$parent.hovered && this.$parent.hovered === this.value;
+    },
+  },
+
+  methods: {
+    onClick() {
+      if (this.emitEvent) this.$parent.$emit('change', this.value);
     },
 
-    methods: {
-      onClick() {
-        if (this.emitEvent) this.$parent.$emit('change', this.value);
-      },
-
-      onHover() {
-        this.$parent.$emit('hover', this.value);
-      },
+    onHover() {
+      this.$parent.$emit('hover', this.value);
     },
-  };
+  },
+};
 </script>
 
 <style module>

@@ -16,7 +16,9 @@ exports[`StoreModal component Snapshot When "isLoading" is "true" matches 1`] = 
     <span
       class="subTitle"
     >
+      
       O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
+    
     </span>
      
     <div
@@ -34,6 +36,7 @@ exports[`StoreModal component Snapshot When "isLoading" is "true" matches 1`] = 
           Economize no frete
         </strong>
          adicionando produtos da mesma loja
+      
       </span>
     </div>
      
@@ -43,7 +46,9 @@ exports[`StoreModal component Snapshot When "isLoading" is "true" matches 1`] = 
       size="medium"
       type="success"
     >
+      
       Ver mais produtos da loja
+    
     </basebutton-stub>
      
     <div />
@@ -67,7 +72,9 @@ exports[`StoreModal component Snapshot When has "name", "logoPath" and "informat
     <span
       class="subTitle"
     >
+      
       O CR faz uma análise rigorosa para exibir somente lojas confiáveis.
+    
     </span>
      
     <div
@@ -85,6 +92,7 @@ exports[`StoreModal component Snapshot When has "name", "logoPath" and "informat
           Economize no frete
         </strong>
          adicionando produtos da mesma loja
+      
       </span>
     </div>
      
@@ -94,7 +102,9 @@ exports[`StoreModal component Snapshot When has "name", "logoPath" and "informat
       size="medium"
       type="success"
     >
+      
       Ver mais produtos da loja
+    
     </basebutton-stub>
      
     <div>

@@ -32,31 +32,43 @@ describe('StoreBaseModal component', () => {
       wrapper = shallowStoreBaseModal();
     });
 
-    it('matches when is on mobile', () => {
+    it('matches when is on mobile', async () => {
       const wrapper = shallowStoreBaseModal(
         {},
         {},
         { isMobileBreakpoint() { return true; } }
       );
+
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('matches when is on desktop', () => {
+    it('matches when is on desktop', async () => {
       const wrapper = shallowStoreBaseModal(
         {},
         {},
         { isMobileBreakpoint() { return false; } }
       );
+      
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('matches when is loading', () => {
+    it('matches when is loading', async () => {
       wrapper.setProps({ isLoading: true });
+
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.element).toMatchSnapshot();
     });
 
-    it('matches when is not loading', () => {
+    it('matches when is not loading', async () => {
       wrapper.setProps({ isLoading: false });
+
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.element).toMatchSnapshot();
     });
   });
@@ -111,7 +123,7 @@ describe('StoreBaseModal component', () => {
     describe('When BaseModal emits "close"', () => {
       beforeEach(() => {
         jest.spyOn(wrapper.vm, '$emit');
-        wrapper.find(BaseModal).vm.$emit('close');
+        wrapper.findComponent(BaseModal).vm.$emit('close');
       });
 
       it('emits "close"', () => {

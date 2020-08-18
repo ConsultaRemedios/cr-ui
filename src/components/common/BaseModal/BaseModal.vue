@@ -3,17 +3,29 @@
     :enter-class="$style.enterTransition"
     :leave-active-class="$style.leaveActiveTransition"
   >
-    <div :class="[$style.overlay, 'cr-base-modal__overlay', customCssClass]" @click="onClickOverlay" data-modal-overlay>
-      <div :class="[$style.container, 'cr-base-modal__container']" data-modal-container>
-        <div :class="[$style.content, 'cr-base-modal__content']" data-modal-content>
-          <button v-if="dismissible" data-modal-close
+    <div
+      :class="[$style.overlay, 'cr-base-modal__overlay', customCssClass]"
+      data-modal-overlay
+      @click="onClickOverlay"
+    >
+      <div
+        :class="[$style.container, 'cr-base-modal__container']"
+        data-modal-container
+      >
+        <div
+          :class="[$style.content, 'cr-base-modal__content']"
+          data-modal-content
+        >
+          <button
+            v-if="dismissible"
+            data-modal-close
             :class="[$style.closeButton, 'cr-base-modal__close']"
             @click="$emit('close')"
           >
             <span :class="$style.closeButtonLabel">Fechar</span>
           </button>
 
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </div>
@@ -21,40 +33,40 @@
 </template>
 
 <script>
-  import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-  export default {
-    name: 'BaseModal',
-    props: {
-      dismissible: {
-        type: Boolean,
-        default: true,
-      },
-
-      customCssClass: {
-        type: Array,
-        default: () => [],
-      },
+export default {
+  name: 'BaseModal',
+  props: {
+    dismissible: {
+      type: Boolean,
+      default: true,
     },
 
-    methods: {
-      onClickOverlay(e) {
-        const isOverlayTheTarget = e.target.querySelector('[data-modal-content]');
-
-        if (isOverlayTheTarget && this.dismissible) {
-          this.$emit('close');
-        }
-      },
+    customCssClass: {
+      type: Array,
+      default: () => [],
     },
+  },
 
-    mounted() {
-      disableBodyScroll(this.$el);
-    },
+  mounted() {
+    disableBodyScroll(this.$el);
+  },
 
-    destroyed() {
-      enableBodyScroll(this.$el);
+  destroyed() {
+    enableBodyScroll(this.$el);
+  },
+
+  methods: {
+    onClickOverlay(e) {
+      const isOverlayTheTarget = e.target.querySelector('[data-modal-content]');
+
+      if (isOverlayTheTarget && this.dismissible) {
+        this.$emit('close');
+      }
     },
-  };
+  },
+};
 </script>
 
 <style module>

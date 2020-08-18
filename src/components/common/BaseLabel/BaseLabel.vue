@@ -10,41 +10,41 @@
   >
     <div :class="$style.fullWidth">
       <span :class="[$style.text, { [$style.isRequired]: required }]">
-        <slot></slot>
+        <slot />
       </span>
 
-      <slot name="outerSlot"></slot>
+      <slot name="outerSlot" />
     </div>
   </label>
 </template>
 
 <script>
-  export default {
-    name: 'BaseLabel',
-    props: {
-      /**
+export default {
+  name: 'BaseLabel',
+  props: {
+    /**
       * Same as for attribute on native label element
       */
-      isFor: {
-        type: String,
-      },
-
-      required: {
-        type: Boolean,
-        default: true,
-      },
-
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-
-      hasError: {
-        type: Boolean,
-        default: false,
-      },
+    isFor: {
+      type: String,
     },
-  };
+
+    required: {
+      type: Boolean,
+      default: true,
+    },
+
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+
+    hasError: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
 
 <style module>

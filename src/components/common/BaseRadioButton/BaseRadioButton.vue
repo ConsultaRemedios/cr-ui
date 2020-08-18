@@ -5,56 +5,59 @@
         type="radio"
         :name="name"
         :value="value"
-        @change="onChange"
         :checked="checked"
         v-bind="$attrs"
-      />
-      <span :class="$style.checkmark"></span>
-      <span v-if="label" :class="$style.label">{{ label }}</span>
+        @change="onChange"
+      >
+      <span :class="$style.checkmark" />
+      <span
+        v-if="label"
+        :class="$style.label"
+      >{{ label }}</span>
     </label>
   </div>
 </template>
 
 <script>
-  export default {
-    inheritAttrs: false,
-    name: 'BaseRadioButton',
+export default {
+  name: 'BaseRadioButton',
+  inheritAttrs: false,
 
-    props: {
-      label: {
-        type: String,
-        default: '',
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-
-      value: {
-        type: [String, Number],
-        required: true,
-      },
-
-      checked: {
-        type: Boolean,
-        default: false,
-      },
-
-      model: {
-        type: String,
-        default: '',
-      },
+  props: {
+    label: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      required: true,
     },
 
-    methods: {
-      onChange() {
-        this.$emit('change', {
-          name: this.model || this.name,
-          value: this.value,
-        });
-      },
+    value: {
+      type: [String, Number],
+      required: true,
     },
-  };
+
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+
+    model: {
+      type: String,
+      default: '',
+    },
+  },
+
+  methods: {
+    onChange() {
+      this.$emit('change', {
+        name: this.model || this.name,
+        value: this.value,
+      });
+    },
+  },
+};
 </script>
 
 <style module>

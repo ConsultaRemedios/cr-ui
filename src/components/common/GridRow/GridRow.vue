@@ -1,53 +1,56 @@
 <template>
-  <div :class="rowClasses" :style="{margin: margin}">
-    <slot></slot>
+  <div
+    :class="rowClasses"
+    :style="{margin: margin}"
+  >
+    <slot />
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'GridRow',
-    props: {
-      justify: {
-        type: [String, Object],
-      },
-      align: {
-        type: [String, Object],
-      },
-      gutter: {
-        type: Number,
-        default: 30,
-      },
+export default {
+  name: 'GridRow',
+  props: {
+    justify: {
+      type: [String, Object],
     },
-    computed: {
-      rowClasses() {
-        const classes = [this.$style.row];
-
-        if (typeof this.align === 'string') {
-          classes.push(this.$style[this.align]);
-        } else if (typeof this.align === 'object') {
-          Object.keys(this.align).forEach((breakpointName) => {
-            const breakpointValue = this.align[breakpointName];
-            classes.push(this.$style[`${breakpointName}-${breakpointValue}`]);
-          });
-        }
-
-        if (typeof this.justify === 'string') {
-          classes.push(this.$style[this.justify]);
-        } else if (typeof this.justify === 'object') {
-          Object.keys(this.justify).forEach((breakpointName) => {
-            const breakpointValue = this.justify[breakpointName];
-            classes.push(this.$style[`${breakpointName}-${breakpointValue}`]);
-          });
-        }
-
-        return classes;
-      },
-      margin() {
-        return `${0} -${this.gutter / 2}px`;
-      },
+    align: {
+      type: [String, Object],
     },
-  };
+    gutter: {
+      type: Number,
+      default: 30,
+    },
+  },
+  computed: {
+    rowClasses() {
+      const classes = [this.$style.row];
+
+      if (typeof this.align === 'string') {
+        classes.push(this.$style[this.align]);
+      } else if (typeof this.align === 'object') {
+        Object.keys(this.align).forEach((breakpointName) => {
+          const breakpointValue = this.align[breakpointName];
+          classes.push(this.$style[`${breakpointName}-${breakpointValue}`]);
+        });
+      }
+
+      if (typeof this.justify === 'string') {
+        classes.push(this.$style[this.justify]);
+      } else if (typeof this.justify === 'object') {
+        Object.keys(this.justify).forEach((breakpointName) => {
+          const breakpointValue = this.justify[breakpointName];
+          classes.push(this.$style[`${breakpointName}-${breakpointValue}`]);
+        });
+      }
+
+      return classes;
+    },
+    margin() {
+      return `${0} -${this.gutter / 2}px`;
+    },
+  },
+};
 </script>
 
 <style module>

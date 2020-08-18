@@ -1,62 +1,65 @@
 <template>
-  <div :class="columnClasses" :style="{padding}">
-    <slot></slot>
+  <div
+    :class="columnClasses"
+    :style="{padding}"
+  >
+    <slot />
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'GridCol',
-    props: {
-      span: {
-        type: [Number, Object],
-      },
-      offset: {
-        type: [Number, Object],
-      },
-      order: {
-        type: [Number, Object],
-        default: 1,
-      },
+export default {
+  name: 'GridCol',
+  props: {
+    span: {
+      type: [Number, Object],
     },
-    computed: {
-      columnClasses() {
-        const classes = [this.$style.col];
-
-        if (typeof this.span === 'number') {
-          classes.push(this.$style[`col${this.span}`]);
-        } else if (typeof this.span === 'object') {
-          Object.keys(this.span).forEach((breakpointName) => {
-            const breakpointValue = this.span[breakpointName];
-            classes.push(this.$style[`col-${breakpointName}${breakpointValue}`]);
-          });
-        }
-
-        if (typeof this.offset === 'number') {
-          classes.push(this.$style[`col-offset${this.offset}`]);
-        } else if (typeof this.offset === 'object') {
-          Object.keys(this.offset).forEach((breakpointName) => {
-            const breakpointValue = this.offset[breakpointName];
-            classes.push(this.$style[`col-offset-${breakpointName}-${breakpointValue}`]);
-          });
-        }
-
-        if (typeof this.order === 'number') {
-          classes.push(this.$style[`order${this.order}`]);
-        } else if (typeof this.order === 'object') {
-          Object.keys(this.order).forEach((breakpointName) => {
-            const breakpointValue = this.order[breakpointName];
-            classes.push(this.$style[`order-${breakpointName}-${breakpointValue}`]);
-          });
-        }
-
-        return classes;
-      },
-      padding() {
-        return `${0} ${this.$parent.gutter / 2}px`;
-      },
+    offset: {
+      type: [Number, Object],
     },
-  };
+    order: {
+      type: [Number, Object],
+      default: 1,
+    },
+  },
+  computed: {
+    columnClasses() {
+      const classes = [this.$style.col];
+
+      if (typeof this.span === 'number') {
+        classes.push(this.$style[`col${this.span}`]);
+      } else if (typeof this.span === 'object') {
+        Object.keys(this.span).forEach((breakpointName) => {
+          const breakpointValue = this.span[breakpointName];
+          classes.push(this.$style[`col-${breakpointName}${breakpointValue}`]);
+        });
+      }
+
+      if (typeof this.offset === 'number') {
+        classes.push(this.$style[`col-offset${this.offset}`]);
+      } else if (typeof this.offset === 'object') {
+        Object.keys(this.offset).forEach((breakpointName) => {
+          const breakpointValue = this.offset[breakpointName];
+          classes.push(this.$style[`col-offset-${breakpointName}-${breakpointValue}`]);
+        });
+      }
+
+      if (typeof this.order === 'number') {
+        classes.push(this.$style[`order${this.order}`]);
+      } else if (typeof this.order === 'object') {
+        Object.keys(this.order).forEach((breakpointName) => {
+          const breakpointValue = this.order[breakpointName];
+          classes.push(this.$style[`order-${breakpointName}-${breakpointValue}`]);
+        });
+      }
+
+      return classes;
+    },
+    padding() {
+      return `${0} ${this.$parent.gutter / 2}px`;
+    },
+  },
+};
 </script>
 
 <style module>

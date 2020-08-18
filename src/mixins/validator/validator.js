@@ -32,7 +32,7 @@ export default {
     validateField(name) {
       const field = this.$v[name];
       const rules = Object.keys(field.$params);
-      const ruleWithError = rules.find(rule => !field[rule]);
+      const ruleWithError = rules.find((rule) => !field[rule]);
 
       this.errors[name] = '';
 
@@ -48,15 +48,15 @@ export default {
 
     validateForm() {
       return Object.keys(this.$v.$params)
-        .map(fieldName => this.validateField(fieldName))
-        .every(isValid => isValid);
+        .map((fieldName) => this.validateField(fieldName))
+        .every((isValid) => isValid);
     },
   },
 
   computed: {
     isFormValid() {
       if (this.$v.$dirty) {
-        return Object.keys(this.errors).every(field => !this.errors[field]);
+        return Object.keys(this.errors).every((field) => !this.errors[field]);
       }
 
       return true;

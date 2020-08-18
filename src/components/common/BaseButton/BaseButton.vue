@@ -1,5 +1,6 @@
 <template>
-  <component :is="element"
+  <component
+    :is="element"
     :type="buttonType"
     :disabled="disabled || isLoading"
     :class="[
@@ -15,9 +16,9 @@
       }
     ]"
     :target="target"
-    @click="onClick"
     :href="path"
     v-bind="$attrs"
+    @click="onClick"
   >
     <BaseIcon
       v-if="isLoading"
@@ -30,99 +31,99 @@
       :class="$style.iconButton"
     />
     <span :class="[{[$style.textLoading]: isLoading}]">
-      <slot></slot>
+      <slot />
     </span>
   </component>
 </template>
 
 <script>
-  import BaseIcon from '../BaseIcon';
-  import loaderIcon from '../../../icons/loader.icon.svg';
+import BaseIcon from '../BaseIcon';
+import loaderIcon from '../../../icons/loader.icon.svg';
 
-  export default {
-    inheritAttrs: false,
-    name: 'BaseButton',
-    props: {
-      buttonType: {
-        type: String,
-        validator(value) {
-          return ['button', 'submit'].includes(value);
-        },
-      },
+export default {
+  name: 'BaseButton',
 
-      size: {
-        type: String,
-        default: 'medium',
-        validator(value) {
-          return ['small', 'medium', 'large'].includes(value);
-        },
-      },
-
-      type: {
-        type: String,
-        default: 'success',
-        validator(value) {
-          return ['success', 'info', 'warning', 'danger', 'neutral', 'naked', 'naked-red'].includes(value);
-        },
-      },
-
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-
-      fill: {
-        type: Boolean,
-        default: false,
-      },
-
-      path: {
-        type: String,
-      },
-
-      openNewTab: {
-        type: Boolean,
-        default: false,
-      },
-
-      inverted: {
-        type: Boolean,
-        default: false,
-      },
-
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
-      icon: {
-        type: Object,
+  components: {
+    BaseIcon,
+  },
+  inheritAttrs: false,
+  props: {
+    buttonType: {
+      type: String,
+      validator(value) {
+        return ['button', 'submit'].includes(value);
       },
     },
 
-    computed: {
-      element() {
-        return this.path ? 'a' : 'button';
-      },
-
-      target() {
-        return this.openNewTab ? '_blank' : null;
-      },
-
-      loaderIcon() {
-        return loaderIcon;
+    size: {
+      type: String,
+      default: 'medium',
+      validator(value) {
+        return ['small', 'medium', 'large'].includes(value);
       },
     },
 
-    methods: {
-      onClick() {
-        this.$emit('click');
+    type: {
+      type: String,
+      default: 'success',
+      validator(value) {
+        return ['success', 'info', 'warning', 'danger', 'neutral', 'naked', 'naked-red'].includes(value);
       },
     },
 
-    components: {
-      BaseIcon,
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-  };
+
+    fill: {
+      type: Boolean,
+      default: false,
+    },
+
+    path: {
+      type: String,
+    },
+
+    openNewTab: {
+      type: Boolean,
+      default: false,
+    },
+
+    inverted: {
+      type: Boolean,
+      default: false,
+    },
+
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+    icon: {
+      type: Object,
+    },
+  },
+
+  computed: {
+    element() {
+      return this.path ? 'a' : 'button';
+    },
+
+    target() {
+      return this.openNewTab ? '_blank' : null;
+    },
+
+    loaderIcon() {
+      return loaderIcon;
+    },
+  },
+
+  methods: {
+    onClick() {
+      this.$emit('click');
+    },
+  },
+};
 </script>
 
 <style module>

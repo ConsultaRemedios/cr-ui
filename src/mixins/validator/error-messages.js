@@ -1,11 +1,11 @@
-const withCustomMessage = callback => (params) => {
+const withCustomMessage = (callback) => (params) => {
   if (params.message) return params.message;
   return callback(params);
 };
 
 export const required = withCustomMessage(() => 'Campo obrigatório');
 
-export const minLength = withCustomMessage(params => (
+export const minLength = withCustomMessage((params) => (
   `O campo deve ter no mínimo ${params.min} caracteres`
 ));
 

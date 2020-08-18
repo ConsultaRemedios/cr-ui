@@ -12,131 +12,134 @@
       :class="[$style.wrapper, themeClass]"
       :style="style"
     >
-      <slot></slot>
+      <slot />
 
-      <div :class="$style.arrow" data-popper-arrow></div>
+      <div
+        :class="$style.arrow"
+        data-popper-arrow
+      />
     </div>
   </transition>
 </template>
 
 <script>
-  import { createPopper } from '@popperjs/core';
+import { createPopper } from '@popperjs/core';
 
-  export default {
-    name: 'BaseTooltip',
-    props: {
-      show: {
-        type: Boolean,
-        required: true,
-      },
-
-      position: {
-        type: String,
-        default: 'top',
-      },
-
-      fixed: {
-        type: Boolean,
-        default: false,
-      },
-
-      width: {
-        type: String,
-        default: 'auto',
-      },
-
-      height: {
-        type: String,
-        default: 'auto',
-      },
-
-      theme: {
-        type: String,
-        default: 'light',
-      },
+export default {
+  name: 'BaseTooltip',
+  props: {
+    show: {
+      type: Boolean,
+      required: true,
     },
 
-    data() {
-      return {
-        positionFitted: this.position,
-        style: {
-          width: this.width,
-          height: this.height,
-        },
-        reference: null,
-        content: null,
-      };
+    position: {
+      type: String,
+      default: 'top',
     },
 
-    mounted() {
-      this.reference = this.$el.parentNode || document.body;
-      this.content = this.$el;
-
-      document.body.appendChild(this.content);
-
-      this.initPopper();
+    fixed: {
+      type: Boolean,
+      default: false,
     },
 
-    destroyed() {
-      this.destroyPopper();
-
-      this.reference.appendChild(this.content);
+    width: {
+      type: String,
+      default: 'auto',
     },
 
-    methods: {
-      initPopper() {
-        this.popper = createPopper(this.reference, this.content, {
-          placement: this.position,
-          removeOnDestroy: true,
-          strategy: this.fixed ? 'fixed' : 'absolute',
-          modifiers: [
-            {
-              name: 'arrow',
-              options: {
-                padding: 5,
-              },
+    height: {
+      type: String,
+      default: 'auto',
+    },
+
+    theme: {
+      type: String,
+      default: 'light',
+    },
+  },
+
+  data() {
+    return {
+      positionFitted: this.position,
+      style: {
+        width: this.width,
+        height: this.height,
+      },
+      reference: null,
+      content: null,
+    };
+  },
+
+  computed: {
+    themeClass() {
+      if (this.theme === 'dark') return this.$style.dark;
+      return this.$style.light;
+    },
+  },
+
+  watch: {
+    show() {
+      if (!this.show) return;
+
+      this.$nextTick(() => {
+        this.updatePopper();
+      });
+    },
+  },
+
+  mounted() {
+    this.reference = this.$el.parentNode || document.body;
+    this.content = this.$el;
+
+    document.body.appendChild(this.content);
+
+    this.initPopper();
+  },
+
+  destroyed() {
+    this.destroyPopper();
+
+    this.reference.appendChild(this.content);
+  },
+
+  methods: {
+    initPopper() {
+      this.popper = createPopper(this.reference, this.content, {
+        placement: this.position,
+        removeOnDestroy: true,
+        strategy: this.fixed ? 'fixed' : 'absolute',
+        modifiers: [
+          {
+            name: 'arrow',
+            options: {
+              padding: 5,
             },
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 9],
-              },
+          },
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 9],
             },
-          ],
-        });
-      },
-
-      updatePopper() {
-        if (this.popper) {
-          this.popper.forceUpdate();
-        }
-      },
-
-      destroyPopper() {
-        if (this.popper) {
-          this.popper.destroy();
-          this.popper = null;
-        }
-      },
+          },
+        ],
+      });
     },
 
-    computed: {
-      themeClass() {
-        if (this.theme === 'dark') return this.$style.dark;
-        return this.$style.light;
-      },
+    updatePopper() {
+      if (this.popper) {
+        this.popper.forceUpdate();
+      }
     },
 
-    watch: {
-      show() {
-        if (!this.show) return;
-
-        this.$nextTick(() => {
-          this.updatePopper();
-        });
-      },
+    destroyPopper() {
+      if (this.popper) {
+        this.popper.destroy();
+        this.popper = null;
+      }
     },
-  };
+  },
+};
 </script>
 
 <style module>

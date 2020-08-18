@@ -1,13 +1,13 @@
 <template>
   <div :class="$style.container">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'ContainerBlock',
-  };
+export default {
+  name: 'ContainerBlock',
+};
 </script>
 
 <style module>

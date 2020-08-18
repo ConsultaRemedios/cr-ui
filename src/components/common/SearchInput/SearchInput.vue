@@ -32,70 +32,70 @@
 </template>
 
 <script>
-  import BaseIcon from '../BaseIcon';
-  import search from '../../../icons/search.icon.svg';
-  import cancel from '../../../icons/cancel.icon.svg';
+import BaseIcon from '../BaseIcon';
+import search from '../../../icons/search.icon.svg';
+import cancel from '../../../icons/cancel.icon.svg';
 
-  export default {
-    name: 'SearchInput',
+export default {
+  name: 'SearchInput',
 
-    props: {
-      value: {
-        type: String,
-        default: '',
-      },
+  components: {
+    BaseIcon,
+  },
 
-      placeholder: {
-        type: String,
-        default: 'Buscar...',
-      },
-
-      showClearButton: {
-        type: Boolean,
-        default: false,
-      },
+  props: {
+    value: {
+      type: String,
+      default: '',
     },
 
-    data() {
-      return {
-        inputValue: '',
-      };
+    placeholder: {
+      type: String,
+      default: 'Buscar...',
     },
 
-    methods: {
-      onInput({ target }) {
-        this.inputValue = target.value;
-      },
+    showClearButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
-      onSearch() {
-        this.$emit('submit', { value: this.inputValue });
-      },
+  data() {
+    return {
+      inputValue: '',
+    };
+  },
 
-      onClickClearButton() {
-        this.$emit('click-clear-button');
-      },
+  computed: {
+    searchIcon() {
+      return search;
     },
 
-    computed: {
-      searchIcon() {
-        return search;
-      },
+    cancelIcon() {
+      return cancel;
+    },
+  },
 
-      cancelIcon() {
-        return cancel;
-      },
+  created() {
+    if (this.value) {
+      this.inputValue = this.value;
+    }
+  },
+
+  methods: {
+    onInput({ target }) {
+      this.inputValue = target.value;
     },
 
-    created() {
-      if (this.value) {
-        this.inputValue = this.value;
-      }
+    onSearch() {
+      this.$emit('submit', { value: this.inputValue });
     },
 
-    components: {
-      BaseIcon,
+    onClickClearButton() {
+      this.$emit('click-clear-button');
     },
-  };
+  },
+};
 </script>
 
 <style module>

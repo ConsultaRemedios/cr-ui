@@ -1,23 +1,29 @@
 <template>
   <div :class="$style.content">
-    <img :class="$style.image" src="./../../../assets/loader.svg" />
+    <img
+      :class="$style.image"
+      src="./../../../assets/loader.svg"
+    >
 
-    <span v-if="hasSlotData" :class="$style.text">
-      <slot></slot>
+    <span
+      v-if="hasSlotData"
+      :class="$style.text"
+    >
+      <slot />
     </span>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'SimpleLoader',
+export default {
+  name: 'SimpleLoader',
 
-    computed: {
-      hasSlotData() {
-        return this.$slots.default;
-      },
+  computed: {
+    hasSlotData() {
+      return this.$slots.default;
     },
-  };
+  },
+};
 </script>
 
 <style module>

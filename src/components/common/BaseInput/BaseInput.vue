@@ -10,13 +10,13 @@
     <input
       :class="inputClasses"
       :name="name"
+      :style="customStyle"
+      v-bind="$attrs"
       @keydown="onKeydown"
       @input="onChange"
       @blur="onBlur"
       @focus="onFocus"
-      :style="customStyle"
-      v-bind="$attrs"
-    />
+    >
 
     <BaseIcon
       v-if="suffixIcon"
@@ -25,108 +25,109 @@
       :style="{ color: suffixIcon.color }"
     />
 
-    <img v-if="isLoading"
+    <img
+      v-if="isLoading"
       :class="$style.loader"
       src="./../../../assets/loader-input.svg"
-    />
+    >
   </div>
 </template>
 
 <script>
-  import BaseIcon from '../BaseIcon';
+import BaseIcon from '../BaseIcon';
 
-  export default {
-    inheritAttrs: false,
+export default {
 
-    name: 'BaseInput',
+  name: 'BaseInput',
 
-    props: {
-      classes: {
-        type: Array,
-        default: () => [],
-      },
+  components: {
+    BaseIcon,
+  },
+  inheritAttrs: false,
 
-      size: {
-        type: String,
-        default: 'medium',
-      },
-      name: {
-        type: String,
-        default: '',
-      },
-
-      hasError: {
-        type: Boolean,
-        default: false,
-      },
-
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
-
-      customStyle: {
-        type: Object,
-        default: () => {},
-      },
-
-      model: {
-        type: String,
-        default: '',
-      },
-
-      prefixIcon: {
-        type: Object,
-      },
-
-      suffixIcon: {
-        type: Object,
-      },
-
+  props: {
+    classes: {
+      type: Array,
+      default: () => [],
     },
 
-    computed: {
-      inputClasses() {
-        return this.classes.concat([this.$style[this.size], {
-          [this.$style.input]: true,
-          [this.$style.hasError]: this.hasError,
-          [this.$style.isLoading]: this.isLoading,
-          [this.$style.inputPadLef]: this.prefixIcon,
-          [this.$style.inputPadRig]: this.suffixIcon,
-        }]);
-      },
+    size: {
+      type: String,
+      default: 'medium',
+    },
+    name: {
+      type: String,
+      default: '',
     },
 
-    methods: {
-      createEvent(e) {
-        return {
-          name: this.model || this.name,
-          value: e.currentTarget.value,
-          event: e,
-        };
-      },
-
-      onKeydown(e) {
-        this.$emit('keydown', this.createEvent(e));
-      },
-
-      onChange(e) {
-        this.$emit('change', this.createEvent(e));
-      },
-
-      onBlur(e) {
-        this.$emit('blur', this.createEvent(e));
-      },
-
-      onFocus(e) {
-        this.$emit('focus', this.createEvent(e));
-      },
+    hasError: {
+      type: Boolean,
+      default: false,
     },
 
-    components: {
-      BaseIcon,
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
-  };
+
+    customStyle: {
+      type: Object,
+      default: () => {},
+    },
+
+    model: {
+      type: String,
+      default: '',
+    },
+
+    prefixIcon: {
+      type: Object,
+    },
+
+    suffixIcon: {
+      type: Object,
+    },
+
+  },
+
+  computed: {
+    inputClasses() {
+      return this.classes.concat([this.$style[this.size], {
+        [this.$style.input]: true,
+        [this.$style.hasError]: this.hasError,
+        [this.$style.isLoading]: this.isLoading,
+        [this.$style.inputPadLef]: this.prefixIcon,
+        [this.$style.inputPadRig]: this.suffixIcon,
+      }]);
+    },
+  },
+
+  methods: {
+    createEvent(e) {
+      return {
+        name: this.model || this.name,
+        value: e.currentTarget.value,
+        event: e,
+      };
+    },
+
+    onKeydown(e) {
+      this.$emit('keydown', this.createEvent(e));
+    },
+
+    onChange(e) {
+      this.$emit('change', this.createEvent(e));
+    },
+
+    onBlur(e) {
+      this.$emit('blur', this.createEvent(e));
+    },
+
+    onFocus(e) {
+      this.$emit('focus', this.createEvent(e));
+    },
+  },
+};
 </script>
 
 <style module>

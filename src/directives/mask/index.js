@@ -1,5 +1,5 @@
 import VMasker from 'vanilla-masker';
-import { max } from './../../helpers';
+import { max } from '../../helpers';
 
 const ctx = '@@mask';
 
@@ -11,7 +11,7 @@ const patterns = {
   money: 'money',
 };
 
-const unmask = value => value.replace(/[^a-zA-Z0-9]/g, '');
+const unmask = (value) => value.replace(/[^a-zA-Z0-9]/g, '');
 
 const unmaskMoney = (value) => {
   let newValue = value.replace(/\D/g, '');
@@ -21,7 +21,7 @@ const unmaskMoney = (value) => {
   return newValue;
 };
 
-const getInput = el => (
+const getInput = (el) => (
   el.tagName === 'INPUT' ? el : el.querySelector('input')
 );
 
@@ -32,7 +32,7 @@ const getPattern = (value, mask) => {
 
   if (pattern === 'money') return pattern;
 
-  const unmaskedPatternLengths = pattern.map(p => unmask(p).length);
+  const unmaskedPatternLengths = pattern.map((p) => unmask(p).length);
   const maxLength = max(unmaskedPatternLengths);
   const unmaskedValue = unmask(value);
 
@@ -91,4 +91,6 @@ const directive = {
 };
 
 export default directive;
-export { unmask, unmaskMoney, getInput, getPattern, maskInput };
+export {
+  unmask, unmaskMoney, getInput, getPattern, maskInput,
+};

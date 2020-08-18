@@ -2,8 +2,8 @@
   <StoreBaseModal
     :title="title"
     :name="name"
-    :logoPath="logoPath"
-    :isLoading="isLoading"
+    :logo-path="logoPath"
+    :is-loading="isLoading"
     @close="$emit('close')"
   >
     <div v-html="information" />
@@ -11,37 +11,37 @@
 </template>
 
 <script>
-  import StoreBaseModal from '../StoreBaseModal';
+import StoreBaseModal from '../StoreBaseModal';
 
-  export default {
-    name: 'StorePolicyModal',
-    components: { StoreBaseModal },
+export default {
+  name: 'StorePolicyModal',
+  components: { StoreBaseModal },
 
-    props: {
-      title: {
-        type: String,
-        required: true,
-      },
-
-      name: {
-        type: String,
-        default: '',
-      },
-
-      logoPath: {
-        type: String,
-        default: '',
-      },
-
-      information: {
-        type: String,
-        default: '',
-      },
-
-      isLoading: {
-        type: Boolean,
-        default: false,
-      },
+  props: {
+    title: {
+      type: String,
+      required: true,
     },
-  };
+
+    name: {
+      type: String,
+      default: '',
+    },
+
+    logoPath: {
+      type: String,
+      default: '',
+    },
+
+    information: {
+      type: String,
+      default: '',
+    },
+
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>

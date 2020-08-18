@@ -33,14 +33,16 @@ describe('BaseSelect', () => {
     });
   });
 
-  it('updates selected data when value prop changes', () => {
+  it('updates selected data when value prop changes', async () => {
     const { wrapper } = setup();
 
     wrapper.setProps({ value: 1 });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.selected).toEqual(1);
 
     wrapper.setProps({ value: 0 });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.selected).toEqual(0);
   });

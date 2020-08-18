@@ -14,8 +14,8 @@ describe('InputGroup', () => {
       }
     });
 
-    const input = wrapper.find(BaseInput);
-    const button = wrapper.find(BaseButton);
+    const input = wrapper.findComponent(BaseInput);
+    const button = wrapper.findComponent(BaseButton);
 
     expect(input.classes()).toContain('customInput');
     expect(button.classes()).toContain('customButton');

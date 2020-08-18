@@ -1,115 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BaseTooltip Snapshots matches Snapshot when position is bottom 1`] = `
-<div
-  class="wrapper light"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="width: auto; height: auto;"
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  Example tooltip text 
   <div
-    class="arrow"
-    data-popper-arrow=""
-  />
-</div>
+    class="wrapper light"
+    style="width: auto; height: auto;"
+  >
+    Example tooltip text 
+    <div
+      class="arrow"
+      data-popper-arrow=""
+    />
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseTooltip Snapshots matches Snapshot when position is left 1`] = `
-<div
-  class="wrapper light"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="width: auto; height: auto;"
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  Example tooltip text 
   <div
-    class="arrow"
-    data-popper-arrow=""
-  />
-</div>
+    class="wrapper light"
+    style="width: auto; height: auto;"
+  >
+    Example tooltip text 
+    <div
+      class="arrow"
+      data-popper-arrow=""
+    />
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseTooltip Snapshots matches Snapshot when position is not passed 1`] = `
-<div
-  class="wrapper light"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="width: auto; height: auto;"
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  Example tooltip text 
   <div
-    class="arrow"
-    data-popper-arrow=""
-  />
-</div>
+    class="wrapper light"
+    style="width: auto; height: auto;"
+  >
+    Example tooltip text 
+    <div
+      class="arrow"
+      data-popper-arrow=""
+    />
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseTooltip Snapshots matches Snapshot when position is right 1`] = `
-<div
-  class="wrapper light"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="width: auto; height: auto;"
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  Example tooltip text 
   <div
-    class="arrow"
-    data-popper-arrow=""
-  />
-</div>
+    class="wrapper light"
+    style="width: auto; height: auto;"
+  >
+    Example tooltip text 
+    <div
+      class="arrow"
+      data-popper-arrow=""
+    />
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseTooltip Snapshots matches Snapshot when show is false 1`] = `
-<div
-  class="wrapper light"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="width: auto; height: auto; display: none;"
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  Example tooltip text 
   <div
-    class="arrow"
-    data-popper-arrow=""
-  />
-</div>
+    class="wrapper light"
+    style="width: auto; height: auto; display: none;"
+  >
+    Example tooltip text 
+    <div
+      class="arrow"
+      data-popper-arrow=""
+    />
+  </div>
+</transition-stub>
 `;
 
 exports[`BaseTooltip Snapshots matches Snapshot when theme is dark 1`] = `
-<div
-  class="wrapper dark"
-  enter-active-class="enterActive"
-  enter-class="enter"
-  enter-to-class="enterTo"
-  leave-active-class="leaveActive"
-  leave-class="leave"
-  leave-to-class="leaveTo"
-  style="width: auto; height: auto;"
+<transition-stub
+  enteractiveclass="enterActive"
+  enterclass="enter"
+  entertoclass="enterTo"
+  leaveactiveclass="leaveActive"
+  leaveclass="leave"
+  leavetoclass="leaveTo"
 >
-  Example tooltip text 
   <div
-    class="arrow"
-    data-popper-arrow=""
-  />
-</div>
+    class="wrapper dark"
+    style="width: auto; height: auto;"
+  >
+    Example tooltip text 
+    <div
+      class="arrow"
+      data-popper-arrow=""
+    />
+  </div>
+</transition-stub>
 `;

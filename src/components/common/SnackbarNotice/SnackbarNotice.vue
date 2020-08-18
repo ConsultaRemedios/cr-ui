@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import BaseNotice from './../BaseNotice';
-import thumbsUpIcon from './../../../icons/thumb-up.icon.svg';
-import infoIcon from './../../../icons/info.icon.svg';
+import BaseNotice from '../BaseNotice';
+import thumbsUpIcon from '../../../icons/thumb-up.icon.svg';
+import infoIcon from '../../../icons/info.icon.svg';
 
 export default {
   name: 'SnackbarNotice',

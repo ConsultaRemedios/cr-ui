@@ -39,7 +39,7 @@ describe('CreditCardField', () => {
       const wrapper = shallowMount(CreditCardField, { propsData: props });
       const wrapper2 = shallowMount(CreditCardField, { propsData: props });
 
-      wrapper2.find(BaseInput).vm.$emit('change', { value: '54799886282def08503' });
+      wrapper2.findComponent(BaseInput).vm.$emit('change', { value: '54799886282def08503' });
 
       expect.assertions(1);
 
@@ -209,10 +209,11 @@ describe('CreditCardField', () => {
     });
   });
 
-  it('updates input value when the value prop is changed', () => {
+  it('updates input value when the value prop is changed', async () => {
     const wrapper = mount(CreditCardField, { propsData: props });
 
     wrapper.setProps({ value: '5478' });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.find('input').element.value).toEqual('5478');
   });

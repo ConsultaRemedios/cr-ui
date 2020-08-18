@@ -1,23 +1,32 @@
 <template>
   <div :class="$style.errorBox">
     <span :class="$style.title">
-      {{title}}
+      {{ title }}
     </span>
 
     <div :class="$style.errorsBlock">
       <ul :class="$style.errorList">
-        <li v-for="(error, index) in errorList.withKeys" :key="'withKeys-' + index">
-          {{error.field}}
+        <li
+          v-for="(error, index) in errorList.withKeys"
+          :key="'withKeys-' + index"
+        >
+          {{ error.field }}
 
           <ul :class="$style.fieldErrorList">
-            <li v-for="(fieldErr, fieldErrIndex) in error.errors" :key="fieldErrIndex">
-              {{fieldErr}}
+            <li
+              v-for="(fieldErr, fieldErrIndex) in error.errors"
+              :key="fieldErrIndex"
+            >
+              {{ fieldErr }}
             </li>
           </ul>
         </li>
 
-        <li v-for="(error, index) in errorList.withoutKeys" :key="'withoutKeys-' + index">
-          {{error}}
+        <li
+          v-for="(error, index) in errorList.withoutKeys"
+          :key="'withoutKeys-' + index"
+        >
+          {{ error }}
         </li>
       </ul>
     </div>
@@ -25,66 +34,66 @@
 </template>
 
 <script>
-  export default {
-    name: 'FormError',
-    props: {
-      title: {
-        type: String,
-      },
-
-      errors: {
-        type: [String, Array, Object],
-        default: () => [],
-      },
-
-      blackList: {
-        type: Array,
-        default: () => [],
-      },
-
-      scrollToSelf: {
-        type: Boolean,
-        default: true,
-      },
+export default {
+  name: 'FormError',
+  props: {
+    title: {
+      type: String,
     },
 
-    computed: {
-      errorList() {
-        const errors = typeof this.errors === 'string' ? [this.errors] : this.errors;
+    errors: {
+      type: [String, Array, Object],
+      default: () => [],
+    },
 
-        const errorList = {
-          withKeys: [],
-          withoutKeys: [],
+    blackList: {
+      type: Array,
+      default: () => [],
+    },
+
+    scrollToSelf: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    errorList() {
+      const errors = typeof this.errors === 'string' ? [this.errors] : this.errors;
+
+      const errorList = {
+        withKeys: [],
+        withoutKeys: [],
+      };
+
+      if (Array.isArray(errors)) {
+        return {
+          ...errorList,
+          withoutKeys: errors,
         };
+      }
 
-        if (Array.isArray(errors)) {
-          return {
-            ...errorList,
-            withoutKeys: errors,
-          };
+      return Object.keys(errors).reduce((acc, errKey) => {
+        if (this.blackList.includes(errKey)) {
+          acc.withoutKeys = acc.withoutKeys.concat(errors[errKey]);
+        } else {
+          acc.withKeys = acc.withKeys.concat({
+            field: errKey,
+            errors: typeof errors[errKey] === 'string' ? [errors[errKey]] : errors[errKey],
+          });
         }
 
-        return Object.keys(errors).reduce((acc, errKey) => {
-          if (this.blackList.includes(errKey)) {
-            acc.withoutKeys = acc.withoutKeys.concat(errors[errKey]);
-          } else {
-            acc.withKeys = acc.withKeys.concat({
-              field: errKey,
-              errors: typeof errors[errKey] === 'string' ? [errors[errKey]] : errors[errKey],
-            });
-          }
-
-          return acc;
-        }, errorList);
-      },
+        return acc;
+      }, errorList);
     },
+  },
 
-    mounted() {
-      if (this.scrollToSelf) {
-        window.scrollTo(0, this.$el.offsetTop - 20);
-      }
-    },
-  };
+  mounted() {
+    if (this.scrollToSelf) {
+      window.scrollTo(0, this.$el.offsetTop - 20);
+    }
+  },
+};
 </script>
 
 <style module>

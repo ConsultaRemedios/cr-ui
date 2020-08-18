@@ -1,37 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BaseModal Component When rendered matches to snapshot 1`] = `
-<div
-  class="overlay cr-base-modal__overlay"
-  data-modal-overlay=""
-  enter-class="enterTransition"
-  leave-active-class="leaveActiveTransition"
+<transition-stub
+  enterclass="enterTransition"
+  leaveactiveclass="leaveActiveTransition"
 >
   <div
-    class="container cr-base-modal__container"
-    data-modal-container=""
+    class="overlay cr-base-modal__overlay"
+    data-modal-overlay=""
   >
     <div
-      class="content cr-base-modal__content"
-      data-modal-content=""
+      class="container cr-base-modal__container"
+      data-modal-container=""
     >
-      <button
-        class="closeButton cr-base-modal__close"
-        data-modal-close=""
+      <div
+        class="content cr-base-modal__content"
+        data-modal-content=""
       >
-        <span
-          class="closeButtonLabel"
+        <button
+          class="closeButton cr-base-modal__close"
+          data-modal-close=""
         >
-          Fechar
-        </span>
-      </button>
-       
-      <div>
-        Modal content here
+          <span
+            class="closeButtonLabel"
+          >
+            Fechar
+          </span>
+        </button>
+         
+        <div>
+          Modal content here
+        </div>
       </div>
     </div>
   </div>
-</div>
+</transition-stub>
 `;
 
 exports[`BaseModal Component When rendered matches to snapshot when props "customCssClass" is passed 1`] = `
@@ -39,13 +42,17 @@ Snapshot Diff:
 - First value
 + Second value
 
-@@ -1,7 +1,7 @@
-  <div
--   class="overlay cr-base-modal__overlay"
-+   class="overlay cr-base-modal__overlay some-weird-css-class"
-    data-modal-overlay=""
-    enter-class="enterTransition"
-    leave-active-class="leaveActiveTransition"
+@@ -1,11 +1,11 @@
+  <transition-stub
+    enterclass="enterTransition"
+    leaveactiveclass="leaveActiveTransition"
   >
     <div
+-     class="overlay cr-base-modal__overlay"
++     class="overlay cr-base-modal__overlay some-weird-css-class"
+      data-modal-overlay=""
+    >
+      <div
+        class="container cr-base-modal__container"
+        data-modal-container=""
 `;
