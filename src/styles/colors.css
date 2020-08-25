@@ -23,6 +23,11 @@
   --cta-primary: #fa503f;
   --cta-secundary: #d30b3f;
 
+  --promotion-color: #008554;
+  --promotion-color-hover: #005F3C;
+  --coupon-color: #6a5cd4;
+  --coupon-color-hover: #483ca7;
+
   --classification-generic: #f9ad3d;
   --classification-beauty: #ff4d8d;
   --classification-new: #bfd72f;
