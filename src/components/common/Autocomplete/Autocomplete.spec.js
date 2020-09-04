@@ -208,7 +208,7 @@ describe('Autocomplete component', () => {
       });
 
       wrapper.findComponent(BaseInput).vm.$emit('change', {
-          value: 'ibu',
+        value: 'ibu',
       });
 
       jest.spyOn(wrapper.vm, '$emit');
