@@ -12,7 +12,7 @@ exports[`Autocomplete component #events emits event "change" when users clicks i
     placeholder=""
     size="medium"
     type="search"
-    value="ibu"
+    value="Ibuprofeno 50mg"
   />
    
   <button

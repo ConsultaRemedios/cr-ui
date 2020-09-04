@@ -197,7 +197,7 @@ describe('Autocomplete component', () => {
       const scopedSlots = {
         listItem: `
           <template slot-scope="{ suggestion, onClick }">
-            <span @click="onClick(suggestion) "v-html="suggestion.highlight"></span>
+            <span @click="onClick($event, suggestion) "v-html="suggestion.highlight"></span>
           </template>
         `,
       }
@@ -208,7 +208,7 @@ describe('Autocomplete component', () => {
       });
 
       wrapper.findComponent(BaseInput).vm.$emit('change', {
-        value: 'ibu',
+          value: 'ibu',
       });
 
       jest.spyOn(wrapper.vm, '$emit');
@@ -219,10 +219,18 @@ describe('Autocomplete component', () => {
       
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.element).toMatchSnapshot()
+      expect(wrapper.element).toMatchSnapshot();
       expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', {
-        highlight: '<strong>Ibu</strong>profeno 50mg', name: 'Ibuprofeno 50mg', permalink: '/p/ibruprofeno-50', selected: false,
+        event: new MouseEvent( {
+          isTrusted: false,
+        }),
+        suggestion: {
+          highlight: '<strong>Ibu</strong>profeno 50mg', 
+          name: 'Ibuprofeno 50mg', 
+          permalink: '/p/ibruprofeno-50', 
+          selected: false,
+        },
       });
     });
 
