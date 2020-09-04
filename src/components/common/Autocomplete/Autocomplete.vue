@@ -219,10 +219,10 @@ export default {
   },
 
   methods: {
-    onClick(ev) {
+    onClick(event, suggestion) {
       this.showSuggestions = false;
-      this.value = ev[this.suggestionKey];
-      this.$emit('change', ev);
+      this.value = suggestion[this.suggestionKey];
+      this.$emit('change', { suggestion, event });
     },
 
     onInputChange(ev) {
