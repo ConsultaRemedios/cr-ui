@@ -83,6 +83,7 @@ import BaseIcon from '../BaseIcon';
 import clickOutside from '../../../directives/click-outside';
 import searchIcon from '../../../icons/search.icon.svg';
 import nextIcon from '../../../icons/next.icon.svg';
+import { debounce } from '../../../helpers';
 
 const selectSuggestions = (suggestions, indexToSelect) => suggestions.map((s, i) => ({
   ...s,
@@ -226,46 +227,48 @@ export default {
     },
 
     onInputChange(ev) {
-      this.value = ev.value;
-      this.$emit('inputChanged', this.value);
+      debounce(200, () => {
+        this.value = ev.value;
+        this.$emit('inputChanged', this.value);
 
-      if (
-        this.suggestionsCache[this.cacheKey]
-          && this.suggestionsCache[this.cacheKey][this.value]
-          && this.suggestionsCache[this.cacheKey][this.value].length > 0
-      ) {
-        this.suggestions = this.suggestionsCache[this.cacheKey][this.value];
-        this.showSuggestions = true;
-        return;
-      }
-
-      if (this.value && this.value.length >= 3) {
-        if (this.$slots.placeholderSuggestion) this.suggestions = [];
-
-        this.showSuggestions = true;
-        this.inputedTerm = ev.value;
-        Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
+        if (
+          this.suggestionsCache[this.cacheKey]
+            && this.suggestionsCache[this.cacheKey][this.value]
+            && this.suggestionsCache[this.cacheKey][this.value].length > 0
+        ) {
+          this.suggestions = this.suggestionsCache[this.cacheKey][this.value];
           this.showSuggestions = true;
-          this.suggestions = suggestions.map((suggestion) => ({
-            ...suggestion,
-            highlight: this.highlighter({
-              term: this.value,
-              word: suggestion[this.suggestionKey],
-            }),
-            selected: false,
-          }));
-          if (this.suggestionsCache[this.cacheKey]) {
-            this.suggestionsCache[this.cacheKey][this.value] = this.suggestions;
-          } else {
-            this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
-          }
-        }).catch(() => {
+          return;
+        }
+
+        if (this.value && this.value.length >= 3) {
           if (this.$slots.placeholderSuggestion) this.suggestions = [];
-        });
-      } else {
-        this.suggestions = [];
-        this.showSuggestions = false;
-      }
+
+          this.showSuggestions = true;
+          this.inputedTerm = ev.value;
+          Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
+            this.showSuggestions = true;
+            this.suggestions = suggestions.map((suggestion) => ({
+              ...suggestion,
+              highlight: this.highlighter({
+                term: this.value,
+                word: suggestion[this.suggestionKey],
+              }),
+              selected: false,
+            }));
+            if (this.suggestionsCache[this.cacheKey]) {
+              this.suggestionsCache[this.cacheKey][this.value] = this.suggestions;
+            } else {
+              this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
+            }
+          }).catch(() => {
+            if (this.$slots.placeholderSuggestion) this.suggestions = [];
+          });
+        } else {
+          this.suggestions = [];
+          this.showSuggestions = false;
+        }
+      });
     },
 
     highlighter({ term, word }) {
