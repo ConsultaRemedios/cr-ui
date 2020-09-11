@@ -226,7 +226,7 @@ export default {
     },
 
     onInputChange(ev) {
-      const value = ev.value;
+      const { value } = ev;
       this.value = value;
       this.$emit('inputChanged', value);
 
