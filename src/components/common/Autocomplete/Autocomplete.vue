@@ -226,38 +226,39 @@ export default {
     },
 
     onInputChange(ev) {
-      this.value = ev.value;
-      this.$emit('inputChanged', this.value);
+      const { value } = ev;
+      this.value = value;
+      this.$emit('inputChanged', value);
 
       if (
         this.suggestionsCache[this.cacheKey]
-          && this.suggestionsCache[this.cacheKey][this.value]
-          && this.suggestionsCache[this.cacheKey][this.value].length > 0
+          && this.suggestionsCache[this.cacheKey][value]
+          && this.suggestionsCache[this.cacheKey][value].length > 0
       ) {
-        this.suggestions = this.suggestionsCache[this.cacheKey][this.value];
+        this.suggestions = this.suggestionsCache[this.cacheKey][value];
         this.showSuggestions = true;
         return;
       }
 
-      if (this.value && this.value.length >= 3) {
+      if (value && value.length >= 3) {
         if (this.$slots.placeholderSuggestion) this.suggestions = [];
 
         this.showSuggestions = true;
-        this.inputedTerm = ev.value;
+        this.inputedTerm = value;
         Promise.resolve(this.getSuggestions(ev)).then((suggestions) => {
           this.showSuggestions = true;
           this.suggestions = suggestions.map((suggestion) => ({
             ...suggestion,
             highlight: this.highlighter({
-              term: this.value,
+              term: value,
               word: suggestion[this.suggestionKey],
             }),
             selected: false,
           }));
           if (this.suggestionsCache[this.cacheKey]) {
-            this.suggestionsCache[this.cacheKey][this.value] = this.suggestions;
+            this.suggestionsCache[this.cacheKey][value] = this.suggestions;
           } else {
-            this.suggestionsCache[this.cacheKey] = { [this.value]: this.suggestions };
+            this.suggestionsCache[this.cacheKey] = { [value]: this.suggestions };
           }
         }).catch(() => {
           if (this.$slots.placeholderSuggestion) this.suggestions = [];
