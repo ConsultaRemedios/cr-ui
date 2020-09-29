@@ -22,6 +22,7 @@
       <BaseButton
         :path="storePath"
         :class="$style.baseButton"
+        type="naked"
       >
         Ver mais produtos da loja
       </BaseButton>
@@ -32,12 +33,7 @@
           :key="i"
           :class="$style.field"
         >
-          <div
-            v-if="isData(field.title)"
-            :class="$style.infoData"
-            v-html="field.content"
-          />
-          <div v-else>
+          <div>
             <span :class="$style.fieldTitle">{{ field.title }}</span>
             <div
               :class="$style.fieldContent"
@@ -94,12 +90,6 @@ export default {
       };
     },
   },
-
-  methods: {
-    isData(title) {
-      return title.toLocaleLowerCase() === 'dados da loja';
-    },
-  },
 };
 </script>
 
@@ -128,12 +118,15 @@ export default {
   }
 
   .baseButton {
-    margin-top: 8px;
     width: 100%;
+    height: 44px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: var(--background-color-primary);
     border-color: var(--border-color-primary);
-    height: 44px;
-    margin-bottom: 20px;
   }
 
   .baseButton:focus {
