@@ -44,7 +44,7 @@ exports[`StoreModal component Snapshot When "isLoading" is "true" matches 1`] = 
       class="baseButton"
       path=""
       size="medium"
-      type="success"
+      type="naked"
     >
       
       Ver mais produtos da loja
@@ -100,7 +100,7 @@ exports[`StoreModal component Snapshot When has "name", "logoPath" and "informat
       class="baseButton"
       path=""
       size="medium"
-      type="success"
+      type="naked"
     >
       
       Ver mais produtos da loja
