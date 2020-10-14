@@ -1,7 +1,7 @@
 Mensagem usada no commit de merge explicando o porque
 da mudança, como era antes e o que motivou a mudança.
 
-ref: URL DA TASK
+task: URL DA TASK
 
 ------------------------------------------------------------
 
