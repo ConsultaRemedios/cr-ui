@@ -20,6 +20,7 @@
         </span>
       </div>
       <BaseButton
+        @click="onClick"
         :path="storePath"
         :class="$style.baseButton"
         type="naked"
@@ -88,6 +89,16 @@ export default {
       return {
         truckIcon,
       };
+    },
+  },
+
+  methods: {
+    isData(title) {
+      return title.toLocaleLowerCase() === 'dados da loja';
+    },
+
+    onClick() {
+      this.$emit('clickShowMoreProducts');
     },
   },
 };
