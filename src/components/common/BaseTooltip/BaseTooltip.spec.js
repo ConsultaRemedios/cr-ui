@@ -67,6 +67,7 @@ describe('BaseTooltip', () => {
   afterEach(() => {
     wrapper.destroy();
     jest.clearAllTimers();
+    jest.clearAllMocks();
   });
 
   describe('Lifecycle', () => {
@@ -87,34 +88,28 @@ describe('BaseTooltip', () => {
         });
       });
 
-      it('moves component element to the end of body', () => {
-        wrapper = mountWithParent();
-        expect(wrapper.vm.$el).toEqual(document.body.lastElementChild);
-      });
-
       it('calls initPopper method', () => {
-        const initPopper = jest.fn();
-
         wrapper = mount(BaseTooltip, {
           propsData: { show: true },
-          methods: { initPopper }
         });
 
-        expect(initPopper).toHaveBeenCalledTimes(1);
+        expect(createPopper).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('#destroyed', () => {
-      it('calls destroyPopper method', () => {
-        const destroyPopper = jest.fn();
-
+      it('calls destroyPopper method', async () => {
         wrapper = mount(BaseTooltip, {
           propsData: { show: true },
-          methods: { destroyPopper }
         });
+
+        await wrapper.vm.$nextTick();
+
+        const destroyMock = wrapper.vm.popper.destroy;
+
         wrapper.destroy();
 
-        expect(destroyPopper).toHaveBeenCalledTimes(1);
+        expect(destroyMock).toHaveBeenCalledTimes(1);
       });
 
       it('moves element from body to reference element', () => {
@@ -225,37 +220,37 @@ describe('BaseTooltip', () => {
   describe('Watchers', () => {
     describe('#show', () => {
       describe('When show is true', () => {
-        it('calls updatePopper', async () => {
-          const updatePopper = jest.fn();
-
+        it('calls popper forceUpdate', async () => {
           wrapper = mount(BaseTooltip, {
             propsData: { show: false },
-            methods: { updatePopper }
           });
 
-          updatePopper.mockClear();
-          wrapper.setProps({ show: true });
+          await wrapper.setProps({ show: true });
 
-          await wrapper.vm.$nextTick();
+          expect(wrapper.vm.popper.forceUpdate).toHaveBeenCalledTimes(1);
+        });
 
-          expect(updatePopper).toHaveBeenCalledTimes(1);
+        it('moves component element to the end of body', async () => {
+          wrapper = mount(BaseTooltip, {
+            propsData: { show: false },
+          });
+
+          await wrapper.setProps({ show: true });
+
+          expect(wrapper.vm.$el).toEqual(document.body.lastElementChild);
         });
       });
 
       describe('When show is false', () => {
-        it('does not call updatePopper', (done) => {
-          const updatePopper = jest.fn();
-
+        it('does not call popper forceUpdate', (done) => {
           wrapper = mount(BaseTooltip, {
             propsData: { show: true },
-            methods: { updatePopper }
           });
 
-          updatePopper.mockClear();
           wrapper.setProps({ show: false });
 
           wrapper.vm.$nextTick(() => {
-            expect(updatePopper).not.toHaveBeenCalled();
+            expect(wrapper.vm.popper.forceUpdate).not.toHaveBeenCalled();
             done();
           });
         });
