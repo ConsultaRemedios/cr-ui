@@ -93,10 +93,6 @@ export default {
   },
 
   methods: {
-    isData(title) {
-      return title.toLocaleLowerCase() === 'dados da loja';
-    },
-
     onClick() {
       this.$emit('clickShowMoreProducts');
     },
