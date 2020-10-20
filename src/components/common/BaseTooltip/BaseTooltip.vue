@@ -83,6 +83,8 @@ export default {
       if (!this.show) return;
 
       this.$nextTick(() => {
+        document.body.appendChild(this.content);
+
         this.updatePopper();
       });
     },
@@ -91,8 +93,6 @@ export default {
   mounted() {
     this.reference = this.$el.parentNode || document.body;
     this.content = this.$el;
-
-    document.body.appendChild(this.content);
 
     this.initPopper();
   },
