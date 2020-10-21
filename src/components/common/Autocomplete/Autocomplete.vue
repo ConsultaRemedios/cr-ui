@@ -55,6 +55,7 @@
           <!-- @slot use this to custom the items in list of suggestions  -->
           <slot
             :suggestion="suggestion"
+            :index="index"
             name="listItem"
             :on-click="onClick"
           >
@@ -379,7 +380,7 @@ export default {
             * @event change
           */
 
-        this.$emit('change', { suggestion: this.suggestions[this.selectedSuggestionIndex], event });
+        this.$emit('change', { suggestion: this.suggestions[this.selectedSuggestionIndex], event, index: this.selectedSuggestionIndex });
         this.showSuggestions = false;
       } else {
         /**

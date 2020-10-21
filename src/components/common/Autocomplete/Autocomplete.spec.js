@@ -118,9 +118,9 @@ describe('Autocomplete component', () => {
           const localWrapper = shallowAutocomplete({ [cssClass]: `$style.custom${cssClass.charAt(0).toUpperCase() + cssClass.slice(1)}` });
           localWrapper.setProps({ expanded: true });
           localWrapper.setData({ suggestions: defaultProps.getSuggestions(), showSuggestions: true, value: 'dor' });
-  
+
           await wrapper.vm.$nextTick();
-  
+
           expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
         });
       });
@@ -216,7 +216,7 @@ describe('Autocomplete component', () => {
       await flushPromises();
 
       wrapper.findAll('span').at(1).trigger('click')
-      
+
       await wrapper.vm.$nextTick();
 
       expect(wrapper.element).toMatchSnapshot();
@@ -226,9 +226,9 @@ describe('Autocomplete component', () => {
           isTrusted: false,
         }),
         suggestion: {
-          highlight: '<strong>Ibu</strong>profeno 50mg', 
-          name: 'Ibuprofeno 50mg', 
-          permalink: '/p/ibruprofeno-50', 
+          highlight: '<strong>Ibu</strong>profeno 50mg',
+          name: 'Ibuprofeno 50mg',
+          permalink: '/p/ibruprofeno-50',
           selected: false,
         },
       });
@@ -316,6 +316,7 @@ describe('Autocomplete component', () => {
           permalink: '/p/ibruprofeno-150',
           selected: true
         },
+        index: 2,
         event: {
           code: 'Enter',
           preventDefault
@@ -351,6 +352,7 @@ describe('Autocomplete component', () => {
           permalink: '/p/ibruprofeno-150',
           selected: true
         },
+        index: 2,
         event: {
           code: 'Tab',
           preventDefault
@@ -370,7 +372,7 @@ describe('Autocomplete component', () => {
       localWrapper.findComponent(BaseInput).vm.$emit('keydown', {
         event: { code: 'Escape' },
       });
-      
+
       await wrapper.vm.$nextTick();
 
       expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
@@ -431,7 +433,7 @@ describe('Autocomplete component', () => {
         await flushPromises();
 
         wrapper.find('input').trigger('keydown', { event: { code: 'ArrowDown' } });
-        
+
         await wrapper.vm.$nextTick();
 
         expect(wrapper.element).toMatchSnapshot();
@@ -522,6 +524,7 @@ describe('Autocomplete component', () => {
               permalink: '/p/ibruprofeno-150',
               selected: true
             },
+            index: 2,
             event: {
               code: 'Enter',
               preventDefault
@@ -557,6 +560,7 @@ describe('Autocomplete component', () => {
               permalink: '/p/ibruprofeno-150',
               selected: true
             },
+            index: 2,
             event: {
               code: 'Tab',
               preventDefault
