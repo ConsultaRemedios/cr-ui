@@ -124,15 +124,6 @@ export default {
     transform: scale(1);
   }
 
-  .wrapper.isDisabled::after {
-    background: #DADADA;
-    width: 12px;
-    height: 4px;
-    top: 8px;
-    left: 4px;
-    transform: scale(1);
-  }
-
   .input {
     display: none;
   }
