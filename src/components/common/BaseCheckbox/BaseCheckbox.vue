@@ -2,7 +2,7 @@
   <div>
     <label :class="[
       $style.wrapper,
-      { [$style.isSelected]: checked, [$style.isDisabled]: disabled && changeLayoutDisabled }
+      { [$style.isSelected]: checked, [$style.isDisabled]: disabled }
     ]">
       <input
         :class="$style.input"
@@ -39,12 +39,6 @@ export default {
       type: Boolean,
       default: false,
     },
-
-    changeLayoutDisabled: {
-      type: Boolean,
-      default: true,
-    },
-
     value: {
       type: [String, Number],
       required: true,
@@ -127,6 +121,15 @@ export default {
   }
 
   .wrapper.isSelected::after {
+    transform: scale(1);
+  }
+
+  .wrapper.isDisabled::after {
+    background: #DADADA;
+    width: 12px;
+    height: 4px;
+    top: 8px;
+    left: 4px;
     transform: scale(1);
   }
 
