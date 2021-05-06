@@ -63,7 +63,10 @@ module.exports = {
         {
           test: /\.(svg|eot|otf|ttf|woff|woff2|png)$/i,
           exclude: ['/node_modules/', path.resolve(__dirname, '../src/icons/')],
-          loader: 'file-loader'
+          loader: 'file-loader',
+          options: {
+            esModule: false,
+          },
         },
         {
           test: /\.icon\.svg$/,
