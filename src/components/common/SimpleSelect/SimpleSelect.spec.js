@@ -37,9 +37,8 @@ describe('SimpleSelect component', () => {
 
       it('changes selected option when prop "selected" is changed', async () => {
         const wrapper = mount(SimpleSelect, { propsData });
-        const option = getSelected(wrapper);
 
-        expect(option.value).toEqual('F');
+        expect(getSelected(wrapper).value).toEqual('F');
 
         await wrapper.setProps({ selected: 'M' });
 
