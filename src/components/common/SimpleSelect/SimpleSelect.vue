@@ -71,7 +71,7 @@ export default {
   },
 
   watch: {
-    selected: function (val) {
+    selected(val) {
       this.value = val;
     },
   },
