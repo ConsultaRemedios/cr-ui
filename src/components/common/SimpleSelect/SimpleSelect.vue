@@ -70,6 +70,12 @@ export default {
     };
   },
 
+  watch: {
+    selected: function (val) {
+      this.value = val;
+    },
+  },
+
   computed: {
     label() {
       const option = this.options.find((o) => o.value === this.value);
