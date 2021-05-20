@@ -34,6 +34,17 @@ describe('SimpleSelect component', () => {
         const wrapper = mount(SimpleSelect);
         expect(wrapper.vm.selected).toEqual('');
       });
+
+      it('changes selected option when prop "selected" is changed', async () => {
+        const wrapper = mount(SimpleSelect, { propsData });
+        const option = getSelected(wrapper);
+
+        expect(option.value).toEqual('F');
+
+        await wrapper.setProps({ selected: 'M' });
+
+        expect(getSelected(wrapper).value).toEqual('M');
+      })
     });
 
     describe('#placeholder', () => {
