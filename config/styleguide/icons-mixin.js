@@ -97,6 +97,7 @@ import american from './../../src/icons/american.icon.svg';
 import elo from './../../src/icons/elo.icon.svg';
 import dinners from './../../src/icons/dinners.icon.svg';
 import barcodeBoxed from './../../src/icons/barcode-boxed.icon.svg';
+import pix from './../../src/icons/pix.icon.svg';
 
 import expressDelivery from './../../src/icons/express-delivery.icon.svg';
 import store from './../../src/icons/store.icon.svg';
@@ -153,6 +154,7 @@ const creditCardIcons = [
   elo,
   dinners,
   barcodeBoxed,
+  pix,
 ];
 
 const crIcons = [
