@@ -120,6 +120,9 @@ import crproColorful from './../../src/icons/crpro-colorful.icon.svg';
 import emojiHappy from './../../src/icons/emoji-happy.icon.svg';
 import promotion from './../../src/icons/promotion.icon.svg';
 
+import plus from './../../src/icons/plus.icon.svg';
+import minus from './../../src/icons/minus.icon.svg';
+
 const classificationIcons = [
   classificationBeauty,
   classificationBiologic,
@@ -246,6 +249,8 @@ const allIcons = [
   coupon,
   promotion,
   route,
+  plus,
+  minus,
 ];
 
 const emojiIcons = [
