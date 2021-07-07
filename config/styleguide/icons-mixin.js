@@ -34,6 +34,7 @@ import add from './../../src/icons/add.icon.svg';
 import remove from './../../src/icons/remove.icon.svg';
 import clock from './../../src/icons/clock.icon.svg';
 import info from './../../src/icons/info.icon.svg';
+import infoOutline from './../../src/icons/info-outline.icon.svg';
 import help from './../../src/icons/help.icon.svg';
 import cancel from './../../src/icons/cancel.icon.svg';
 import checkCircle from './../../src/icons/check-circle.icon.svg';
@@ -217,6 +218,7 @@ const allIcons = [
   remove,
   clock,
   info,
+  infoOutline,
   help,
   cancel,
   checkCircle,
