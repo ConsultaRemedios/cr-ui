@@ -89,12 +89,12 @@ export default {
   }
 
   .wrapper:hover::before {
-    border: 1px solid #138484;
+    border: 1px solid var(--link-color);
   }
 
   .wrapper.isSelected::before {
-    border-color: #138484;
-    background-color: #138484;
+    border-color: var(--link-color);
+    background-color: var(--link-color);
   }
 
   .wrapper.isDisabled::before {
