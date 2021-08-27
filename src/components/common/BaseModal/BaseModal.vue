@@ -2,8 +2,6 @@
   <transition
     :enter-class="enterTransitionClass"
     :leave-to-class="leaveTransitionClass"
-    :leave-class="leaveTransitionClass"
-    :leave-active-class="leaveTransitionClass"
   >
     <div
       v-if="showModal"
