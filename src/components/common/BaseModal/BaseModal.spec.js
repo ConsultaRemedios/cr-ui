@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import snapshotDiff from 'snapshot-diff';
 import BaseModal from './../BaseModal';
 
 jest.mock('body-scroll-lock', () => ({
@@ -32,34 +31,44 @@ describe('BaseModal Component', () => {
   });
 
   describe('render', () => {
-    it('does not render close button when dismissible is equal to "false"', () => {
+    it('does not render close button when dismissible is equal to "false"', async () => {
       const wrapper = mountModal({
         propsData: { dismissible: false }
       });
 
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.find('button[data-modal-close]').exists()).toBe(false);
     });
 
-    it('does render close button when dismissible is equal to "true"', () => {
+    it('does render close button when dismissible is equal to "true"', async () => {
       const wrapper = mountModal({
         propsData: { dismissible: true }
       });
 
+      await wrapper.vm.$nextTick();
+      
       expect(wrapper.find('button[data-modal-close]').exists()).toBe(true);
     });
   });
 
   describe('When mounted', () => {
-    it('calls disableBodyScroll', () => {
+    it('calls disableBodyScroll', async () => {
       const wrapper = mountModal();
+      
+      await wrapper.vm.$nextTick();
+
       expect(disableBodyScroll).toHaveBeenCalledTimes(1);
       expect(disableBodyScroll).toHaveBeenCalledWith(wrapper.vm.$el);
     })
   });
 
   describe('When destroyed', () => {
-    it('calls disableBodyScroll', () => {
+    it('calls disableBodyScroll', async () => {
       const wrapper = mountModal();
+      
+      await wrapper.vm.$nextTick();
+      
       expect(enableBodyScroll).not.toHaveBeenCalled();
 
       wrapper.destroy();
@@ -69,8 +78,11 @@ describe('BaseModal Component', () => {
   });
 
   describe('When click on close button', () => {
-    it('emits close event', () => {
+    it('emits close event', async () => {
       const wrapper = mountModal();
+
+      await wrapper.vm.$nextTick();
+
       jest.spyOn(wrapper.vm, '$emit');
 
       wrapper.find('button[data-modal-close]').trigger('click');
@@ -92,17 +104,21 @@ describe('BaseModal Component', () => {
 
     describe('When the target is the overlay', () => {
       describe('and dismissible prop is "true"', () => {
-        it('emits close event', () => {
+        it('emits close event', async () => {
+          await wrapper.vm.$nextTick();
+          
           wrapper.find('[data-modal-overlay]').trigger('click');
           expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
         });
       });
 
       describe('and dismissible prop is "false"', () => {
-        it('does not emit close event', () => {
+        it('does not emit close event', async () => {
           wrapper = mountModal({
             propsData: { dismissible: false }
           });
+
+          await wrapper.vm.$nextTick();
 
           jest.spyOn(wrapper.vm, '$emit');
 
@@ -125,24 +141,34 @@ describe('BaseModal Component', () => {
     beforeEach(() => {
       wrapper = mount(BaseModal, {
         slots: {
-          default: ['<div>Modal content here</div>'],
+          default: ['<div class="teste">Modal content here</div>'],
         },
       });
     });
 
-    it('matches to snapshot', () => {
-      expect(wrapper.vm.$el).toMatchSnapshot();
+    it('matches to ui elements', () => {
+      expect(wrapper.find('.overlay').exists()).toBe(true);
+      expect(wrapper.find('.container').exists()).toBe(true);
+      expect(wrapper.find('.content').exists()).toBe(true);
+      expect(wrapper.find('.closeButtonLabel').text()).toContain('Fechar');
+      expect(wrapper.find('.teste').text()).toContain('Modal content here');
     });
 
-    it('matches to snapshot when props "customCssClass" is passed', () => {
+    it('matches to ui elements when props "customCssClass" is passed', async () => {
       const localWrapper = mount(BaseModal, {
         slots: {
-          default: ['<div>Modal content here</div>'],
+          default: ['<div class="teste">Modal content here</div>'],
         },
         propsData: { customCssClass: ['some-weird-css-class'] }
       });
+      
+      await wrapper.vm.$nextTick();
 
-      expect(snapshotDiff(wrapper.element, localWrapper.element)).toMatchSnapshot();
+      expect(localWrapper.find('.overlay.some-weird-css-class').exists()).toBe(true);
+      expect(localWrapper.find('.container').exists()).toBe(true);
+      expect(localWrapper.find('.content').exists()).toBe(true);
+      expect(localWrapper.find('.closeButtonLabel').text()).toContain('Fechar');
+      expect(localWrapper.find('.teste').text()).toContain('Modal content here');
     });
   });
 });

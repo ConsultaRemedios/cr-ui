@@ -6,10 +6,9 @@ const defaultProps = {
   information: '<p>Some content</p>',
 };
 
-const shallowStoreBaseModal = (data = {}, methods = {}, computed = {}) => {
+const shallowStoreBaseModal = (data = {}, computed = {}) => {
   return shallowMount(StoreBaseModal, {
     propsData: { ...defaultProps, ...data },
-    methods,
     computed,
   });
 };
@@ -25,7 +24,7 @@ describe('StoreBaseModal component', () => {
     global.window.innerHeight = 1000;
   });
 
-  describe('Snapshot', () => {
+  describe('Match UI elements', () => {
     let wrapper;
 
     beforeEach(() => {
@@ -35,25 +34,34 @@ describe('StoreBaseModal component', () => {
     it('matches when is on mobile', async () => {
       const wrapper = shallowStoreBaseModal(
         {},
-        {},
         { isMobileBreakpoint() { return true; } }
       );
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.element).toMatchSnapshot();
+      expect(wrapper.findComponent(BaseModal).exists()).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('dismissible')).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('type')).toBe('normal');
+      expect(wrapper.find('.header').exists()).toBe(true);
+      expect(wrapper.find('.wrapper').exists()).toBe(true);
+      expect(wrapper.find('.content.showScroll').exists()).toBe(true);
     });
 
     it('matches when is on desktop', async () => {
       const wrapper = shallowStoreBaseModal(
         {},
-        {},
         { isMobileBreakpoint() { return false; } }
       );
-      
+
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.element).toMatchSnapshot();
+      expect(wrapper.findComponent(BaseModal).exists()).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('dismissible')).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('type')).toBe('normal');
+      expect(wrapper.find('.header').exists()).toBe(true);
+      expect(wrapper.find('.wrapper').exists()).toBe(true);
+      expect(wrapper.find('.content').exists()).toBe(true);
+      expect(wrapper.find('.content.showScroll').exists()).toBe(false);
     });
 
     it('matches when is loading', async () => {
@@ -61,7 +69,12 @@ describe('StoreBaseModal component', () => {
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.element).toMatchSnapshot();
+      expect(wrapper.findComponent(BaseModal).exists()).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('dismissible')).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('type')).toBe('normal');
+      expect(wrapper.find('.header').exists()).toBe(true);
+      expect(wrapper.find('.wrapper').exists()).toBe(true);
+      expect(wrapper.find('.content.contentloader').exists()).toBe(true);
     });
 
     it('matches when is not loading', async () => {
@@ -69,7 +82,13 @@ describe('StoreBaseModal component', () => {
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.element).toMatchSnapshot();
+      expect(wrapper.findComponent(BaseModal).exists()).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('dismissible')).toBe(true);
+      expect(wrapper.findComponent(BaseModal).props('type')).toBe('normal');
+      expect(wrapper.find('.header').exists()).toBe(true);
+      expect(wrapper.find('.wrapper').exists()).toBe(true);
+      expect(wrapper.find('.content').exists()).toBe(true);
+      expect(wrapper.find('.content.contentloader').exists()).toBe(false);
     });
   });
 
@@ -80,11 +99,12 @@ describe('StoreBaseModal component', () => {
 
       beforeAll(() => {
         window.addEventListener = jest.fn();
-        wrapper = shallowStoreBaseModal({}, { updateMaxContentHeight });
+        window.innerHeight = 100;
+        wrapper = shallowStoreBaseModal();
       });
 
-      it('calls #updateMaxContentHeight', () => {
-        expect(updateMaxContentHeight).toHaveBeenCalled();
+      it('calls #updateMaxContentHeight and calculate maxContentHeight', () => {
+        expect(wrapper.vm.ui.maxContentHeight).toBe(20);
       });
 
       it('adds event listener "resize"', () => {
