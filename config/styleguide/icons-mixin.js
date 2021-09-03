@@ -90,6 +90,9 @@ import instagramColorful from './../../src/icons/instagram-colorful.icon.svg';
 import linkedinColorful from './../../src/icons/linkedin-colorful.icon.svg';
 import twitterColorful from './../../src/icons/twitter-colorful.icon.svg';
 import youtubeColorful from './../../src/icons/youtube-colorful.icon.svg';
+import apple from './../../src/icons/apple.icon.svg';
+import google from './../../src/icons/google.icon.svg';
+import facebookCircle from './../../src/icons/facebook-circle.icon.svg';
 
 import visa from './../../src/icons/visa.icon.svg';
 import master from './../../src/icons/master.icon.svg';
@@ -148,6 +151,9 @@ const socialIcons = [
   linkedinColorful,
   twitterColorful,
   youtubeColorful,
+  apple,
+  google,
+  facebookCircle,
 ];
 
 const creditCardIcons = [
