@@ -127,6 +127,8 @@ import promotion from './../../src/icons/promotion.icon.svg';
 import plus from './../../src/icons/plus.icon.svg';
 import minus from './../../src/icons/minus.icon.svg';
 import eye from './../../src/icons/eye.icon.svg';
+import eyeOff from './../../src/icons/eye-off.icon.svg';
+
 
 const classificationIcons = [
   classificationBeauty,
