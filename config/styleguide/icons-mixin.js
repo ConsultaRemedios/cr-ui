@@ -261,6 +261,7 @@ const allIcons = [
   plus,
   minus,
   eye,
+  eyeOff,
 ];
 
 const emojiIcons = [
