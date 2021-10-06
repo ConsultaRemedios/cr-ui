@@ -104,6 +104,7 @@ import barcodeBoxed from './../../src/icons/barcode-boxed.icon.svg';
 import pix from './../../src/icons/pix.icon.svg';
 
 import expressDelivery from './../../src/icons/express-delivery.icon.svg';
+import delivery from './../../src/icons/delivery.icon.svg';
 import store from './../../src/icons/store.icon.svg';
 import postOffices from './../../src/icons/post-offices.icon.svg';
 import shippingCompany from './../../src/icons/shipping-company.icon.svg';
@@ -172,6 +173,7 @@ const creditCardIcons = [
 
 const crIcons = [
   expressDelivery,
+  delivery,
   store,
   postOffices,
   shippingCompany,
