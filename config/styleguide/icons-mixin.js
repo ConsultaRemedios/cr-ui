@@ -68,6 +68,7 @@ import megaphone from './../../src/icons/megaphone.icon.svg';
 import coupon from './../../src/icons/coupon.icon.svg';
 import counter from './../../src/icons/counter.icon.svg';
 import route from './../../src/icons/route.icon.svg';
+import findLocation from './../../src/icons/find-location.icon.svg';
 
 import classificationBeauty from './../../src/icons/classification-beauty.icon.svg';
 import classificationBiologic from './../../src/icons/classification-biologic.icon.svg';
@@ -191,6 +192,7 @@ const crIcons = [
   crpro,
   crproColorful,
   counter,
+  findLocation,
 ];
 
 const allIcons = [
