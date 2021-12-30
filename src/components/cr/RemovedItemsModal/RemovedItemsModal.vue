@@ -1,101 +1,101 @@
 <template>
-  <div
-    v-if="show"
-    :class="$style.zIndex"
+<div
+  v-if="show"
+  :class="$style.zIndex"
+>
+  <BaseModal
+    :dismissible="false"
   >
-    <BaseModal
-      :dismissible="false"
-    >
-      <div :class="$style.wrapper">
-        <h1 :class="$style.heading">
-          <BaseIcon
-            id="warning.icon"
-            :class="$style.icon"
-          />
-          Atenção!
-        </h1>
+    <div :class="$style.wrapper">
+      <h1 :class="$style.heading">
+        <BaseIcon
+          id="warning.icon"
+          :class="$style.icon"
+        />
+        Atenção!
+      </h1>
 
-        <p :class="$style.description">
-          Alguns produtos em seu carrinho sofreram alteração:
-        </p>
+      <p :class="$style.description">
+        Alguns produtos em seu carrinho sofreram alteração:
+      </p>
 
-        <ul :class="$style.storesList">
-          <li
-            v-for="store in stores"
-            :key="store.id"
-          >
-            <div :class="$style.storeInfo">
+      <ul :class="$style.storesList">
+        <li
+          v-for="store in stores"
+          :key="store.id"
+        >
+          <div :class="$style.storeInfo">
+            <img
+              :src="store.logo"
+              :class="$style.storeLogo"
+            >
+            <p>
+              Vendido e entregue por <br>
+              <strong>{{ store.name }}</strong>
+            </p>
+          </div>
+          <ul :class="$style.productsList">
+            <li
+              v-for="item in store.items"
+              :key="store.id + item.name"
+              :class="$style.productItem"
+            >
               <img
-                :src="store.logo"
-                :class="$style.storeLogo"
+                :src="item.image"
+                :class="$style.productItem__image"
               >
-              <p>
-                Vendido e entregue por <br>
-                <strong>{{ store.name }}</strong>
-              </p>
-            </div>
-            <ul :class="$style.productsList">
-              <li
-                v-for="item in store.items"
-                :key="store.id + item.name"
-                :class="$style.productItem"
-              >
-                <img
-                  :src="item.image"
-                  :class="$style.productItem__image"
+              <div :class="$style.productItem__description">
+                <p>
+                  <strong>{{ item.name }}</strong> {{ item.variation }}
+                </p>
+                <div
+                  v-if="item.remainingQuantity !== 0"
+                  :class="$style.productItem__tooltipWrapper"
                 >
-                <div :class="$style.productItem__description">
-                  <p>
-                    <strong>{{ item.name }}</strong> {{ item.variation }}
-                  </p>
-                  <div
-                    v-if="item.remainingQuantity !== 0"
-                    :class="$style.productItem__tooltipWrapper"
-                  >
-                    <div :class="$style.productItem__tooltip">
-                      {{
-                        pluralize(
-                          item.removedQuantity,
-                          'unidade foi removida',
-                          'unidades foram removidas'
-                        )
-                      }}
-                    </div>
-                    <div :class="$style.productItem__remaining">
-                      <BaseIcon
-                        id="cart.icon"
-                        :class="$style.productItem__remainingIcon"
-                      />
-                      Sobraram {{ item.remainingQuantity }} un. no carrinho
-                    </div>
+                  <div :class="$style.productItem__tooltip">
+                    {{
+                      pluralize(
+                        item.removedQuantity,
+                        'unidade foi removida',
+                        'unidades foram removidas'
+                      )
+                    }}
                   </div>
-                  <div
-                    v-else
-                    :class="$style.productItem__tooltipWrapper"
-                  >
-                    <div
-                      :class="[
-                        $style.productItem__tooltip,
-                        $style['productItem__tooltip--outofstock']
-                      ]"
-                    >
-                      Ops, acabou o estoque
-                    </div>
+                  <div :class="$style.productItem__remaining">
+                    <BaseIcon
+                      id="cart.icon"
+                      :class="$style.productItem__remainingIcon"
+                    />
+                    Sobraram {{ item.remainingQuantity }} un. no carrinho
                   </div>
                 </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <BaseButton
-          :class="$style.button"
-          @click="dismissModal"
-        >
-          {{ actionLabel }}
-        </BaseButton>
-      </div>
-    </BaseModal>
-  </div>
+                <div
+                  v-else
+                  :class="$style.productItem__tooltipWrapper"
+                >
+                  <div
+                    :class="[
+                      $style.productItem__tooltip,
+                      $style['productItem__tooltip--outofstock']
+                    ]"
+                  >
+                    Ops, acabou o estoque
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <BaseButton
+        :class="$style.button"
+        @click="dismissModal"
+      >
+        {{ actionLabel }}
+      </BaseButton>
+    </div>
+  </BaseModal>
+</div>
 </template>
 
 <script>
