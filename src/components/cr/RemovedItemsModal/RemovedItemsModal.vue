@@ -99,40 +99,40 @@
 </template>
 
 <script>
-  import BaseModal from '../../common/BaseModal';
-  import BaseButton from '../../common/BaseButton';
-  import BaseIcon from '../../common/BaseIcon';
-  import { pluralize } from '../../../filters';
+import BaseModal from '../../common/BaseModal';
+import BaseButton from '../../common/BaseButton';
+import BaseIcon from '../../common/BaseIcon';
+import { pluralize } from '../../../filters';
 
-  export default {
-    name: 'RemovedItemsModal',
-    components: {
-      BaseButton,
-      BaseIcon,
-      BaseModal,
+export default {
+  name: 'RemovedItemsModal',
+  components: {
+    BaseButton,
+    BaseIcon,
+    BaseModal,
+  },
+  props: {
+    show: {
+      type: Boolean,
+      required: true,
     },
-    props: {
-      show: {
-        type: Boolean,
-        required: true,
-      },
-      stores: {
-        type: Array,
-        required: true,
-      },
-      actionLabel: {
-        type: String,
-        default: 'Continuar Comprando',
-      }
+    stores: {
+      type: Array,
+      required: true,
     },
-    methods: {
-      dismissModal() {
-        this.$emit('close');
-      },
+    actionLabel: {
+      type: String,
+      default: 'Continuar Comprando',
+    },
+  },
+  methods: {
+    dismissModal() {
+      this.$emit('close');
+    },
 
-      pluralize,
-    },
-  };
+    pluralize,
+  },
+};
 </script>
 
 <style module>
