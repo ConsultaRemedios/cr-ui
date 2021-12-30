@@ -27,6 +27,7 @@
           <div :class="$style.storeInfo">
             <img
               :src="store.logo"
+              :alt="store.name"
               :class="$style.storeLogo"
             >
             <p>
@@ -42,6 +43,7 @@
             >
               <img
                 :src="item.image"
+                :alt="item.name"
                 :class="$style.productItem__image"
               >
               <div :class="$style.productItem__description">

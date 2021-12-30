@@ -69,6 +69,13 @@ describe('RemovedItemsModal', () => {
     it('should display modal case show is true', () => {
       const { wrapper } = makeSut();
       expect(wrapper.findComponent(BaseModal).exists()).toBe(true);
+      
+      const productItems = wrapper.findAll('.productItem__tooltipWrapper');
+      expect(productItems.length).toBe(3);
+      expect(productItems.at(0).text()).toContain('Sobraram 97 un. no carrinho');
+      expect(productItems.at(1).text()).toContain('Ops, acabou o estoque');
+      expect(productItems.at(2).text()).toContain('Ops, acabou o estoque');
+
       expect(wrapper.text()).toContain('Atenção!');
       expect(wrapper.text()).toContain('Alguns produtos em seu carrinho sofreram alteração:');
       expect(wrapper.text()).toContain('Continuar Comprando');
