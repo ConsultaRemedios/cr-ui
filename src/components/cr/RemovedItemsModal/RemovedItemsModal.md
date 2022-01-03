@@ -1,4 +1,4 @@
-RemovedItemsMOdal is a component the displays the stores with itens removeds in cart.
+RemovedItemsMOdal is a component the displays the stores with itens removed in cart.
 
 ```js
 new Vue({
@@ -43,7 +43,7 @@ new Vue({
   },
   template: `
     <div>
-      <BaseButton @click="openModal">Toggle StoreModal</BaseButton>
+      <BaseButton @click="openModal">Toggle RemovedItemsModal</BaseButton>
       <RemovedItemsModal
         :show="ui.isOpen"
         :stores="stores"
@@ -100,7 +100,7 @@ new Vue({
   },
   template: `
     <div>
-      <BaseButton @click="openModal">Toggle StoreModal</BaseButton>
+      <BaseButton @click="openModal">Toggle RemovedItemsModal</BaseButton>
       <RemovedItemsModal
         :show="ui.isOpen"
         :stores="stores"

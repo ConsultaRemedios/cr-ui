@@ -177,6 +177,8 @@ export default {
     border-bottom: 1px solid #999;
     margin: 0 -20px 20px;
     text-align: left;
+    list-style: none;
+    padding: 0;
   }
 
   .storeInfo {
