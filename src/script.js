@@ -26,6 +26,7 @@ import CreditCardField from './components/common/CreditCardField';
 import InputGroup from './components/common/InputGroup';
 import Autocomplete from './components/common/Autocomplete';
 import SkeletonPlaceholder from './components/common/SkeletonPlaceholder';
+import RemovedItemsModal from './components/cr/RemovedItemsModal';
 
 export {
   BaseIcon,
@@ -56,4 +57,5 @@ export {
   InputGroup,
   Autocomplete,
   SkeletonPlaceholder,
+  RemovedItemsModal,
 };
