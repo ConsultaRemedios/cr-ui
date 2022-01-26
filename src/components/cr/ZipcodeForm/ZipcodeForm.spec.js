@@ -191,7 +191,7 @@ describe('ZipcodeForm component', () => {
         await wrapper.vm.$nextTick();
   
         expect(wrapper.vm.getGeolocation).toHaveBeenCalledWith();
-        expect(wrapper.vm.$emit).toHaveBeenCalledWith('error', {
+        expect(wrapper.vm.$emit).toHaveBeenCalledWith('geolocationError', {
           message: 'error',
         });
       });
