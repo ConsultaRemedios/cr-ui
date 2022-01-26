@@ -1,7 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import BaseIcon from '../BaseIcon';
-import BaseButton from '../BaseButton';
-import InputGroup from '../InputGroup';
+import BaseIcon from '../../common/BaseIcon';
+import BaseButton from '../../common/BaseButton';
+import InputGroup from '../../common/InputGroup';
 
 const localVue = createLocalVue();
 
@@ -33,6 +33,7 @@ const setup = async ({
   jest.resetModules();
 
   global.navigator.geolocation = true;
+
   const defaultProps = {
     zipcode: '11111-111',
     addresses: [addresses, addresses2],
@@ -63,11 +64,12 @@ describe('ZipcodeForm component', () => {
     it('mounts component without error', async () => {
       const { wrapper } = await setup();
 
-      expect(wrapper.text()).toContain('Informe seu CEP ou Rua');
+      expect(wrapper.text()).toContain('Informe seu CEP');
       expect(wrapper.text()).not.toContain('Não sabe seu CEP?');
       expect(wrapper.text()).not.toContain('Buscar no site dos Correios');
       expect(wrapper.findAllComponents(BaseButton).length).toBe(1);
       expect(wrapper.findComponent(BaseIcon).props('id')).toBe('find-location.icon');
+      expect(wrapper.find('.buttonFindLocation').exists()).toBe(true);
       expect(wrapper.find('.fieldError').exists()).toBe(false);
       expect(wrapper.findAllComponents(InputGroup).length).toBe(2);
     });
@@ -75,7 +77,7 @@ describe('ZipcodeForm component', () => {
     it('mounts component with error', async () => {
       const { wrapper } = await setup({ customProps: { hasError: true } });
 
-      expect(wrapper.text()).toContain('Informe seu CEP ou Rua');
+      expect(wrapper.text()).toContain('Informe seu CEP');
       expect(wrapper.findAllComponents(BaseButton).length).toBe(1);
       expect(wrapper.findComponent(BaseIcon).props('id')).toBe('cancel.icon');
       expect(wrapper.find('.fieldError').exists()).toBe(true);
@@ -85,7 +87,7 @@ describe('ZipcodeForm component', () => {
     it('mounts component with zipcode isLoaded true', async () => {
       const { wrapper } = await setup({ customProps: { isLoaded: true } });
 
-      expect(wrapper.text()).toContain('Informe seu CEP ou Rua');
+      expect(wrapper.text()).toContain('Informe seu CEP');
       expect(wrapper.findAllComponents(BaseButton).length).toBe(3);
       expect(wrapper.findComponent(BaseIcon).props('id')).toBe('find-location.icon');
       expect(wrapper.find('.fieldError').exists()).toBe(false);
@@ -95,7 +97,7 @@ describe('ZipcodeForm component', () => {
     it('mounts component without addresses in store', async () => {
       const { wrapper } = await setup({ customProps: { addresses: [] } });
 
-      expect(wrapper.text()).toContain('Informe seu CEP ou Rua');
+      expect(wrapper.text()).toContain('Informe seu CEP');
       expect(wrapper.text()).toContain('Não sabe seu CEP?');
       expect(wrapper.text()).toContain('Buscar no site dos Correios');
       expect(wrapper.findAllComponents(BaseButton).length).toBe(2);
@@ -163,15 +165,36 @@ describe('ZipcodeForm component', () => {
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('cancel');
     });
 
-    it('clicks on find gelocation', async () => {
-      const { wrapper } = await setup({ customProps: { isLoaded: true } });
-      jest.spyOn(wrapper.vm, 'getGeolocation').mockImplementation(() => {});
-
-      wrapper.find('.buttonFindLocation').trigger('click');
-
-      await wrapper.vm.$nextTick();
-
-      expect(wrapper.vm.getGeolocation).toHaveBeenCalled();
+    describe('clicks on find geolocation', () => {
+      it('when geolocation works', async () => {
+        const { wrapper } = await setup();
+        jest.spyOn(wrapper.vm, 'getGeolocation').mockImplementation(() => {});
+  
+        wrapper.find('.buttonFindLocation').trigger('click');
+  
+        await wrapper.vm.$nextTick();
+  
+        expect(wrapper.vm.getGeolocation).toHaveBeenCalled();
+      });
+  
+      it("when geolocation doesn't work", async () => {
+        const { wrapper } = await setup();
+        global.navigator.geolocation = {
+          getCurrentPosition: jest.fn( (success, error, options) => error({ message: 'error' })),
+        }
+  
+        jest.spyOn(wrapper.vm, '$emit');
+        jest.spyOn(wrapper.vm, 'getGeolocation');
+  
+        wrapper.find('.buttonFindLocation').trigger('click');
+  
+        await wrapper.vm.$nextTick();
+  
+        expect(wrapper.vm.getGeolocation).toHaveBeenCalledWith();
+        expect(wrapper.vm.$emit).toHaveBeenCalledWith('error', {
+          message: 'error',
+        });
+      });
     });
   });
 });

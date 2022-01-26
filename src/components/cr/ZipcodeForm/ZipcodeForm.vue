@@ -1,19 +1,10 @@
 <template>
-  <div
-    :class="$style.wrapper"
-    class="row"
-  >
-    <div
-      :class="$style.fieldTitle"
-      class="col-xs-12"
-    >
-      Informe seu CEP ou Rua
+  <div :class="$style.wrapper">
+    <div :class="$style.fieldTitle">
+      Informe seu CEP
     </div>
 
-    <div
-      :class="$style.fieldGroup"
-      class="col-xs-12"
-    >
+    <div :class="$style.fieldGroup">
       <div :class="[$style.inputBlock, $style.inputBlockZipcode]">
         <InputGroup :class="$style.inputBlockGroup">
           <BaseInput
@@ -37,12 +28,11 @@
           </button>
 
           <button
-            v-else
+            v-else-if="hasLocationApi"
             :class="$style.buttonFindLocation"
             @click="getGeolocation()"
           >
             <BaseIcon
-              v-if="hasLocationApi"
               id="find-location.icon"
               :class="$style.icon"
             />
@@ -102,7 +92,6 @@
 
     <div
       v-if="hasError && !isMobile"
-      class="col-xs-12"
       :class="$style.fieldError"
     >
       Dados inválidos
@@ -110,16 +99,12 @@
 
     <div
       v-else-if="address && !isMobile"
-      class="col-xs-12"
       :class="$style.fieldAddress"
     >
       {{ address }}
     </div>
 
-    <div
-      :class="$style.buttonsAction"
-      class="col-xs-12"
-    >
+    <div :class="$style.buttonsAction">
       <div
         v-if="isMobile"
         :class="$style.submitBlock"
@@ -156,7 +141,6 @@
     </div>
     <div
       v-if="!hasAddress"
-      class="col-xs-12"
       :class="$style.footerInfo"
     >
       <p :class="$style.footerInfoTitle">
@@ -177,11 +161,11 @@
 <script>
 import VMasker from 'vanilla-masker';
 import { zipcode as zipcodeFilter } from '../../../filters';
-import BaseIcon from '../BaseIcon';
-import BaseInput from '../BaseInput';
-import BaseButton from '../BaseButton';
-import InputGroup from '../InputGroup';
-import BaseCheckbox from '../BaseCheckbox';
+import BaseIcon from '../../common/BaseIcon';
+import BaseInput from '../../common/BaseInput';
+import BaseButton from '../../common/BaseButton';
+import InputGroup from '../../common/InputGroup';
+import BaseCheckbox from '../../common/BaseCheckbox';
 import mask from '../../../directives/mask';
 import breakpointable from '../../../mixins/breakpointable';
 
@@ -226,7 +210,7 @@ export default {
 
     addresses: {
       type: Array,
-      default: [],
+      default: () => [],
     },
   },
 
@@ -284,32 +268,31 @@ export default {
       this.numberValue = value ? 'S/N' : '';
     },
     getGeolocation() {
-      if ('geolocation' in navigator) {
-        const options = {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0,
-        };
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { coords } = position;
-            this.lat = coords.latitude;
-            this.lng = coords.longitude;
-            this.onClickSubmit();
-          },
-          (error) => {
-            console.log(error.message);
-          },
-          options,
-        );
-      }
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { coords } = position;
+          this.lat = coords.latitude;
+          this.lng = coords.longitude;
+          this.onClickSubmit();
+        },
+        (error) => {
+          this.$emit('geolocationError', error);
+        },
+        options,
+      );
     },
 
     onClickSubmit() {
       if (this.lat && this.lng) {
         this.$emit('search', {
-          zipcode: '',
-          number: '',
+          zipcode: this.zipcodeValue,
+          number: this.numberValue,
           lat: this.lat,
           lng: this.lng,
         });
@@ -359,7 +342,6 @@ export default {
     flex-direction: column;
     gap: 16px;
     margin: 0 auto;
-    max-width: 672px;
   }
 
   .fieldAddress {
@@ -490,7 +472,7 @@ export default {
     padding: 0;
   }
 
-  .findZipcodeButton :global(span) {
+  .findZipcodeButton span {
     color: #259591;
     font-size: 15px;
     font-weight: 700;
