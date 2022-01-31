@@ -32,7 +32,6 @@ new Vue({
   },
   template: `
     <div>
-      <p>Testando</p>
       <ZipcodeForm
         :zipcode="zipcodeValue"
         :number="numberValue"

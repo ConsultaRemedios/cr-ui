@@ -260,6 +260,8 @@ export default {
     setZipcode(zipcode) {
       if (zipcode.length < 9) return;
       this.zipcodeValue = zipcode.value;
+      this.lat = null;
+      this.lng = null;
     },
     setNumber(number) {
       this.numberValue = number.value;
@@ -279,6 +281,7 @@ export default {
           const { coords } = position;
           this.lat = coords.latitude;
           this.lng = coords.longitude;
+          this.zipcodeValue = '';
           this.onClickSubmit();
         },
         (error) => {
@@ -289,17 +292,10 @@ export default {
     },
 
     onClickSubmit() {
-      if (this.lat && this.lng) {
-        this.$emit('search', {
-          zipcode: this.zipcodeValue,
-          number: this.numberValue,
-          lat: this.lat,
-          lng: this.lng,
-        });
-        return;
-      }
+      const invalidZipcode = this.zipcodeValue.length < 9;
+      const hasGeolocation = this.lat && this.lng;
 
-      if (this.zipcodeValue.length < 9) return;
+      if (!hasGeolocation && invalidZipcode) return;
 
       this.$emit('search', {
         zipcode: this.zipcodeValue,
