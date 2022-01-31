@@ -125,6 +125,20 @@ describe('ZipcodeForm component', () => {
       });
     });
 
+    it('with the zipcode field empty, click on use zipcode', async () => {
+      const { wrapper } = await setup(
+        { customProps: { zipcode: '' } },
+      );
+      jest.spyOn(wrapper.vm, '$emit');
+
+      expect(wrapper.findComponent(BaseButton).text()).toBe('Usar');
+      wrapper.findComponent(BaseButton).vm.$emit('click');
+
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.vm.$emit).not.toHaveBeenCalled();
+    });
+
     it('clicks on clear error', async () => {
       const { wrapper } = await setup({ customProps: { hasError: true } });
       jest.spyOn(wrapper.vm, '$emit');
