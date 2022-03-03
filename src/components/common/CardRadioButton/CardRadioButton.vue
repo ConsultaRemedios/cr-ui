@@ -38,7 +38,7 @@ export default {
       default: false,
     },
     value: {
-      type: String,
+      type: [String, Number],
       required: true,
     },
     name: {
