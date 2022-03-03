@@ -7,15 +7,71 @@
     <div :class="$style.fieldGroup">
       <div :class="[$style.inputBlock, $style.inputBlockZipcode]">
         <InputGroup :class="$style.inputBlockGroup">
-          <BaseInput
-            v-model="zipcodeValue"
-            v-mask="'zipcode'"
-            type="tel"
-            name="zipcode"
-            placeholder="Digite seu CEP"
-            :classes="[$style.inputZipcode, { [$style.inputError]: hasError }]"
+          <Autocomplete
+            :get-suggestions="getSuggestions"
+            :class="$style.autocomplete"
+            :expanded-class="[$style.expandedClass]"
+            :list-item-class="[$style.listItemClass]"
+            :hovered-class="[$style.itemHovered]"
+            :expanded="autocompleteExpanded"
+            :clear-suggestions="true"
+            :term="zipcodeValue"
+            suggestion-key="fullAddress"
+            input-name="zipcode"
+            item-key="permalink"
+            cache-key="ceps"
             @change="setZipcode"
-          />
+            @close="$emit('close')"
+            @inputChanged="onInputChanged"
+          >
+            <template
+              slot="input"
+              slot-scope="{ term, onChange, onKeyDown }"
+            >
+              <BaseInput
+                v-mask="'zipcode'"
+                :value="term"
+                type="tel"
+                name="zipcode"
+                placeholder="Digite seu CEP"
+                autocomplete="off"
+                :classes="[$style.inputZipcode, { [$style.inputError]: hasError }]"
+                @change="onChange"
+                @keydown="onKeyDown"
+                @blur="onInputChanged"
+              />
+            </template>
+
+            <template
+              slot="listItem"
+              slot-scope="{ suggestion, onClick }"
+            >
+              <a
+                :class="$style.suggestionWrapper"
+                @click="onClick($event, suggestion)"
+              >
+                <div :class="$style.suggestionTextWrapper">
+                  <span
+                    :class="$style.suggestionTitle"
+                    v-html="suggestion.highlight"
+                  ></span>
+                </div>
+                <BaseIcon
+                  id="next.icon"
+                  :class="$style.suggestionIcon"
+                />
+              </a>
+            </template>
+            <template
+              v-if="showPlaceholderSuggestion"
+              slot="placeholderSuggestion"
+            >
+              <div :class="$style.placeholderSuggestion">
+                {{ textPlaceholder }}
+              </div>
+            </template>
+          </Autocomplete>
+
           <button
             v-if="hasError"
             :class="$style.buttonClearZipcode"
@@ -42,7 +98,7 @@
           v-if="hasError && isMobile"
           :class="$style.fieldError"
         >
-          Dados inválidos
+          {{ errorMessage }}
         </div>
       </div>
       <div :class="[$style.inputBlock, $style.inputBlockNumber]">
@@ -94,7 +150,7 @@
       v-if="hasError && !isMobile"
       :class="$style.fieldError"
     >
-      Dados inválidos
+      {{ errorMessage }}
     </div>
 
     <div
@@ -168,11 +224,17 @@ import InputGroup from '../../common/InputGroup';
 import BaseCheckbox from '../../common/BaseCheckbox';
 import mask from '../../../directives/mask';
 import breakpointable from '../../../mixins/breakpointable';
+import Autocomplete from '../../common/Autocomplete';
 
 export default {
   name: 'ZipcodeForm',
   components: {
-    BaseIcon, BaseInput, BaseButton, InputGroup, BaseCheckbox,
+    BaseIcon,
+    BaseInput,
+    BaseButton,
+    InputGroup,
+    BaseCheckbox,
+    Autocomplete,
   },
   directives: { mask },
   filters: { zipcode: zipcodeFilter },
@@ -198,6 +260,11 @@ export default {
       default: false,
     },
 
+    errorMessage: {
+      type: String,
+      default: 'Dados inválidos',
+    },
+
     isLoading: {
       type: Boolean,
       default: false,
@@ -211,6 +278,26 @@ export default {
     addresses: {
       type: Array,
       default: () => [],
+    },
+
+    getSuggestions: {
+      type: Function,
+      required: true,
+    },
+
+    textPlaceholder: {
+      type: String,
+      default: '',
+    },
+
+    showPlaceholderSuggestion: {
+      type: Boolean,
+      default: false,
+    },
+
+    autocompleteExpanded: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -258,7 +345,17 @@ export default {
 
   methods: {
     setZipcode(zipcode) {
+      this.$emit('selected', zipcode);
       if (zipcode.length < 9) return;
+
+      if (zipcode.suggestion) {
+        this.zipcodeValue = VMasker.toPattern(zipcode.suggestion.zipcode, '99999-999');
+        this.lat = null;
+        this.lng = null;
+        this.onClickSubmit();
+        return;
+      }
+
       this.zipcodeValue = zipcode.value;
       this.lat = null;
       this.lng = null;
@@ -295,7 +392,10 @@ export default {
       const invalidZipcode = this.zipcodeValue.length < 9;
       const hasGeolocation = this.lat && this.lng;
 
-      if (!hasGeolocation && invalidZipcode) return;
+      if (!hasGeolocation && invalidZipcode) {
+        this.$emit('error', 'Dados inválidos');
+        return;
+      }
 
       this.$emit('search', {
         zipcode: this.zipcodeValue,
@@ -313,12 +413,23 @@ export default {
         lng: this.lng,
       });
     },
+
+    onInputChanged(value) {
+      if (value.value) {
+        const zipcode = value.value.replace(/[^0-9]/g, '').substr(0, 8);
+
+        this.zipcodeValue = VMasker.toPattern(zipcode, '99999-999');
+        return;
+      }
+
+      this.zipcodeValue = value;
+    },
   },
 };
 
 </script>
 <style module>
-  @value media-md from './../../../styles/variables.css';
+  @value media-md, screen-xs-max from './../../../styles/variables.css';
 
   .wrapper {
     font-family: Helvetica;
@@ -392,7 +503,6 @@ export default {
   .inputBlockGroup div,
   .inputZipcode {
     min-width: 100%;
-    position: relative;
   }
 
   .inputBlock .inputError,
@@ -530,5 +640,63 @@ export default {
       flex-direction: row;
       gap: 5px;
     }
+  }
+
+  .autocomplete {
+    flex-grow: 1;
+  }
+
+  .listItemClass {
+    padding: 10px 10px 10px 15px;
+  }
+
+  .listItemClass:last-child {
+    border-bottom: 0;
+  }
+
+  li.listItemClass a { /* stylelint-disable-line selector-no-qualifying-type */
+    color: var(--text-default);
+  }
+
+  li.listItemClass:hover a { /* stylelint-disable-line selector-no-qualifying-type */
+    color: var(--link-color);
+  }
+
+  .itemHovered,
+  .listItemClass:hover {
+    background-color: #e1f2f2;
+  }
+  .expandedClass {
+    border-color: var(--color-dark-green);
+    box-shadow: initial;
+    max-height: 120px;
+    overflow: auto;
+  }
+
+  @media (max-width: screen-xs-max) {
+    .expandedClass {
+      max-height: 180px;
+    }
+  }
+  .suggestionWrapper {
+    align-items: center;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .suggestionWrapper:hover {
+    text-decoration: none;
+  }
+
+  .suggestionTextWrapper {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 24px);
+  }
+
+  .suggestionIcon {
+    font-size: 15px;
   }
 </style>

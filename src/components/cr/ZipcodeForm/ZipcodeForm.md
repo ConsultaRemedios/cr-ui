@@ -11,6 +11,10 @@ new Vue({
       isLoaded: true,
       hasError: false,
       addresses: [],
+      errorMessage: 'Dados Inválidos',
+      textPlaceholder: '',
+      autocompleteExpanded: false,
+      showPlaceholderSuggestion: false,
     };
   },
   methods: {
@@ -26,8 +30,38 @@ new Vue({
     clearZipcode() {
       alert('clearZipcode event triggered!');
     },
-    error() {
-      alert('error event triggered!');
+    geolocationError() {
+      alert('geolocationError event triggered!');
+    },
+    onSelected() {
+      this.autocompleteExpanded = false;
+    },
+    showError() {
+      this.hasError = true;
+      this.errorMessage = 'Erro';
+    },
+    onClose() {
+      this.autocompleteExpanded = false;
+    },
+    getSuggestions({ value }) {
+      this.autocompleteExpanded = true;
+
+      const fetchResult = [
+        {
+          "zipcode":"01007020",
+          "fullAddress":"01007020 - da Bandeira, Centro - São Paulo/SP",
+          "shortAddress":"01007020 - Centro - São Paulo/SP",
+          "state":"SP",
+        },
+        {
+          "zipcode":"01007050",
+          "fullAddress":"01007050 - Carlos Drummond de Andrade, Centro - São Paulo/SP",
+          "short_address":"01007050 - Centro - São Paulo/SP",
+          "state":"SP",
+          },
+      ];
+
+      return fetchResult;
     },
   },
   template: `
@@ -40,11 +74,19 @@ new Vue({
         :has-error="hasError"
         :is-loaded="isLoaded"
         :addresses="addresses"
+        :get-suggestions="getSuggestions"
+        :text-placeholder="textPlaceholder"
+        :error-message="errorMessage"
+        :autocomplete-expanded="autocompleteExpanded"
+        :show-placeholder-suggestion="showPlaceholderSuggestion"
+        @error="showError"
+        @selected="onSelected"
+        @close="onClose"
         @cancel="cancel"
         @search="searchZipcode"
         @save="saveZipcode"
         @clearZipcode="clearZipcode"
-        @geolocationError="error"
+        @geolocationError="geolocationError"
       />
     </div>
   `
