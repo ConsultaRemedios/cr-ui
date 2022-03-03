@@ -2,6 +2,7 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import BaseIcon from '../../common/BaseIcon';
 import BaseButton from '../../common/BaseButton';
 import InputGroup from '../../common/InputGroup';
+import Autocomplete from '../../common/Autocomplete';
 
 const localVue = createLocalVue();
 
@@ -36,7 +37,17 @@ const setup = async ({
 
   const defaultProps = {
     zipcode: '11111-111',
+    address: '',
+    number: '',
+    hasError: false,
+    errorMessage: 'Dados inválidos',
+    isLoading: false,
+    isLoaded: false,
     addresses: [addresses, addresses2],
+    getSuggestions: jest.fn(),
+    textPlaceholder: '',
+    showPlaceholderSuggestion: false,
+    autocompleteExpanded: false,
   };
 
   const ZipcodeForm = require('./ZipcodeForm.vue').default;
@@ -64,6 +75,7 @@ describe('ZipcodeForm component', () => {
     it('mounts component without error', async () => {
       const { wrapper } = await setup();
 
+      expect(wrapper.findComponent(Autocomplete).exists()).toBe(true);
       expect(wrapper.text()).toContain('Informe seu CEP');
       expect(wrapper.text()).not.toContain('Não sabe seu CEP?');
       expect(wrapper.text()).not.toContain('Buscar no site dos Correios');
@@ -119,7 +131,7 @@ describe('ZipcodeForm component', () => {
 
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('search', {
         zipcode: '11111-111',
-        number: null,
+        number: '',
         lat: null,
         lng: null,
       });
@@ -136,7 +148,7 @@ describe('ZipcodeForm component', () => {
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.vm.$emit).not.toHaveBeenCalled();
+      expect(wrapper.vm.$emit).toHaveBeenCalledWith('error', 'Dados inválidos');
     });
 
     it('clicks on clear error', async () => {
@@ -161,7 +173,7 @@ describe('ZipcodeForm component', () => {
 
       expect(wrapper.vm.$emit).toHaveBeenCalledWith('save', {
         zipcode: '11111-111',
-        number: null,
+        number: '',
         lat: null,
         lng: null,
       });
