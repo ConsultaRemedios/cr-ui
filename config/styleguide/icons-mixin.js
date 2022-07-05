@@ -3,6 +3,7 @@ import Vue from 'vue';
 import favorite from './../../src/icons/favorite.icon.svg';
 import favoriteFill from './../../src/icons/favorite-fill.icon.svg';
 import gallery from './../../src/icons/gallery.icon.svg';
+import buybox from './../../src/icons/buybox.icon.svg';
 import mosaic from './../../src/icons/mosaic.icon.svg';
 import grid from './../../src/icons/grid.icon.svg';
 import list from './../../src/icons/list.icon.svg';
@@ -200,6 +201,7 @@ const allIcons = [
   favoriteFill,
   mosaic,
   gallery,
+  buybox,
   grid,
   list,
   deleteIcon,
